@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Split from '../components/Split.astro';
+import LinkCards from '../components/LinkCards.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Pricing from '../components/Pricing.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL } from '../data/navigation.js';
+
+const steps = [
+  { n: '1', title: 'Create Your NFT', blurb: "Use DropChain's no-code minting tool to launch your NFT or token, with zero gas fees and no developers needed.", image: '/images/Screenshot-2025-04-06-at-4.09.50-PM.png' },
+  { n: '2', title: 'Set your USD or Crypto Price', blurb: 'Turn on fiat payments so buyers can purchase using Visa, Mastercard, or Apple Pay with just a few clicks.', image: '/images/Screenshot-2025-04-06-at-4.09.18-PM.png' },
+  { n: '3', title: 'Launch Your Checkout Page', blurb: 'Create your custom checkout page and share your link to start accepting purchases with credit card checkout.', image: '/images/Screenshot-2025-04-06-at-4.11.47-PM.png' },
+];
+
+const gaps = [
+  { icon: '/images/Wallet.svg', problem: 'No Wallet, No Access', blurb: "The majority of your potential buyers don't own a crypto wallet or tokens.", answer: 'Credit Card Checkout' },
+  { icon: '/images/Question.svg', problem: 'Complex Buyer Experience', blurb: "Buying an NFT shouldn't require three apps and a YouTube tutorial.", answer: 'One-Click Purchase Flow with Stripe' },
+  { icon: '/images/User_Cross.svg', problem: 'Limited Audience', blurb: 'Relying on Web3-native users means your project never reaches its full potential.', answer: 'Web2 + Web3 Onboarding' },
+];
+
+const useCases = [
+  { title: 'Sell NFTs to Non-Crypto owners', blurb: 'Credit card checkout removes the friction and opens your drop to a wider audience.' },
+  { title: 'Launch Memberships or Digital Passes', blurb: 'Sell tokenized access to communities, courses, or exclusive content.' },
+  { title: 'Onboard at IRL Events', blurb: 'Use QR codes tied to a DropChain payment link at events, pop-ups, or conferences.' },
+  { title: 'Offer Giftable NFTs', blurb: 'Allow fans to buy NFTs as gifts for friends or family without any crypto experience needed.' },
+  { title: 'Run Drops on Social Media', blurb: 'Share a checkout link on Twitter, Instagram, or in email to let users buy right from the feed.' },
+  { title: 'Sell Add-Ons or Merch in Web3 Games', blurb: 'Let players buy in-game assets with a credit card, then receive the item as an NFT directly in their wallet.' },
+];
+---
+
+<BaseLayout
+  title="Sell NFTs and Tokens With Credit Card Checkout"
+  description="Most people don't have wallets. DropChain lets anyone buy your NFTs or tokens with a credit card. No wallet setup, no gas fees, no friction."
+>
+  <PageHero
+    eyebrow="For Web3 Creators & Brands"
+    title="Sell NFTs and Tokens With Credit Card Checkout"
+    sub="Most people don't have wallets. Even those who do can struggle with transactions. DropChain lets anyone buy your NFTs or tokens with a credit card. There's no wallet setup, no gas fees, no friction. Open your project to the 99% who've been locked out of Web3."
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+    <img class="hero-image" src="/images/Screenshot-2025-04-06-at-4.27.46-PM.png" alt="" loading="lazy" />
+  </PageHero>
+
+  <Testimonials />
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <h2 class="section-head">How to Start Accepting Credit Cards for NFTs and Tokens</h2>
+      <ol class="steps">
+        {steps.map((step) => (
+          <li class="step">
+            <img src={step.image} alt="" loading="lazy" />
+            <span class="step__n">{step.n}</span>
+            <h3>{step.title}</h3>
+            <p>{step.blurb}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <p class="dc-eyebrow">Most People Don't have Wallets</p>
+        <h2>Most People Can't Buy What You're Selling</h2>
+        <p class="dc-lead">
+          Traditional Web3 checkout flows are built for crypto natives. Without fiat
+          checkout, your every day customer is locked out.
+        </p>
+      </header>
+      <ul class="gaps">
+        {gaps.map((item) => (
+          <li>
+            <img src={item.icon} alt="" loading="lazy" />
+            <h3>{item.problem}</h3>
+            <p>{item.blurb}</p>
+            <p class="gaps__answer"><Icon name="check" size={16} />{item.answer}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Split
+    heading="Friction Kills Sales. Simplicity Converts."
+    sub="If your mint or drop is only accessible to crypto users, you're excluding the majority of your fans. Credit card checkout opens the door to people who are interested but don't want to deal with wallets or buying other crypto. With DropChain, you can capture that demand and grow faster. It's Web3 sales minus the friction."
+    image="/images/ChatGPT-Image-Apr-6-2025-04_06_10-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <Split
+    reverse
+    tight
+    heading="Track Every Buyer of your Token or NFT"
+    sub="DropChain lets you see who's buying, whether they used crypto or a card. Use DropChain's automated CRM to segment by payment method, token owned, time of purchase, or engagement level. Use that insight to send targeted email automation sequences, unlock token-gated perks, or reward your most active buyers."
+    image="/images/Screenshot-2025-03-01-at-5.30.04-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <LinkCards heading="Use Cases" items={useCases} />
+
+  <Split
+    tight
+    heading="Follow Up with DropChain's Automated Email Marketing"
+    sub="After someone purchases, DropChain can trigger email flows instantly. This is completely new for the Web3 industry. Send thank-yous, bonus content, or cross-sell opportunities. And with our drag-and-drop editor every email can stay on brand all the time."
+    image="/images/Screenshot-2025-04-04-at-2.19.18-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <CtaBand
+    heading="Start Selling Smarter"
+    sub="Don't let wallets or gas fees block your sales. DropChain makes it easy for anyone to buy from you, credit card or crypto. Start for free and launch your first checkout in minutes. No credit card required."
+    cta="Get Started"
+    href={CONSOLE_URL}
+  />
+
+  <Pricing />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .hero-image { margin-top: var(--dc-space-xl); border-radius: var(--dc-radius-lg); }
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-eyebrow { margin-bottom: 0.6rem; }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .steps, .gaps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); list-style: none; margin: 0; padding: 0; }
+  .step, .gaps li {
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .step img { border-radius: var(--dc-radius-sm); margin-bottom: var(--dc-space-xs); }
+  .step__n {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-image: var(--dc-gradient);
+    color: var(--dc-text-inverse);
+    font-size: var(--dc-text-sm);
+    font-weight: 600;
+  }
+  .step h3, .gaps h3 { font-size: var(--dc-h5); }
+  .step p, .gaps p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; }
+  .gaps img { width: 30px; height: 30px; }
+  .gaps__answer { display: flex; align-items: center; gap: 0.5rem; color: var(--dc-green) !important; font-weight: 500; }
+
+  @media (max-width: 900px) { .steps, .gaps { grid-template-columns: 1fr; } }
+</style>

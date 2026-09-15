@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Split from '../components/Split.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Pricing from '../components/Pricing.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL } from '../data/navigation.js';
+
+const gaps = [
+  { icon: '/images/Wallet.svg', problem: 'No Wallet Capture', blurb: "Most platforms only collect emails. They can't handle Web3 data like wallet addresses or blockchain activity.", answer: 'Multi-Chain Wallet Support' },
+  { icon: '/images/Playlist.svg', problem: 'Disconnected From CRM', blurb: 'You end up copy-pasting data from one platform to another.', answer: 'Automatic CRM Sync' },
+  { icon: '/images/Megaphone_2.svg', problem: 'No Behavior-Based Campaigns', blurb: "You can't trigger messaging based on who someone is or what they own.", answer: 'Wallet-Aware Email Automation' },
+];
+
+const rewards = [
+  'Offer access to exclusive content, PDF downloads, or event invites',
+  'Trigger token-gated rewards based on wallet connection',
+  'Unlock discounts or waitlist access',
+  'Route form submissions to thank-you pages or private content',
+];
+---
+
+<BaseLayout
+  title="Forms for Capturing Web3 Wallets"
+  description="DropChain Forms help you capture emails and wallets through customizable forms, whether your visitors are Web2 or Web3 native."
+>
+  <PageHero
+    eyebrow="For Web3 Creators and Community Builders"
+    title="Capture Emails and Wallets With Customizable Forms"
+    sub="DropChain Forms help you capture emails and wallets through customizable forms. Whether your visitors are Web2 or Web3 native, DropChain collects the data that helps you grow and engage your community over time."
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+    <img class="hero-image" src="/images/Screenshot-2025-04-13-at-1.57.49-PM.png" alt="" loading="lazy" />
+  </PageHero>
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Stop Leaving Data and Engagement Behind</h2>
+        <p class="dc-lead">
+          If you're not capturing wallet data, you're missing the most valuable data
+          available to web3 brands.
+        </p>
+      </header>
+      <ul class="gaps">
+        {gaps.map((item) => (
+          <li>
+            <img src={item.icon} alt="" loading="lazy" />
+            <h3>{item.problem}</h3>
+            <p>{item.blurb}</p>
+            <p class="gaps__answer"><Icon name="check" size={16} />{item.answer}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <Split
+    heading="Collect Wallets and Unlock On-Chain Insights"
+    sub="With DropChain, forms do more than just collect emails. You can also ask visitors to connect their wallet. When they do, DropChain automatically pulls public on-chain data into their profile. You'll see what NFTs and tokens they hold and their on-chain activity. Leverage on-chain data to create custom campaigns to drive NFT sales, engage partner communities, and keep users engaged."
+    image="/images/Screenshot-2025-04-12-at-9.25.18-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <Split
+    reverse
+    tight
+    heading="Deliver Value Instantly"
+    sub="Create forms that reward your audience for showing up."
+    image="/images/ChatGPT-Image-Apr-4-2025-04_16_08-PM.png"
+  >
+    <ul class="rewards">
+      {rewards.map((item) => <li><Icon name="check" size={16} />{item}</li>)}
+    </ul>
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <div class="embed">
+        <h2>Add Web3 Forms to Any Website or Landing Page in Seconds</h2>
+        <p class="dc-lead">
+          DropChain Forms are easy to embed on any platform. Whether you're using Webflow,
+          WordPress, custom HTML, or a no-code site builder, you can drop in your form
+          with one simple embed code or share a hosted form link.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Split
+    tight
+    heading="Create Automations to Engage Opt-ins"
+    sub="Each form starts a new user journey. You can trigger specific email flows based on what someone submits or which wallet they connect. DropChain makes it easy to send the right message to the right person with zero manual effort."
+    image="/images/Screenshot-2025-03-30-at-1.58.53-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <CtaBand
+    heading="Build your Lead Capture System Today"
+    sub="No credit card required."
+    cta="Get Started"
+    href={CONSOLE_URL}
+  />
+
+  <Pricing />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .hero-image { margin-top: var(--dc-space-xl); border-radius: var(--dc-radius-lg); }
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .gaps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); list-style: none; margin: 0; padding: 0; }
+  .gaps li {
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .gaps h3 { font-size: var(--dc-h5); }
+  .gaps p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; }
+  .gaps img { width: 30px; height: 30px; }
+  .gaps__answer { display: flex; align-items: center; gap: 0.5rem; color: var(--dc-green) !important; font-weight: 500; }
+
+  .rewards { display: grid; gap: 0.6rem; margin-top: var(--dc-space-sm); list-style: none; padding: 0; }
+  .rewards li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+  .rewards :global(svg) { color: var(--dc-green); flex: none; margin-top: 0.2rem; }
+
+  .embed {
+    padding: var(--dc-space-xl);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+    background: radial-gradient(90% 140% at 12% 0%, #01f0891f, transparent 60%), var(--dc-surface);
+  }
+  .embed .dc-lead { margin-top: var(--dc-space-sm); max-width: 70ch; }
+
+  @media (max-width: 900px) { .gaps { grid-template-columns: 1fr; } }
+</style>
