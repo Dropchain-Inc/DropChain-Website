@@ -38,6 +38,7 @@ const REPLACED_BY_INLINE_SVG = new Set([
   'Frame-454.avif',
   'Dropchain-Logo---Green.webp',
   'Group-366.svg',
+  'placeholder.60f9b1840c.svg',
   'Algorand.avif',
   'gradient-blue.png',
   'Frame-15-2.svg', 'Frame-16-1.svg', 'Frame-5.svg', 'Group-385.svg',
@@ -67,7 +68,21 @@ const CORRECTED_TYPOS = [
   'whay', 'focused', 'sent', 'products', 'signup', 'read', 'make',
 ];
 
-const INTENTIONALLY_OMITTED = new Set([...FORM_STATE_COPY, ...CORRECTED_TYPOS]);
+// The export carries an older three-plan pricing block ("Choose your DropChain
+// plan", "Smart Contract Library Early Access", "Joint Marketing Support") that
+// the live site hides behind the current four-plan block. Verified in the
+// browser on both the homepage and the pricing page; not carried over.
+const HIDDEN_PRICING_BLOCK = [
+  'choose', 'year', 'cancel', 'paid', 'tiers', 'have', 'trial', 'popular',
+  'smart', 'contract', 'library', 'early', 'joint', 'become', 'full',
+  'card', 'required',
+];
+
+const INTENTIONALLY_OMITTED = new Set([
+  ...FORM_STATE_COPY,
+  ...CORRECTED_TYPOS,
+  ...HIDDEN_PRICING_BLOCK,
+]);
 
 /** Removes every element whose opening tag matches `test`, honouring nesting. */
 function removeElements(html, test) {
