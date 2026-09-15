@@ -1,0 +1,11 @@
+{
+  "slug": "how-to-send-a-token-nft-with-dropchain",
+  "title": "How to Send a Token/NFT with DropChain",
+  "description": "",
+  "summary": "Sending tokens or NFTs (Non-Fungible Tokens) is a common use case in the world of blockchain and web3. With the DropChain API, you can easily send tokens or NFTs without any web3 experience.",
+  "date": "June 27, 2023",
+  "author": "",
+  "category": "Guides",
+  "hero": "/images/posts/649ae92707ea9982729c0652_How-to-mint-your-first-NFT--3-.png",
+  "body": "<p>DropChain makes building web3 apps easy — no web3 development expertise needed. If you haven&#x27;t created an account on DropChain yet, please follow the <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/getting-started-guides/getting-started\">DropChain Getting Started guide</a>.</p><p>Sending a Token/NFT with the DropChain API</p><p>Sending tokens or NFTs (Non-Fungible Tokens) is a common use case in the world of blockchain and web3. With the DropChain API, you can easily send tokens or NFTs without any web3 experience. The send_asset endpoint allows you to transfer assets, such as tokens or NFTs, from one user to another. </p><p>You might want to use this API endpoint when enabling users to trade, gift, or sell digital assets within your application. It could also be used to airdrop your assets to your end users when they do something, like play a game or acquire an item.</p><p>The account that you are sending the asset to must be opted into the asset. See <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-opt-into-a-token-nft\">How To Opt into a Token/NFT</a>.</p><p>The DropChain API is available in both <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-send-a-token-nft#code\"><strong>code</strong></a> and <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-send-a-token-nft#undefined-1\"><strong>no-code</strong></a> forms. So, regardless of your technical expertise, you can build a web3 app in no time!</p>"
+}

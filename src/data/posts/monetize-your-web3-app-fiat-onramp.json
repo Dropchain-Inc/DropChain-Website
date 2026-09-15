@@ -1,0 +1,11 @@
+{
+  "slug": "monetize-your-web3-app-fiat-onramp",
+  "title": "Monetize your Web3 App - Fiat Onramp",
+  "description": "",
+  "summary": "Blockchain adoption is hindered by difficult fund deposits. Simplify onramps for wider access to web3.",
+  "date": "September 30, 2023",
+  "author": "Nathaniel Thoreson",
+  "category": "Blog",
+  "hero": "/images/posts/65178bbf4cf3869a525c81eb_Slide-16_9---11.png",
+  "body": "<p>Getting funds into blockchain ecosystems remains a major friction point blocking mainstream crypto and NFT adoption. Lengthy signup processes, complex crypto wallets, and transaction delays create barriers to entry. But seamless fiat onramps hold the key to finally unlocking the masses to web3 innovation.<br/></p><p>For developers building cutting-edge decentralized apps, convoluted onboarding results in massive drop-off. Users excited to explore your product give up when confronted with too many hurdles that come with tradition web3 systems. <br/></p><p>The standard flow requires users to:</p><ol role=\"list\"><li>Sign up for a centralized exchange like Coinbase or Binance. This involves invasive KYC verification.</li><li>Purchase crypto with bank transfer or card. Then wait days for funds to clear.</li><li>Transfer crypto to a self-custody wallet like MetaMask. Pay network fees.</li><li>Use crypto from wallet to purchase NFTs or other web3 assets.<br/></li></ol><p>Think about it. The vast majority of users don&#x27;t have a wallet. Without a seamless payments system, you&#x27;ll alienate those users  - along with the trillions of dollars in bank accounts and credit lines. </p><p>The process above results in a fragmented, frustrating process taking days to complete. But DropChain offers the solution with dead simple fiat onramps.</p>"
+}

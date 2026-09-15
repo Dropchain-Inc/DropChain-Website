@@ -1,0 +1,11 @@
+{
+  "slug": "super-algorand-chooses-dropchain",
+  "title": "Super Chooses DropChain - speed web3 game dev, user adoption",
+  "description": "",
+  "summary": "Super uses the DropChain API and Single Sign-on to quickly launch P2E games and seamlessly onboard their users.",
+  "date": "May 10, 2023",
+  "author": "Nathaniel Thoreson",
+  "category": "Case Studies",
+  "hero": "/images/posts/638619d1591f6f40e7d8a1f2_Slide-16_9---6.png",
+  "body": "<p><a href=\"https://superalgorand.com/\">Super</a>, a web3 game studio on the Algorand blockchain, has chosen DropChain to build and scale its games to a web2-native audience. Using DropChain, the Super team can focus on creating play-to-earn (P2E) games and allow the blockchain to run quietly in the background.</p><p>Super’s developers are using the DropChain API to quickly add web3 functionality to their games. The API will manage both in-game transactions on the Algorand Network and atomic swaps on their marketplace.</p><blockquote>DropChain’s API allows us to focus on building, and scaling fun games for players rather than spending valuable time and resources on blockchain development,” said Super Founder Jesse. “Web3 has too many barriers to entry for the non-crypto crowd. We want to remove them by making our games accessible to everyone. DropChain’s Single Sign-on does exactly that.</blockquote><p>‍</p>"
+}

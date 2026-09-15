@@ -1,11 +1,23 @@
 ---
-import CollectionPage from '../components/CollectionPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PostGrid from '../components/PostGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import posts from '../data/posts/index.json';
+
+const sorted = posts
+  .filter((p) => p.category === 'Guides')
+  .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 ---
-<CollectionPage
-  title="Guides | DropChain"
-  description="Step-by-step guides for building with DropChain."
-  eyebrow="Guides"
-  heading="Guides"
-  sub="Step-by-step walkthroughs for building with the DropChain API, SDKs and no-code tools."
-  empty="There are no guides here yet. The full documentation covers everything currently written up."
-/>
+
+<BaseLayout title="Guides | DropChain" description="Step-by-step walkthroughs for building with the DropChain API, SDKs and no-code tools.">
+  <PageHero eyebrow="Guides" title="Guides" sub="Step-by-step walkthroughs for building with the DropChain API, SDKs and no-code tools." />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <PostGrid posts={sorted} />
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

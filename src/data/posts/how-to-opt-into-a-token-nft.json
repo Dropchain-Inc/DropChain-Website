@@ -1,0 +1,11 @@
+{
+  "slug": "how-to-opt-into-a-token-nft",
+  "title": "How To Opt into A Token/NFT",
+  "description": "",
+  "summary": "",
+  "date": "July 9, 2023",
+  "author": "",
+  "category": "Guides",
+  "hero": "/images/posts/649ae7cc8a12fc99c1724aef_How-to-mint-your-first-NFT--2-.png",
+  "body": "<p>DropChain makes building web3 apps easy — no web3 development expertise needed. If you haven&#x27;t created an account on DropChain yet, please follow the <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/getting-started-guides/getting-started\">DropChain Getting Started guide</a>.</p><p>Opting into Tokens with the DropChain API</p><p>Opting into tokens is an essential step for users to own and interact with specific assets on the blockchain. With the DropChain API, you can easily enable users to opt into tokens without any web3 experience. The asset_optin endpoint allows users to opt into an asset before they can own it.</p><p>You might want to use this API endpoint when creating a new token for your application or allowing users to interact with existing tokens.</p><p>The DropChain API is available in both <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-opt-into-a-token-nft#code\">code</a> and <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-opt-into-a-token-nft#undefined-1\">no-code</a> forms. So, regardless of your technical expertise, you can build a web3 app in no time!</p>"
+}

@@ -1,0 +1,11 @@
+{
+  "slug": "how-to-mint-your-first-nft-token",
+  "title": "How To Mint Your First NFT/Token",
+  "description": "",
+  "summary": "",
+  "date": "June 27, 2023",
+  "author": "Carter Razink",
+  "category": "Guides",
+  "hero": "/images/posts/649ae78a7a2a77b43d6f6b82_How-to-mint-your-first-NFT--1-.png",
+  "body": "<p>DropChain makes building web3 apps easy — no web3 development expertise needed. Learn how to mint your first NFT or token with code of no code! If you haven&#x27;t created an account on DropChain yet, please follow the <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/getting-started-guides/getting-started\">DropChain Getting Started guide</a>.</p><p>Minting NFTs with the DropChain API</p><p>Minting NFTs (Non-Fungible Tokens) is a common use case in the world of blockchain and web3. With the DropChain API, you can easily mint NFTs without any special web3 knowledge. </p><p>Simply use the asset_mint endpoint to create unique digital assets, such as NFTs or tokens, on the DropChain Network. You might want to use this API endpoint when creating digital art, collectibles, or in-game items.</p><p>The DropChain API is available in both <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-mint-your-first-nft-token#code\">code</a> and <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-mint-your-first-nft-token#undefined-1\">no-code</a> forms. So, regardless of your technical expertise, you can build a web3 app in no time!</p>"
+}

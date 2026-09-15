@@ -1,0 +1,78 @@
+---
+interface Post { slug: string; title: string; date: string; author: string; category: string; summary: string; hero: string | null; }
+interface Props { posts: Post[]; }
+const { posts } = Astro.props;
+
+const formatDate = (value: string) => {
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.valueOf())
+    ? value
+    : parsed.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+};
+---
+<ul class="posts">
+  {posts.map((post) => (
+    <li class="post">
+      <a href={`/post/${post.slug}`}>
+        {post.hero && <img src={post.hero} alt="" loading="lazy" />}
+        <div class="post__body">
+          {post.category && <span class="post__category">{post.category}</span>}
+          <h2>{post.title}</h2>
+          {post.summary && <p class="post__summary">{post.summary}</p>}
+          <p class="post__meta">
+            {post.date && <span>{formatDate(post.date)}</span>}
+            {post.author && <span>{post.author}</span>}
+          </p>
+        </div>
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--dc-space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .post a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    overflow: hidden;
+    color: var(--dc-text);
+    transition: border-color var(--dc-transition), transform var(--dc-transition);
+  }
+  .post a:hover { border-color: var(--dc-green); transform: translateY(-2px); color: var(--dc-text); }
+  .post img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .post__body { display: flex; flex-direction: column; gap: 0.5rem; padding: var(--dc-space-lg); flex: 1; }
+  .post__category {
+    align-self: flex-start;
+    color: var(--dc-green);
+    font-size: var(--dc-text-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .post h2 { font-size: var(--dc-h5); line-height: 1.35; }
+  .post__summary {
+    color: var(--dc-text-muted);
+    font-size: var(--dc-text-sm);
+    line-height: 1.6;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .post__meta { display: flex; flex-wrap: wrap; gap: 0.75rem; color: var(--dc-text-dim); font-size: var(--dc-text-xs); }
+
+  @media (max-width: 960px) { .posts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .posts { grid-template-columns: 1fr; } }
+</style>

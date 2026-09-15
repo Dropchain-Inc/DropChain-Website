@@ -1,0 +1,11 @@
+{
+  "slug": "how-to-swap-tokens-nfts",
+  "title": "How To Swap Tokens/NFTs",
+  "description": "",
+  "summary": "Learn how to Swap Tokens/NFTs with DropChain",
+  "date": "July 28, 2023",
+  "author": "",
+  "category": "",
+  "hero": "/images/posts/64ab0009a446d8dc44e24ecf_nfts.png",
+  "body": "<h2>How to Swap Tokens/NFTs with DropChain</h2><p>DropChain makes building web3 apps easy — no web3 development expertise needed. If you haven&#x27;t created an account on DropChain yet, please follow the <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/getting-started-guides/getting-started\">DropChain Getting Started guide</a>.</p><p>‍</p><h2>Swapping Tokens/NFTs with the DropChain API</h2><p>Swapping tokens or NFTs with atomic_swap means exchanging one asset for another between two users. This can be useful for trading items, exchanging tokens for services, or facilitating transactions within a marketplace.</p><p>You might want to use this API endpoint to trade a game item with another player for a different item, exchange tokens for access to a premium feature or service within an application, or facilitate transactions within a marketplace.</p><p>The DropChain API is available in both <strong>code</strong> and <strong>no-code</strong> forms. So, regardless of your technical expertise, you can build a web3 app in no time!</p><p>‍</p><h2>How To Use</h2><p>If you know how to code, you can use the following code examples below to get started. Python (with the DropChain SDK) and Javascript (using fetch) is shown, but any language that supports POST requests will work.</p><div><p> CODE: https://gist.github.com/nthoreson/26e1e758f02f204cc7b4612a67844c6a.js </p></div><p>For a more in-depth guide on how DropChain works, we recommend the<a href=\"https://dropchain.gitbook.io/dropchain-api-beta/getting-started-guides/start-building-with-the-python-dropchain-sdk\"> guide here</a>.</p>"
+}

@@ -1,0 +1,11 @@
+{
+  "slug": "get-started-with-dropchain-api-build-a-web3-app",
+  "title": "Get Started With DropChain API | Build A Web3 App",
+  "description": "",
+  "summary": "Join DropChain co-founder Nathaniel Thoreson for a full walkthrough of the DropChain developer console and get started with the DropChain API.",
+  "date": "October 9, 2023",
+  "author": "",
+  "category": "Guides",
+  "hero": "/images/posts/651d7f23fcecef4c8cde709f_Slide-16_9---10--3-.png",
+  "body": "<p>‍</p><p>Join DropChain co-founder Nathaniel Thoreson for a full walkthrough of the DropChain developer console.</p><p>Get started for free: <a href=\"https://console.dropchain.network/login\">https://console.dropchain.network/login</a></p><p>Follow along in the <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/getting-started-guides/dropchain-api-quickstart\">DropChain Quick Start Guide.</a></p><p>This step-by-step guide shows you how to:</p><ul role=\"list\"><li>Navigate the DropChain console</li><li>Generate your all-important API key for making API requests</li><li>Send tokens to a test account so you can test transactions</li><li>Make your first API request using Postman and the request template</li><li>Verify the transaction went through on the Algorand blockchain</li></ul><p>This easy-to-follow video is perfect for getting started with the DropChain API as a beginner.</p><p>See how fast and simple it is to integrate blockchain capabilities like payments and NFT minting into your existing apps.</p><p>The video covers both code and no-code options for using the API. Don&#x27;t miss the final preview of upcoming videos walking through minting NFT collections and launching your first web3 app powered by DropChain!</p>"
+}

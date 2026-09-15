@@ -1,0 +1,398 @@
+[
+  {
+    "slug": "5-ways-to-build-user-friendly-web3-applications",
+    "title": "5 Ways to Build User-Friendly Web3 Applications",
+    "date": "May 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "Learn 5 strategies to build web3 applications that attract and delight users.",
+    "hero": "/images/posts/6433397872548f6ed4fe04a5_Slide-16_9---12.png"
+  },
+  {
+    "slug": "blockchain-analytics-for-personalized-marketing-campaigns",
+    "title": "Blockchain Analytics for Personalized Marketing Campaigns",
+    "date": "March 8, 2025",
+    "author": "Nathaniel Thoreson",
+    "category": "",
+    "summary": "Most Web3 marketers are ignoring a massive opportunity—on-chain analytics. By tracking wallet activity like token staking, NFT purchases, and DAO votes, brands can send hyper-personalized campaigns that drive real engagement.",
+    "hero": "/images/posts/67cbcbccd19d256af5cb7cc9_viktor-forgacs-3PyBkxgTiL0-unsplash.jpg"
+  },
+  {
+    "slug": "build-a-rock-paper-scissors-web3-game-tutorial",
+    "title": "Build A Rock-Paper-Scissors Web3 Game - Tutorial",
+    "date": "October 9, 2023",
+    "author": "Carter Razink",
+    "category": "Guides",
+    "summary": "In this post, CEO Carter Razink will teach you the step-by-step process to build your first web3 app.",
+    "hero": "/images/posts/652414808fdb2c8740267205_Slide-16_9---10--4-.png"
+  },
+  {
+    "slug": "build-a-web3-app-part-1-setting-up-your-environment",
+    "title": "Build a Web3 App - Part 1 - Setting Up Your Environment",
+    "date": "October 11, 2023",
+    "author": "Carter Razink",
+    "category": "Guides",
+    "summary": "n this tutorial series, we'll guide you through the initial steps of setting up your environment to build a Web3 app using the DropChain API.",
+    "hero": "/images/posts/6525a8901580f88dda70995c_Slide-16_9---12.png"
+  },
+  {
+    "slug": "build-a-web3-app-part-2-how-to-mint-a-token-or-nft",
+    "title": "Build a Web3 App - Part 2 - How to Mint a Token or NFT",
+    "date": "October 10, 2023",
+    "author": "Carter Razink",
+    "category": "Guides",
+    "summary": "Learn how to mint an NFT or Token in under 10 minutes using the DropChain API. Building a web3 doesn't have to be hard.",
+    "hero": "/images/posts/6525a2644fe6690a5a6408cf_Slide-16_9---13--1-.png"
+  },
+  {
+    "slug": "build-a-web3-app-part-3-how-to-opt-in-send-an-nft",
+    "title": "Build a Web3 App - Part 3 - How to Opt-in & Send an NFT",
+    "date": "October 10, 2023",
+    "author": "Carter Razink",
+    "category": "Guides",
+    "summary": "In this tutorial, Carter Razink, CEO and co-founder of DropChain, walks you through the seamless process of sending an opt-in to an asset using DropChain.",
+    "hero": "/images/posts/65256ea61c99b411fb26700a_Slide-16_9---14.png"
+  },
+  {
+    "slug": "build-a-web3-app-part-4-how-to-freeze-a-token-or-nft",
+    "title": "Build a Web3 App - Part 4 - How to Freeze a Token or NFT",
+    "date": "October 11, 2023",
+    "author": "Carter Razink",
+    "category": "Guides",
+    "summary": "Learn how to freeze and unfreeze NFTs and tokens. This is perfect for builders creating apps with soul-bound assets.",
+    "hero": "/images/posts/6525fa8dac64c9a72c7b00b3_Slide-16_9---15--2-.png"
+  },
+  {
+    "slug": "build-your-first-web3-app-using-only-apis",
+    "title": "Build Your First Web3 App Using Only APIs",
+    "date": "May 10, 2023",
+    "author": "Carter Razink",
+    "category": "Blog",
+    "summary": "Building web3 applications is far too challenging,",
+    "hero": "/images/posts/63c304e31c2178036cb34207_Slide-16_9---7.png"
+  },
+  {
+    "slug": "building-a-no-code-web3-game-with-dropchain-algopatties-case-study",
+    "title": "Building a No-Code Web3 Game With DropChain: AlgoPatties Case Study",
+    "date": "November 17, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Case Studies",
+    "summary": "Snarec, founder of AlgoPatties, created the full web3 game without writing any code.",
+    "hero": "/images/posts/6557dd872f8ffc7320411569_Slide-16_9---9--3-.png"
+  },
+  {
+    "slug": "building-web3-apps-was-hard-now-its-easy-press-release",
+    "title": "Building Web3 Apps Was Hard. Now It's Easy.",
+    "date": "May 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "Build web3 apps with no code or familiar frameworks. Use pre-packaged smart contracts and APIs to add web3 functionality to any web2 app.",
+    "hero": "/images/posts/6441a18b1f1ce86160b45fd8_image-8.png"
+  },
+  {
+    "slug": "can-private-blockchains-boost-mass-adoption-of-web3-we-think-so",
+    "title": "Can Private Blockchains Boost Mass Adoption of Web3? We think so.",
+    "date": "August 22, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "What are private blockchains and why do they matter? DropChain simplifies web3 development and access so anyone can leverage blockchain. Read how we're driving adoption.",
+    "hero": "/images/posts/64e22b674151507013979b9d_Slide-16_9---19--1-.png"
+  },
+  {
+    "slug": "challenges-in-growing-a-web3-app-how-to-overcome-them",
+    "title": "Challenges in Growing a Web3 App & How to Overcome Them",
+    "date": "October 20, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "Navigating web3 adoption presents challenges like user experience hurdles, gas fee concerns, and developer onboarding. DropChain offers solutions, streamlining user onboarding, eliminating gas fees, and simplifying web3 app development for a secure, efficient decentralized future.",
+    "hero": "/images/posts/6532c95469b03c9104fc27cc_Slide-16_9---18--2-.png"
+  },
+  {
+    "slug": "congrats-on-your-new-nft",
+    "title": "Congrats on your new NFT!",
+    "date": "July 19, 2024",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "You just claimed an NFT with DropCain. Learn what's next!",
+    "hero": "/images/posts/669a95b5d1f24792511ea19a_Slide-16_9---1.png"
+  },
+  {
+    "slug": "dropchain-launch-web3-api",
+    "title": "DropChain Launches API to Accelerate Web3 Development",
+    "date": "May 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Company News",
+    "summary": "With DropChain, web2 developers can create web3 applications with a single line of code.",
+    "hero": "/images/posts/630679be63d201965fff0eb7_Twitter-post---2--2-.png"
+  },
+  {
+    "slug": "dropchain-marketplace-closing-12-1-new-opportunities-ahead",
+    "title": "DropChain Marketplace Pausing 12/1 | New Opportunities Ahead",
+    "date": "November 28, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "The DropChain Marketplace will close on 12/1, paving the way for new opportunities for mission-aligned growth.",
+    "hero": "/images/posts/6565f6ff5ec08a52508a9909_Slide-16_9---22--3-.png"
+  },
+  {
+    "slug": "dropchain-marketplace-launch-to-bring-mass-adoption-to-algorand-nfts",
+    "title": "DropChain Marketplace Launch to Bring Mass Adoption to Algorand NFTs",
+    "date": "June 14, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "DropChain introduces a user-friendly marketplace and wallet solution, revolutionizing web3 adoption and empowering creators and users in the process.",
+    "hero": "/images/posts/64892ca6c0a2086ed3ae3c40_Slide-16_9---13--1-.png"
+  },
+  {
+    "slug": "dropchain-marketplace-to-launch-on-june-14th-unleashing-power-of-algorand",
+    "title": "DropChain Marketplace to Launch on June 14th",
+    "date": "May 25, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "DropChain Marketplace to launch June 14th. The marketplace increases accessibility with credit cards and crypto crypto checkout. No Gas Fees, KYC, or Wallet are needed.",
+    "hero": "/images/posts/646e895ea03d9b0259c55030_No-Code-Ad-15--1-.jpg"
+  },
+  {
+    "slug": "event-hosts-guide-to-using-poap-nfts-for-event-engagement",
+    "title": "Event Hosts Guide to Using POAP NFTs for Event Engagement",
+    "date": "January 25, 2024",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "Learn how to leverage POAP NFTs to improve event engagement with DropChain's easy-to-use solution.",
+    "hero": "/images/posts/65b2d0b92ee9d635aa34c0b6_POAP-NFT.png"
+  },
+  {
+    "slug": "get-started-with-dropchain-api-build-a-web3-app",
+    "title": "Get Started With DropChain API | Build A Web3 App",
+    "date": "October 9, 2023",
+    "author": "",
+    "category": "Guides",
+    "summary": "Join DropChain co-founder Nathaniel Thoreson for a full walkthrough of the DropChain developer console and get started with the DropChain API.",
+    "hero": "/images/posts/651d7f23fcecef4c8cde709f_Slide-16_9---10--3-.png"
+  },
+  {
+    "slug": "how-to-build-a-successful-web3-product",
+    "title": "How to build a successful web3 product",
+    "date": "May 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "Here's your guide on how to lead the web3 revolution and create Trillion dollar products.",
+    "hero": "/images/posts/633c59adaf67803625921726_Twitter-header---3.png"
+  },
+  {
+    "slug": "how-to-build-a-web3-product-that-users-love",
+    "title": "How to Build a Web3 Product that Users Love",
+    "date": "July 9, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "Creating a web3 product is challenging, but even more so is attracting and onboarding users. Learn about empathetic design and how you can onboard the masses with it.",
+    "hero": "/images/posts/649ce1363642e4459b840a23_Slide-16_9---15--1-.png"
+  },
+  {
+    "slug": "how-to-build-an-nft-dapp-with-dropchain",
+    "title": "How to Build an NFT dApp With DropChain",
+    "date": "November 29, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "Discover how DropChain is revolutionizing NFT dApp development, offering both no-code and coding solutions to democratize blockchain technology for all, regardless of experience.",
+    "hero": "/images/posts/6567bdc30bcfc50259a3ccb1_Slide-16_9---23--1-.png"
+  },
+  {
+    "slug": "how-to-create-a-no-code-web3-app-on-algorand",
+    "title": "How to create a no-code web3 app on Algorand",
+    "date": "May 10, 2023",
+    "author": "Carter Razink",
+    "category": "Guides",
+    "summary": "Read how to create a no-code web3 app on the Algorand blockchain by adding using the DropChain API to any app made in Bubble.io, Wix or any other no-code app builder.",
+    "hero": "/images/posts/63d090cbb378db556d088dea_Slide-16_9---8.png"
+  },
+  {
+    "slug": "how-to-create-token-nft-metadata-on-ipfs",
+    "title": "How To Create Token/NFT Metadata on IPFS",
+    "date": "July 9, 2023",
+    "author": "",
+    "category": "Guides",
+    "summary": "Learn how to create an NFT or Digital Token with Metadata on IPFS",
+    "hero": "/images/posts/64aafedb88164330c44e2022_How-to-create-token-meta-data-on-ipfs.png"
+  },
+  {
+    "slug": "how-to-grab-a-wallets-assets",
+    "title": "How To Grab A Wallet's Assets",
+    "date": "June 27, 2023",
+    "author": "",
+    "category": "Guides",
+    "summary": "How To Grab A Wallet's Assets with DropChain",
+    "hero": "/images/posts/649aea216989567edcad70e5_How-to-grab-a-user-s-wallet-address.png"
+  },
+  {
+    "slug": "how-to-mint-an-nft-on-dropchain",
+    "title": "How to Mint an NFT on DropChain",
+    "date": "May 10, 2023",
+    "author": "Carter Razink",
+    "category": "Guides",
+    "summary": "Minting an NFT on DropChain is a simple process. First, create asset metadata using the provided API. Then, mint the NFT using the appropriate endpoint. Integration with the DropChain SDK is optional.",
+    "hero": "/images/posts/645bdf1c83c81762e8f203d3_No-Code-Ad-10--1-.png"
+  },
+  {
+    "slug": "how-to-mint-your-first-nft-token",
+    "title": "How To Mint Your First NFT/Token",
+    "date": "June 27, 2023",
+    "author": "Carter Razink",
+    "category": "Guides",
+    "summary": "",
+    "hero": "/images/posts/649ae78a7a2a77b43d6f6b82_How-to-mint-your-first-NFT--1-.png"
+  },
+  {
+    "slug": "how-to-opt-into-a-token-nft",
+    "title": "How To Opt into A Token/NFT",
+    "date": "July 9, 2023",
+    "author": "",
+    "category": "Guides",
+    "summary": "",
+    "hero": "/images/posts/649ae7cc8a12fc99c1724aef_How-to-mint-your-first-NFT--2-.png"
+  },
+  {
+    "slug": "how-to-send-a-token-nft-with-dropchain",
+    "title": "How to Send a Token/NFT with DropChain",
+    "date": "June 27, 2023",
+    "author": "",
+    "category": "Guides",
+    "summary": "Sending tokens or NFTs (Non-Fungible Tokens) is a common use case in the world of blockchain and web3. With the DropChain API, you can easily send tokens or NFTs without any web3 experience.",
+    "hero": "/images/posts/649ae92707ea9982729c0652_How-to-mint-your-first-NFT--3-.png"
+  },
+  {
+    "slug": "how-to-swap-tokens-nfts",
+    "title": "How To Swap Tokens/NFTs",
+    "date": "July 28, 2023",
+    "author": "",
+    "category": "",
+    "summary": "Learn how to Swap Tokens/NFTs with DropChain",
+    "hero": "/images/posts/64ab0009a446d8dc44e24ecf_nfts.png"
+  },
+  {
+    "slug": "how-to-token-gate-your-web3-app",
+    "title": "How To Token Gate Your Web3 App",
+    "date": "July 17, 2023",
+    "author": "",
+    "category": "Guides",
+    "summary": "DropChain makes building web3 apps easy — no web3 development expertise needed. If you haven't created an account on DropChain yet, please follow the DropChain Getting Started guide.",
+    "hero": "/images/posts/64aafd1835018faa5a97d8ee_How-to-token-gate-web3-app.png"
+  },
+  {
+    "slug": "introducing-the-dropchain-wallet-gateway-to-web3-mass-adoption",
+    "title": "Introducing the DropChain Wallet: Gateway to Web3 Mass Adoption",
+    "date": "January 11, 2024",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "The DropChain Wallet is Here! Claim your free NFT and get started exploring the DropChain ecosystem.",
+    "hero": "/images/posts/659fff354ea31bef3b1d8f83_Slide-16_9---23--6-.png"
+  },
+  {
+    "slug": "monetize-your-web3-app-fiat-onramp",
+    "title": "Monetize your Web3 App - Fiat Onramp",
+    "date": "September 30, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "Blockchain adoption is hindered by difficult fund deposits. Simplify onramps for wider access to web3.",
+    "hero": "/images/posts/65178bbf4cf3869a525c81eb_Slide-16_9---11.png"
+  },
+  {
+    "slug": "niftgen-x-dropchain",
+    "title": "Onboarding the next 1B web3 users, DropChain partners with NiftGen",
+    "date": "May 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Case Studies",
+    "summary": "Niftgen uses the DropChain API and SSO to simplify the user experience for their web3 video-sharing product.",
+    "hero": "/images/posts/6373b6efef53e379e7f4a486_Slide-16_9---3.png"
+  },
+  {
+    "slug": "sell-more-nfts-without-kyc",
+    "title": "Sell More NFTs without KYC",
+    "date": "March 8, 2025",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "DropChain Marketplace is an NFT marketplace that allows sellers to avoid the KYC process, making it easier for buyers to purchase NFTs.",
+    "hero": "/images/posts/64399d8ca7116996c4f29bda_Slide-16_9---14--2-.png"
+  },
+  {
+    "slug": "simplify-web3-onboarding-with-single-sign-on",
+    "title": "Simplify Web3 Onboarding with Single Sign On",
+    "date": "May 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "Web3 Single Sign-On solutions are an effective way to create a seamless UX for your users. Get started with DropChain.",
+    "hero": "/images/posts/64516b984b5b53179c5aa778_Slide-16_9---13.png"
+  },
+  {
+    "slug": "super-algorand-chooses-dropchain",
+    "title": "Super Chooses DropChain - speed web3 game dev, user adoption",
+    "date": "May 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Case Studies",
+    "summary": "Super uses the DropChain API and Single Sign-on to quickly launch P2E games and seamlessly onboard their users.",
+    "hero": "/images/posts/638619d1591f6f40e7d8a1f2_Slide-16_9---6.png"
+  },
+  {
+    "slug": "the-dropchain-network-launches-for-web3-mass-adoption",
+    "title": "The DropChain Network Launches for Web3 Mass Adoption",
+    "date": "May 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "The DropChain Network is a new Layer-1 blockchain designed for first-time web3 developers and uses.",
+    "hero": "/images/posts/63f4fbaab45387638713f5c3_Slide-16_9---10.png"
+  },
+  {
+    "slug": "the-ultimate-guide-to-web3-crm-for-nft-token-projects",
+    "title": "The Ultimate Guide to Web3 CRM for NFT & Token Projects",
+    "date": "March 1, 2025",
+    "author": "Carter Razink",
+    "category": "Blog",
+    "summary": "",
+    "hero": "/images/posts/67c38bcfbc7c4a621d1f086b_Slide-16_9---1--4-.png"
+  },
+  {
+    "slug": "top-4-algorand-blockchain-development-tools",
+    "title": "Top 4 Algorand Blockchain Development Tools",
+    "date": "September 16, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "Ready to build in web3? Consider these four Algorand development tools before you get started!",
+    "hero": "/images/posts/6505bf2183c5a81ecebf597e_Slide-16_9---20.png"
+  },
+  {
+    "slug": "transforming-conventional-games-into-web3-apps-a-step-by-step-guide-with-dropchain-api",
+    "title": "Transforming Conventional Games into Web3 Apps: A Step-by-Step Guide with DropChain API",
+    "date": "October 19, 2023",
+    "author": "Carter Razink",
+    "category": "Guides",
+    "summary": "In this tutorial, you'll learn how to build a full sample web3 app in under 20 minutes. Create a tokenized rock-paper-scissors game in minutes.",
+    "hero": "/images/posts/652414808fdb2c8740267205_Slide-16_9---10--4-.png"
+  },
+  {
+    "slug": "web3-marketing-101-how-to-attract-convert-and-retain-web3-users",
+    "title": "Web3 Marketing 101: How to Attract, Convert, and Retain Web3 Users",
+    "date": "July 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "This blog shows you how to market your web3 product in 5 steps: empathetic design, unique value proposition, messaging testing, educational content, and community building. You’ll learn how to attract, convert, and retain web3 users with DropChain, a platform that helps you create and monetize web3 apps.",
+    "hero": "/images/posts/64ab116044ef51560904e681_Slide-16_9---16--1-.png"
+  },
+  {
+    "slug": "what-is-web-2-5",
+    "title": "What is Web 2.5? The Bridge to a New Internet",
+    "date": "May 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "What is web 2.5? Learn what makes web 2.5 the best solution for blockchain's mass adoption.",
+    "hero": "/images/posts/641b6b4aba8e6fde4adfc1f4_What-is-web-2.5_--1-.png"
+  },
+  {
+    "slug": "what-the-internet-tells-us-about-web3-adoption",
+    "title": "What the internet tells us about web3 adoption",
+    "date": "May 10, 2023",
+    "author": "Nathaniel Thoreson",
+    "category": "Blog",
+    "summary": "The growth of the web3 industry is being held back. The barrier of knowledge for developers and users is too high. DropChain solves the problem",
+    "hero": "/images/posts/6346d2f4505e1d5b72a269c0_Twitter-header---5.png"
+  }
+]

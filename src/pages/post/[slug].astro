@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import index from '../../data/posts/index.json';
+
+export async function getStaticPaths() {
+  const manifest = (await import('../../data/posts/index.json')).default;
+  const posts = await Promise.all(
+    manifest.map(async (entry) => (await import(`../../data/posts/${entry.slug}.json`)).default)
+  );
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+
+const formatDate = (value) => {
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.valueOf())
+    ? value
+    : parsed.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+};
+
+const related = index
+  .filter((p) => p.slug !== post.slug && p.category && p.category === post.category)
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={`${post.title} | DropChain`}
+  description={post.description || post.summary}
+  image={post.hero ?? undefined}
+>
+  <article class="article">
+    <header class="article__head dc-container dc-container--narrow">
+      <a class="article__back" href="/academy">
+        <Icon name="arrow" size={14} />
+        Back to the Academy
+      </a>
+      {post.category && <p class="dc-eyebrow">{post.category}</p>}
+      <h1>{post.title}</h1>
+      <p class="article__meta">
+        {post.date && <span>{formatDate(post.date)}</span>}
+        {post.author && <span>{post.author}</span>}
+      </p>
+      {post.summary && <p class="dc-lead">{post.summary}</p>}
+    </header>
+
+    {post.hero && (
+      <div class="dc-container dc-container--narrow">
+        <img class="article__hero" src={post.hero} alt="" />
+      </div>
+    )}
+
+    <div class="dc-container dc-container--narrow">
+      <div class="dc-prose article__body" set:html={post.body} />
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="dc-section--tight">
+      <div class="dc-container dc-container--narrow">
+        <h2 class="article__related-title">More in {post.category}</h2>
+        <ul class="article__related">
+          {related.map((item) => (
+            <li>
+              <a href={`/post/${item.slug}`}>
+                <span>{item.title}</span>
+                <Icon name="arrow" size={15} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  .article { padding-block: var(--dc-space-xl) var(--dc-space-lg); }
+  .article__head { display: flex; flex-direction: column; gap: 0.6rem; }
+  .article__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--dc-text-muted);
+    font-size: var(--dc-text-sm);
+    margin-bottom: var(--dc-space-sm);
+  }
+  .article__back :global(svg) { rotate: 180deg; }
+  .article__back:hover { color: var(--dc-green); }
+  .article__head h1 { max-width: 24ch; }
+  .article__meta { display: flex; flex-wrap: wrap; gap: 1rem; color: var(--dc-text-dim); font-size: var(--dc-text-sm); }
+  .article__head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .article__hero {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--dc-radius-lg);
+    margin-block: var(--dc-space-xl);
+  }
+  .article__body { margin-top: var(--dc-space-xl); max-width: none; }
+  .article__body :global(img) { border-radius: var(--dc-radius); margin-block: var(--dc-space-md); }
+  .article__body :global(figure) { margin: var(--dc-space-lg) 0; }
+
+  .article__related-title { font-size: var(--dc-h5); margin-bottom: var(--dc-space-md); }
+  .article__related { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+  .article__related a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--dc-space-md);
+    padding: var(--dc-space-md) var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    color: var(--dc-text);
+    font-size: var(--dc-text-sm);
+    font-weight: 500;
+  }
+  .article__related a:hover { border-color: var(--dc-green); color: var(--dc-text); }
+</style>

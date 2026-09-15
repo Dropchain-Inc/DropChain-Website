@@ -1,0 +1,11 @@
+{
+  "slug": "how-to-create-token-nft-metadata-on-ipfs",
+  "title": "How To Create Token/NFT Metadata on IPFS",
+  "description": "",
+  "summary": "Learn how to create an NFT or Digital Token with Metadata on IPFS",
+  "date": "July 9, 2023",
+  "author": "",
+  "category": "Guides",
+  "hero": "/images/posts/64aafedb88164330c44e2022_How-to-create-token-meta-data-on-ipfs.png",
+  "body": "<h2>How to Create Token/NFT Metadata on IPFS with DropChain</h2><p>DropChain makes building web3 apps easy — no web3 development expertise needed. If you haven&#x27;t created an account on DropChain yet, please follow the <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/getting-started-guides/getting-started\">DropChain Getting Started guide</a>.</p><p>‍</p><h2>Creating Token/NFT IPFS Metadata on IPFS with the DropChain API</h2><p>Creating token or NFT metadata with create_asset_metadata means defining the properties and attributes of your asset, and then pinning that information to IPFS. This can include information such as the asset&#x27;s name, description, image, and other relevant details.</p><p>You might want to use this API endpoint to create a unique NFT with specific attributes for an art collection, or to define the properties of a game item, such as its rarity, power, and appearance.</p><p>The DropChain API is available in both <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-create-token-nft-metadata-on-ipfs#code\">code</a> and <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-create-token-nft-metadata-on-ipfs#undefined-1\">no-code</a> forms. So, regardless of your technical expertise, you can build a web3 app in no time!</p><p>‍</p><h2>How To Use</h2><p>If you know how to code, you can use the following code examples below to get started. Python (with the DropChain SDK) and Javascript (using fetch) is shown, but any language that supports POST requests will work.</p><figure><a target=\"_blank\" href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-create-token-nft-metadata-on-ipfs\"><div><img alt=\"\" src=\"/images/posts/64aafdcf88164330c44d2d9b_Screenshot-2023-07-09-133439.png\"/></div></a></figure>"
+}

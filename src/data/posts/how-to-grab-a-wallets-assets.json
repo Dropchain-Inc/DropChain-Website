@@ -1,0 +1,11 @@
+{
+  "slug": "how-to-grab-a-wallets-assets",
+  "title": "How To Grab A Wallet's Assets",
+  "description": "",
+  "summary": "How To Grab A Wallet's Assets with DropChain",
+  "date": "June 27, 2023",
+  "author": "",
+  "category": "Guides",
+  "hero": "/images/posts/649aea216989567edcad70e5_How-to-grab-a-user-s-wallet-address.png",
+  "body": "<p>DropChain makes building web3 apps easy — no web3 development expertise needed. If you haven&#x27;t created an account on DropChain yet, please follow the <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/getting-started-guides/getting-started\">DropChain Getting Started guide</a>.</p><p>Grabbing A Wallet&#x27;s Assets with the DropChain API</p><p>Indexing a wallet is an essential step to view and manage the assets a user holds in their wallet. With the DropChain API, you can easily index a wallet without any web3 experience. The asset_indexer endpoint allows you to grab a JSON object that includes all assets that a user holds. </p><p>You might want to use this API endpoint when displaying a user&#x27;s inventory or app wallet.</p><p>The DropChain API is available in both <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-grab-a-wallets-assets#code\"><strong>code</strong></a> and <a href=\"https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-grab-a-wallets-assets#undefined-1\"><strong>no-code</strong></a> forms. So, regardless of your technical expertise, you can build a web3 app in no time!</p><h2>How To Use</h2><h3>Code:</h3><p>If you know how to code, you can use the following code examples below to get started. Python (with the DropChain SDK) and Javascript (using fetch) is shown, but any language that supports POST requests will work.</p><figure><div><img src=\"/images/posts/649ae9b2a9f33317ca17ff43_Screenshot-2023-06-27-085228.png\" alt=\"\"/></div></figure>"
+}

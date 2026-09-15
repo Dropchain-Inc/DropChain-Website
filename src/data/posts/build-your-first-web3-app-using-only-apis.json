@@ -1,0 +1,11 @@
+{
+  "slug": "build-your-first-web3-app-using-only-apis",
+  "title": "Build Your First Web3 App Using Only APIs",
+  "description": "",
+  "summary": "Building web3 applications is far too challenging,",
+  "date": "May 10, 2023",
+  "author": "Carter Razink",
+  "category": "Blog",
+  "hero": "/images/posts/63c304e31c2178036cb34207_Slide-16_9---7.png",
+  "body": "<p>Are you ready to take the plunge into the world of web3 and blockchain technology, but feeling intimidated by the learning curve? DropChain&#x27;s API is here to help. Our API massively simplifies the experience of building web3 applications and smart contracts, allowing anyone to easily integrate web3 functionality into their projects. In this blog post, we&#x27;ll give you an overview of all that our API has to offer and how it can make your journey into the world of web 3 a lot smoother.</p><p>‍</p><p>Building your first web 3.0 product can be a daunting task. Even if you&#x27;re an experienced web 2.0 developer, building on the blockchain poses a wide range of unique challenges. </p><p>‍</p><h4>DropChain API is Here to Help</h4><p>The DropChain API massively simplifies the experience of building web3 applications.</p><p>Learning to build web3 applications and smart contracts is extremely challenging. If you wanted to learn how to build an Ethereum web3 app from scratch, you need to:</p><p>- Learn Solidity</p><p>- Setup and learn to use Truffle to test</p><p>- Setup a node or connect to one through Infura</p><p>- Build a frontend user interface- Learn and integrate Web3.js</p><p>- Integrate Metamask</p><p>- Deploy your web app and test</p><p>Plus, everything above assumes you&#x27;re already familiar with basic programming. If you aren&#x27;t, another 2-3 months of learning is required before you can start with basic web3 tutorials. The DropChain API allows end users to build web3 applications by building a frontend interface that can send POST requests.<br/></p>"
+}

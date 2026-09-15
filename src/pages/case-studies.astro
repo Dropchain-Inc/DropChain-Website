@@ -1,11 +1,23 @@
 ---
-import CollectionPage from '../components/CollectionPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PostGrid from '../components/PostGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import posts from '../data/posts/index.json';
+
+const sorted = posts
+  .filter((p) => p.category === 'Case Studies')
+  .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 ---
-<CollectionPage
-  title="Case Studies | DropChain"
-  description="How teams are building and growing with DropChain."
-  eyebrow="Case studies"
-  heading="Case Studies"
-  sub="How teams are building and growing their communities with DropChain."
-  empty="There are no case studies here yet. The API page carries short write-ups of Super Algo, NiftGen and DropPhoto."
-/>
+
+<BaseLayout title="Case Studies | DropChain" description="How teams are building and growing their communities with DropChain.">
+  <PageHero eyebrow="Case Studies" title="Case Studies" sub="How teams are building and growing their communities with DropChain." />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <PostGrid posts={sorted} />
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

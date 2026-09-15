@@ -1,0 +1,11 @@
+{
+  "slug": "niftgen-x-dropchain",
+  "title": "Onboarding the next 1B web3 users, DropChain partners with NiftGen",
+  "description": "",
+  "summary": "Niftgen uses the DropChain API and SSO to simplify the user experience for their web3 video-sharing product.",
+  "date": "May 10, 2023",
+  "author": "Nathaniel Thoreson",
+  "category": "Case Studies",
+  "hero": "/images/posts/6373b6efef53e379e7f4a486_Slide-16_9---3.png",
+  "body": "<p>Like all emerging technologies, adoption doesn’t happen all at once. First, come the early adopters. Risk-takers. These early users are attracted to the underlying technology with enough conviction to overcome any contemporary technological limitation. Their great passion for novel technology is the catalyst for eventual mass adoption.</p><p>Most people, though, need more convincing. They’re looking for more than just novel technology, especially if it impedes or complicates their experience. What’s needed is a compelling product, with tangible benefits, with a low barrier to entry. </p><p>DropChain, the development suite to simplify web3 application development and user onboarding, announced today that they have entered into a strategic partnership with Niftgen, the web3 hub for video creators to optimally monetize their content. </p><p>Together, they’re on a mission to onboard the next 1 million web3 developers and 1 billion web3 users. </p><p>DropChain is a web3 development tool that allows anyone to create web3 apps and seamlessly onboard their users with existing web2 credential technology. Through the API, builders are empowered to enhance their traditional application with web3 functionality. The DropChain Single Sign On tools provides a one-click onboarding experience for non-web3 native users. DropChain can be added directly to an app in under 20 lines of code, or it can be connected to no-code builders like FlutterFlow or Bubble.</p>"
+}

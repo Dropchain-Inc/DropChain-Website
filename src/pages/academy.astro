@@ -1,11 +1,58 @@
 ---
-import CollectionPage from '../components/CollectionPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PostGrid from '../components/PostGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import posts from '../data/posts/index.json';
+
+// Newest first; posts without a parseable date fall to the end.
+const sorted = [...posts].sort((a, b) => {
+  const x = Date.parse(b.date);
+  const y = Date.parse(a.date);
+  return (Number.isNaN(x) ? -Infinity : x) - (Number.isNaN(y) ? -Infinity : y);
+});
+
+const categories = [...new Set(posts.map((p) => p.category).filter(Boolean))].sort();
 ---
-<CollectionPage
+
+<BaseLayout
   title="DropChain Academy & Blog"
-  description="Guides, updates and walkthroughs from the DropChain team."
-  eyebrow="Academy"
-  heading="DropChain Academy &amp; Blog"
-  sub="Guides, updates and walkthroughs for building on DropChain."
-  empty="There are no posts here yet. The documentation and the Discord are the best places to get answers in the meantime."
-/>
+  description="Guides, updates and walkthroughs for building on DropChain."
+>
+  <PageHero
+    eyebrow="Academy"
+    title="DropChain Academy &amp; Blog"
+    sub="Guides, updates and walkthroughs for building and growing on DropChain."
+  >
+    <ul class="filters">
+      {categories.map((category) => (
+        <li>
+          <a href={category === 'Guides' ? '/guides' : category === 'Case Studies' ? '/case-studies' : '#all'}>
+            {category}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </PageHero>
+
+  <section class="dc-section--tight" id="all">
+    <div class="dc-container">
+      <PostGrid posts={sorted} />
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: var(--dc-space-lg) 0 0; padding: 0; }
+  .filters a {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-pill);
+    color: var(--dc-text-muted);
+    font-size: var(--dc-text-sm);
+  }
+  .filters a:hover { border-color: var(--dc-green); color: var(--dc-green); }
+</style>
