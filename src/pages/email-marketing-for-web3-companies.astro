@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Split from '../components/Split.astro';
+import LinkCards from '../components/LinkCards.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Pricing from '../components/Pricing.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL } from '../data/navigation.js';
+
+const steps = [
+  { n: '1', title: 'Build Your List', blurb: 'Use DropChain forms or import wallet holders to start capturing email addresses.' },
+  { n: '2', title: 'Segment Your Audience', blurb: 'Group users based on wallet activity, NFTs owned, token holdings, paid membership, or custom tags.' },
+  { n: '3', title: 'Launch Campaigns', blurb: 'Send automated or one-off emails triggered by specific on-chain or off-chain behaviors.' },
+];
+
+const gaps = [
+  { icon: '/images/Wallet.svg', problem: 'No Wallet Integration', blurb: "You can't track blockchain behavior or use wallet activity in other email platforms.", answer: 'On-Chain Segmentation' },
+  { icon: '/images/Megaphone_2.svg', problem: 'Generic Messaging', blurb: 'Without personalization, your emails go unopened and ignored.', answer: 'Custom Email Builder' },
+  { icon: '/images/Question.svg', problem: 'Missed Opportunities', blurb: 'Email marketing boasts a 4000% ROI over social media alone.', answer: 'Email Automation' },
+];
+
+const plays = [
+  { title: 'Re-Engage Token Sellers Instantly', blurb: 'When someone sells your token, DropChain can automatically trigger a personalized email to win them back. Send updates, exclusive perks, or a second-chance offer to keep them in your ecosystem.' },
+  { title: 'Welcome new NFT Holders', blurb: 'As soon as a user mints or buys your NFT, DropChain delivers an onboarding sequence tailored to their journey. Help them feel connected, informed, and ready to participate.' },
+  { title: 'Reward Long-Term Holders', blurb: "Identify and email loyal wallets that haven't sold. Surprise them with perks, airdrops, or early access to keep them engaged." },
+];
+---
+
+<BaseLayout
+  title="Email Marketing for Web3 Companies"
+  description="Email delivers 40x ROI, but most Web3 teams can't use it as a marketing tool. DropChain turns wallet activity into automated, high-converting email campaigns."
+>
+  <PageHero
+    eyebrow="For marketers of web3 projects"
+    title="Email Marketing to Engage Your Web3 Audience"
+    sub="Email delivers 40x ROI, but most Web3 teams can't use it as a marketing tool. DropChain changes that, turning wallet activity into automated, high-converting email campaigns. Launch custom emails to engage the right people at the right time."
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+    <img class="hero-image" src="/images/ChatGPT-Image-Apr-4-2025-04_16_08-PM.png" alt="" loading="lazy" />
+  </PageHero>
+
+  <Testimonials />
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <h2 class="section-head">How to Get Started Using Web3 Email Marketing</h2>
+      <ol class="steps">
+        {steps.map((step) => (
+          <li class="step">
+            <span class="step__n">{step.n}</span>
+            <h3>{step.title}</h3>
+            <p>{step.blurb}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Other CRMs Don't Work for Web3 Community Managers</h2>
+        <p class="dc-lead">
+          Traditional CRMs can't track wallet behavior or trigger campaigns from on-chain
+          actions. They weren't built for the way Web3 communities actually grow.
+        </p>
+      </header>
+      <ul class="gaps">
+        {gaps.map((item) => (
+          <li>
+            <img src={item.icon} alt="" loading="lazy" />
+            <h3>{item.problem}</h3>
+            <p>{item.blurb}</p>
+            <p class="gaps__answer"><Icon name="check" size={16} />{item.answer}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Split
+    heading="Email Marketing Crushes Every Other Channel"
+    sub="Email has a 4,000% ROI, and DropChain gives you direct access to every holder, buyer, and community member. With DropChain, you can finally combine wallet behavior with email outreach. Send onboarding flows, loyalty rewards, or up-sell campaigns automatically. No more guesswork. Just results."
+    image="/images/Slide-16_9---2-1.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <Split
+    reverse
+    tight
+    eyebrow="Email Marketing Has 40x ROI"
+    heading="Create Email Campaigns That Actually Convert"
+    sub="With DropChain's drag-and-drop email editor, you don't need a designer or a developer. Create stunning, branded emails in minutes. Add custom layouts, visuals, buttons, and dynamic content and preview it across devices. Everything you need to launch high-converting campaigns is right at your fingertips."
+    image="/images/Screenshot-2025-04-04-at-2.46.28-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <Split
+    tight
+    heading="Segmentation for even more Tailored Messaging"
+    sub="DropChain lets you segment your audience in ways no other platform can. Filter by blockchain activity, token holdings, NFT ownership, paid membership status, or custom lists you create. Whether you're running a DAO, NFT project, or loyalty campaign, you'll know exactly who to talk to, and why."
+    image="/images/Screenshot-2025-04-04-at-2.48.03-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <LinkCards
+    heading="Grow, monetize, and engage your web3 community with high-converting email marketing"
+    items={plays}
+  />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <div class="gallery">
+        <img src="/images/Screenshot-2025-04-04-at-2.19.18-PM.png" alt="" loading="lazy" />
+        <img src="/images/ChatGPT-Image-Apr-4-2025-04_23_00-PM.png" alt="" loading="lazy" />
+        <img src="/images/ChatGPT-Image-Apr-4-2025-02_32_11-PM.png" alt="" loading="lazy" />
+        <img src="/images/ChatGPT-Image-Apr-4-2025-02_36_04-PM.png" alt="" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="See What Email Marketing Can Do for Your Web3 Brand"
+    sub="Send emails your community actually wants. DropChain helps you reach the right wallet, at the right time, with the right message, automatically. No credit card required."
+    cta="Get Started"
+    href={CONSOLE_URL}
+  />
+
+  <Pricing />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .hero-image { margin-top: var(--dc-space-xl); border-radius: var(--dc-radius-lg); }
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .steps, .gaps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); list-style: none; margin: 0; padding: 0; }
+  .step, .gaps li {
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .step__n {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-image: var(--dc-gradient);
+    color: var(--dc-text-inverse);
+    font-size: var(--dc-text-sm);
+    font-weight: 600;
+  }
+  .step h3, .gaps h3 { font-size: var(--dc-h5); }
+  .step p, .gaps p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; }
+  .gaps img { width: 30px; height: 30px; }
+  .gaps__answer { display: flex; align-items: center; gap: 0.5rem; color: var(--dc-green) !important; font-weight: 500; }
+
+  .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .gallery img { width: 100%; border-radius: var(--dc-radius-lg); }
+
+  @media (max-width: 900px) { .steps, .gaps, .gallery { grid-template-columns: 1fr; } }
+</style>
