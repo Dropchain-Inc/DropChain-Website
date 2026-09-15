@@ -1,0 +1,87 @@
+---
+import Icon from './Icon.astro';
+import LordIcon from './LordIcon.astro';
+
+interface Item { title: string; blurb?: string; href?: string; icon?: string; lordicon?: string; image?: string; }
+interface Props { eyebrow?: string; heading?: string; sub?: string; items: Item[]; columns?: number; }
+const { eyebrow, heading, sub, items, columns = 3 } = Astro.props;
+---
+<section class="cards dc-section">
+  <div class="dc-container">
+    {(eyebrow || heading || sub) && (
+      <header class="cards__head">
+        {eyebrow && <p class="dc-eyebrow">{eyebrow}</p>}
+        {heading && <h2 set:html={heading} />}
+        {sub && <p class="dc-lead">{sub}</p>}
+      </header>
+    )}
+
+    <ul class="cards__grid" style={`--cols:${columns}`}>
+      {items.map((item) => {
+        const external = item.href && /^https?:/.test(item.href);
+        const Tag = item.href ? 'a' : 'div';
+        return (
+          <li>
+            <Tag
+              class="card"
+              {...item.href ? { href: item.href } : {}}
+              {...external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+            >
+              {item.image && <img class="card__image" src={item.image} alt="" loading="lazy" />}
+              {item.lordicon && <LordIcon id={item.lordicon} size={38} />}
+              {item.icon && <span class="card__icon"><Icon name={item.icon} size={22} /></span>}
+              <h3 class="card__title">
+                {item.title}
+                {item.href && <Icon name="arrow" size={15} />}
+              </h3>
+              {item.blurb && <p class="card__blurb">{item.blurb}</p>}
+            </Tag>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .cards__head { max-width: 62ch; margin-bottom: var(--dc-space-xl); }
+  .cards__head .dc-eyebrow { margin-bottom: 0.6rem; }
+  .cards__head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .cards__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+    gap: var(--dc-space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    color: var(--dc-text);
+    transition: border-color var(--dc-transition), transform var(--dc-transition);
+  }
+  a.card:hover { border-color: var(--dc-green); transform: translateY(-2px); color: var(--dc-text); }
+  .card__image { height: 130px; width: auto; object-fit: contain; align-self: flex-start; margin-bottom: var(--dc-space-xs); }
+  .card__icon { color: var(--dc-green); }
+  .card__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    font-size: var(--dc-h5);
+    font-weight: 600;
+  }
+  a.card:hover .card__title :global(svg) { color: var(--dc-green); }
+  .card__blurb { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; }
+
+  @media (max-width: 960px) { .cards__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .cards__grid { grid-template-columns: 1fr; } }
+</style>

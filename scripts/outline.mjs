@@ -40,7 +40,10 @@ const decode = (s) =>
 
 const text = (s) => decode(s.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 
-for (const slug of process.argv.slice(2)) {
+const args = process.argv.slice(2);
+const fullText = args.includes('--text');
+
+for (const slug of args.filter((a) => a !== '--text')) {
   const html = await readFile(`${EXPORT}${slug}.html`, 'utf8');
 
   const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '';
@@ -50,6 +53,20 @@ for (const slug of process.argv.slice(2)) {
   body = body.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ');
 
   console.log(`\n${'='.repeat(78)}\n${slug}\n  <title> ${text(title)}\n  <desc>  ${desc}\n${'='.repeat(78)}`);
+
+  if (fullText) {
+    console.log('COPY:\n' + text(body.replace(/<svg[\s\S]*?<\/svg>/gi, ' ')));
+    console.log('\nIMAGES (in order):');
+    for (const m of body.matchAll(/<img\b[^>]*src="([^"]+)"/g)) console.log('  ' + m[1]);
+    console.log('\nLINKS:');
+    const seen = new Set();
+    for (const m of body.matchAll(/<a\b[^>]*href="([^"]+)"/g)) {
+      if (!seen.has(m[1])) { seen.add(m[1]); console.log('  ' + m[1]); }
+    }
+    console.log('\nICONS:');
+    for (const m of body.matchAll(/<lord-icon[^>]*src="[^"]*\/([a-z0-9]+)\.json"/g)) console.log('  ' + m[1]);
+    continue;
+  }
 
   const pattern =
     /<(h[1-6])\b[^>]*>([\s\S]*?)<\/\1>|<p\b[^>]*>([\s\S]*?)<\/p>|<li\b[^>]*>([\s\S]*?)<\/li>|<a\b[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>|<img\b[^>]*src="([^"]*)"|<lord-icon[^>]*src="[^"]*\/([a-z0-9]+)\.json"|<(?:input|textarea)\b[^>]*(?:placeholder|name)="([^"]*)"/gi;
@@ -62,7 +79,7 @@ for (const slug of process.argv.slice(2)) {
     if (m[1]) line = `${m[1].toUpperCase().padEnd(4)} ${text(m[2])}`;
     else if (m[3] !== undefined) line = `P    ${text(m[3])}`;
     else if (m[4] !== undefined) line = `LI   ${text(m[4])}`;
-    else if (m[5] !== undefined) line = `A    ${text(m[6]).slice(0, 60).padEnd(60)} -> ${m[5]}`;
+    else if (m[5] !== undefined) line = `A    ${text(m[6]).slice(0, 160).padEnd(60)} -> ${m[5]}`;
     else if (m[7]) line = `IMG  ${m[7]}`;
     else if (m[8]) line = `ICON ${m[8]}`;
     else if (m[9]) line = `FORM ${m[9]}`;
@@ -71,3 +88,6 @@ for (const slug of process.argv.slice(2)) {
     console.log('  ' + line);
   }
 }
+
+// `node scripts/outline.mjs --text <slug>` dumps the page's full copy in order,
+// which is faster to author from than the structured outline.

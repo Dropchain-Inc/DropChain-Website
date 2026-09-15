@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Button from '../../components/Button.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { CONSOLE_URL } from '../../data/navigation.js';
+
+const JS_DOCS = 'https://dropchain.gitbook.io/dropchain-api-beta/getting-started-guides/start-building-with-the-javascript-dropchain-sdk';
+
+const capabilities = [
+  { title: 'Advanced AVM Blockchain', blurb: 'DropChain dApps run on our proprietary private layer-1 AVM blockchain. Pure POS consensus with VRF technology delivers unsurpassed cryptographic security.' },
+  { title: 'Easy User Onboarding', blurb: 'With DropChain Single Sign On, users can sign up and login to your app with their Google, Apple, or Facebook credentials. No more complicated key management.' },
+  { title: 'Easy NFT Minting', blurb: 'The DropChain SDK has 30+ web3 functions baked right in, including NFT minting. Create unique NFTs with metadata with a single API call. No more parsing individual smart contracts.' },
+  { title: 'Ultimate Flexibility', blurb: "Through the SDK, you'll have all the tools you need to build any kind of web3 platform. From gaming to token-gated content, you're empowered to build anything using what you already know." },
+];
+
+const useCases = [
+  {
+    title: 'Mint & Send NFTs and Tokens',
+    blurb: 'Simply use the asset_mint endpoint to create unique NFTs or tokens as digital art, collectibles, or in-game items. The send_asset endpoint allows you to transfer assets, such as tokens or NFTs, from one user to another.',
+    href: 'https://www.youtube.com/watch?v=qVoHdW04LbY',
+    image: '/images/Frame-3-3_1.avif',
+    cta: 'Watch Tutorial',
+  },
+  {
+    title: "Grab a User's Assets",
+    blurb: 'Indexing a wallet is an essential step to view and manage the assets a user holds in their wallet. The asset_indexer endpoint allows you to grab a JSON object that includes all assets that a user holds.',
+    href: 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-how-tos/how-to-grab-a-list-user-assets',
+    image: '/images/Frame-3-4_1.avif',
+    cta: 'See the Tutorial',
+  },
+  {
+    title: 'Create & Update Token Metadata',
+    blurb: "Creating token or NFT metadata with create_asset_metadata means defining the properties and attributes of your asset, and then pinning that information to IPFS. This can include information such as the asset's name, description, image, and other relevant details.",
+    href: 'https://www.youtube.com/watch?v=LU8vo6Gvx9c',
+    image: '/images/Frame-4-2_1.avif',
+    cta: 'Watch Tutorial',
+  },
+];
+---
+
+<BaseLayout
+  title="JavaScript SDK | DropChain Official"
+  description="DropChain's JavaScript SDK is the easiest way to enhance your app with all the blockchain functionality you'll ever need."
+>
+  <PageHero
+    eyebrow="JavaScript"
+    title="Build Web3 Apps with the JavaScript SDK"
+    sub="DropChain's JavaScript SDK is the easiest way to enhance your app with all the blockchain functionality you'll ever need. Just download, copy two lines of code, and you're set."
+  >
+    <div class="hero-actions">
+      <Button href={CONSOLE_URL}>Get Your API Key</Button>
+      <Button href={JS_DOCS} variant="ghost" icon="arrow">Read Docs</Button>
+    </div>
+    <img class="hero-image" src="/images/Group-1_1.avif" alt="" loading="lazy" />
+  </PageHero>
+
+  <LinkCards
+    heading="Everything you need to build your dApp"
+    sub="Leveraging your existing knowledge of JavaScript and popular web frameworks, the DropChain SDK extends your capabilities far beyond the basics. Embrace the full spectrum of web3 functionalities effortlessly."
+    items={capabilities}
+    columns={2}
+  />
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>DropChain SDK Use Cases</h2>
+        <p class="dc-lead">
+          Don't spend weeks learning Solidity. DropChain gives you all the web3
+          functions you'll ever need with just a few lines of code.
+        </p>
+      </header>
+
+      <ul class="cases">
+        {useCases.map((item) => (
+          <li class="case">
+            <img src={item.image} alt="" loading="lazy" />
+            <div class="case__body">
+              <h3>{item.title}</h3>
+              <p>{item.blurb}</p>
+              <Button href={item.href} variant="ghost" icon="arrow">{item.cta}</Button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Build Your Web3 App with DropChain"
+    sub="DropChain enables anyone to build web3 apps. Use no-code tools or programming frameworks you already know."
+    cta="Get Your API Key"
+    href={CONSOLE_URL}
+  />
+</BaseLayout>
+
+<style>
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-lg); }
+  .hero-image { margin-top: var(--dc-space-xl); border-radius: var(--dc-radius-lg); }
+  .section-head { max-width: 62ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .cases { display: grid; gap: var(--dc-space-lg); list-style: none; margin: 0; padding: 0; }
+  .case {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: var(--dc-space-xl);
+    align-items: center;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+  }
+  .case:nth-child(even) img { order: 1; }
+  .case img { width: 100%; border-radius: var(--dc-radius); }
+  .case__body { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  .case h3 { font-size: var(--dc-h4); }
+  .case p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.7; }
+  .case :global(.btn) { margin-top: var(--dc-space-xs); }
+
+  @media (max-width: 860px) {
+    .case { grid-template-columns: 1fr; gap: var(--dc-space-lg); }
+    .case:nth-child(even) img { order: 0; }
+  }
+</style>

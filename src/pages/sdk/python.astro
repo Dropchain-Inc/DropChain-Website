@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Button from '../../components/Button.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { CONSOLE_URL, DISCORD_URL } from '../../data/navigation.js';
+
+const SDK_DOCS = 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-overview/dropchain-sdk';
+
+const sample = `from dropchain_sdk import DropChainSDK
+
+dropchain_sdk = DropChainSDK(
+    "<Your RapidAPI Key>",
+    "<Your App ID>"
+)
+
+response = dropchain_sdk.asset_mint_testnet(
+    created_asset_amount_int,
+    created_asset_decimals,
+    created_asset_name,
+    created_asset_unit_name,
+    created_asset_url,
+    session1_token,
+    user1_uid
+)`;
+---
+
+<BaseLayout
+  title="Python SDK | DropChain Official"
+  description="Build web3 apps using the DropChain SDK. Integrate 26 web3 functions with three lines of code. Build web3 apps in Python."
+>
+  <PageHero
+    eyebrow="Python SDK"
+    title="Build Web3 Apps Fast With Powerful SDKs"
+    sub="DropChain's SDKs offer easy access to our APIs, allowing you to access pre-built web3 functions easily. You don't need to be a Solidity expert, so you can focus on developing your project while we handle the rest."
+  >
+    <div class="hero-actions">
+      <Button href={CONSOLE_URL}>Get Started</Button>
+      <Button href={SDK_DOCS} variant="ghost" icon="arrow">Read the Docs</Button>
+    </div>
+  </PageHero>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <figure class="snippet">
+        <figcaption>Mint an asset on testnet with the Python SDK</figcaption>
+        <pre><code>{sample}</code></pre>
+      </figure>
+    </div>
+  </section>
+
+  <LinkCards
+    items={[
+      {
+        title: 'Build faster than ever',
+        blurb: "The SDK makes building on DropChain easier than ever. It wraps all of DropChain's API endpoints, making it easy to implement common functions into your product.",
+        href: SDK_DOCS,
+        image: '/images/Group-416-1.svg',
+      },
+      {
+        title: 'We understand you...',
+        blurb: 'DropChain currently supports Python. Soon, DropChain will support a range of common programming languages like TypeScript, Go, Swift, and more.',
+        href: DISCORD_URL,
+        image: '/images/Programming-Languages-for-DropChain-SDK_1.avif',
+      },
+    ]}
+    columns={2}
+  />
+
+  <CtaBand
+    heading="Start Building For free"
+    sub="DropChain is the complete web3 development toolkit. Enhance any app with read & write web3 functionality."
+    cta="Get Started"
+    href={CONSOLE_URL}
+  />
+</BaseLayout>
+
+<style>
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-lg); }
+  .snippet {
+    margin: 0;
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    overflow: hidden;
+  }
+  .snippet figcaption {
+    padding: 0.7rem var(--dc-space-lg);
+    border-bottom: 1px solid var(--dc-border);
+    color: var(--dc-text-muted);
+    font-size: var(--dc-text-xs);
+  }
+  .snippet pre { margin: 0; padding: var(--dc-space-lg); overflow-x: auto; }
+  .snippet code {
+    font-family: var(--dc-font-mono);
+    font-size: var(--dc-text-sm);
+    line-height: 1.7;
+    color: var(--dc-green-soft);
+  }
+</style>

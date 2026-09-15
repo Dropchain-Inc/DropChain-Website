@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import LinkCards from '../components/LinkCards.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL, DOCS_URL } from '../data/navigation.js';
+
+const NETWORK_DOCS = 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-overview/dropchain-network';
+
+const pillars = [
+  { lordicon: 'phkpravm', title: 'Semi-Private', blurb: 'Unlike public blockchains like Ethereum, DropChain is semi-private, focusing on user-friendliness and developer ease.' },
+  { lordicon: 'dyfotzbb', title: 'Walled Garden', blurb: 'Ideal for newcomers to web3, offering a secure environment to explore blockchain applications like NFT minting and web3 gaming.' },
+  { lordicon: 'piwupaqb', title: 'User Onboarding', blurb: 'Users effortlessly sign in, automatically receiving a blockchain wallet and gas for DropChain applications for free, with a pathway to full self-custody.' },
+  { lordicon: 'zorvjzqh', title: 'Dev Convenience', blurb: 'Utilize the DropChain API for seamless smart contract interactions, freeing developers from complex blockchain coding.' },
+];
+
+const architecture = [
+  { title: 'Industry leading speed & reliability', blurb: "DropChain's architecture combines the best of both worlds, merging the efficiency of private networks with the robustness of public blockchains.", href: NETWORK_DOCS, image: '/images/atronaught.avif' },
+  { title: 'AVM Protocol', blurb: 'Custom Algorand Virtual Machine for rapid consensus, low energy use, and high transaction capacity.', href: NETWORK_DOCS, image: '/images/Frame-31.svg' },
+  { title: 'Compatibility', blurb: 'Seamlessly integrate existing Algorand Reach and PyTeal contracts.', href: NETWORK_DOCS, image: '/images/Frame-30.svg' },
+  { title: 'Sandbox', blurb: 'A secure playground for developers and users alike to experiment and learn.', href: NETWORK_DOCS, image: '/images/Frame-29-1.svg' },
+];
+
+const protections = [
+  { title: 'Asset Exporting', blurb: 'Users can move their assets to self-custody wallets on major public blockchains, fostering a balance between security and autonomy.' },
+  { title: 'Guide to Self Custody', blurb: 'Gradual introduction to the concepts and benefits of self-custody in the blockchain world.' },
+  { title: 'Tamper-Proof', blurb: 'In case of fraud or critical application errors, DropChain can intervene to freeze and limit the movement of assets within the DropChain Network, protecting both parties.' },
+  { title: 'Useability', blurb: "DropChain's architecture makes web3 simple for users and developers. SSO, pre-made smart contracts, and useful guides: DropChain is built for everyone." },
+];
+---
+
+<BaseLayout
+  title="DropChain Network"
+  description="The DropChain Network is a proprietary semi-private layer-1 blockchain using AVM technology for industry-leading security and scalability."
+>
+  <PageHero
+    eyebrow="DropChain Network"
+    title="Build Your Web3 App with DropChain"
+    sub="The DropChain Network is a layer-1 blockchain designed to streamline and simplify the web3 experience for both beginners and seasoned developers."
+  >
+    <div class="hero-actions">
+      <Button href={CONSOLE_URL}>Start Building</Button>
+      <Button
+        href="https://dropchain.gitbook.io/dropchain-api-beta/getting-started-guides/start-building-with-the-javascript-dropchain-sdk"
+        variant="ghost"
+        icon="arrow"
+      >Read Docs</Button>
+    </div>
+  </PageHero>
+
+  <LinkCards
+    heading="Simplified &amp; Secure Web3 Experience"
+    items={pillars}
+    columns={4}
+  />
+
+  <LinkCards
+    heading="Built on a network designed for web3 apps"
+    items={architecture}
+    columns={2}
+  />
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Empowering Users &amp; Developers</h2>
+        <p class="dc-lead">
+          DropChain&rsquo;s unique approach includes mechanisms to safeguard both developers
+          and end users in the evolving landscape of web3.
+        </p>
+      </header>
+
+      <ul class="protections">
+        {protections.map((item) => (
+          <li>
+            <span class="protections__icon"><Icon name="check" size={18} /></span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.blurb}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <Button href={CONSOLE_URL} class="protections__cta">Start Building</Button>
+    </div>
+  </section>
+
+  <LinkCards
+    heading="Keep going"
+    items={[
+      { title: 'Getting Started', blurb: 'Set up your first DropChain project.', href: 'https://dropchain.gitbook.io/dropchain-api-beta/getting-started' },
+      { title: 'Bubble Integration', blurb: 'Add the DropChain API to a no-code Bubble app.', href: 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-examples/integrating-dropchain-api-into-no-code-bubble.io-app' },
+      { title: 'Python SDK', blurb: 'Build web3 apps in Python without Solidity.', href: 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-overview/dropchain-sdk' },
+    ]}
+  />
+
+  <CtaBand heading="Get Started For Free" sub="No credit card required." href={CONSOLE_URL} />
+</BaseLayout>
+
+<style>
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-lg); }
+  .section-head { max-width: 62ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .protections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--dc-space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .protections li { display: flex; gap: var(--dc-space-md); }
+  .protections__icon { color: var(--dc-green); flex: none; margin-top: 0.2rem; }
+  .protections h3 { font-size: var(--dc-h5); margin-bottom: 0.3rem; }
+  .protections p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; }
+  .protections__cta { margin-top: var(--dc-space-xl); }
+
+  @media (max-width: 800px) { .protections { grid-template-columns: 1fr; } }
+</style>

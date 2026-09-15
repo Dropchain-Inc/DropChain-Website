@@ -1,0 +1,37 @@
+---
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  sub?: string;
+  image?: string;
+  alt?: string;
+  reverse?: boolean;
+  tight?: boolean;
+}
+const { eyebrow, heading, sub, image, alt = '', reverse = false, tight = false } = Astro.props;
+---
+<section class:list={[tight ? 'dc-section--tight' : 'dc-section']}>
+  <div class="dc-container">
+    <div class:list={['split', reverse && 'split--reverse']}>
+      <div class="split__body">
+        {eyebrow && <p class="dc-eyebrow">{eyebrow}</p>}
+        {heading && <h2 set:html={heading} />}
+        {sub && <p class="dc-lead">{sub}</p>}
+        <slot />
+      </div>
+      {image && <img class="split__image" src={image} alt={alt} loading="lazy" />}
+    </div>
+  </div>
+</section>
+
+<style>
+  .split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: var(--dc-space-2xl); }
+  .split--reverse .split__image { order: -1; }
+  .split__body { display: flex; flex-direction: column; align-items: flex-start; gap: var(--dc-space-sm); }
+  .split__body .dc-lead { margin-top: 0.4rem; }
+  .split__image { border-radius: var(--dc-radius-lg); }
+  @media (max-width: 900px) {
+    .split { grid-template-columns: 1fr; gap: var(--dc-space-xl); }
+    .split--reverse .split__image { order: 0; }
+  }
+</style>

@@ -29,8 +29,12 @@ const CHROME_CLASSES = /\b(?:navigation-wrap[\w-]*|navigation-2|footer-dark|foot
 // Webflow appends this demo copy to every rich-text field.
 const RICHTEXT_BOILERPLATE = /Static and dynamic content editing[\s\S]*?(?=<\/div>)/gi;
 
-// Raster icons from the export that the rebuild renders as inline SVG instead.
+// Icons the rebuild renders as inline SVG, plus purely decorative flourishes
+// from the Webflow template that carry no meaning.
 const REPLACED_BY_INLINE_SVG = new Set([
+  'line-rounded-chevron-dark-elements-brix-templates.svg',
+  'blob-brix-templates.svg',
+  'gradient-blue.png',
   'Frame-15-2.svg', 'Frame-16-1.svg', 'Frame-5.svg', 'Group-385.svg',
   'PlatformYouTube-ColorNegative.svg', 'akar-icons_discord-fill-1.svg',
   'akar-icons_circle-check-fill.svg', 'material-symbols_electric-bolt-rounded.svg',
