@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import LinkCards from '../components/LinkCards.astro';
+import Split from '../components/Split.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL } from '../data/navigation.js';
+import { creatorQuotes, ssoFeatures } from '../data/site.js';
+
+const SSO_DOCS = 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-overview/dropchain-sso';
+const TUTORIAL = 'https://dropchain.gitbook.io/dropchain-api-beta/creating-an-example-p2e-rock-paper-scissors-in-15-minutes';
+
+const builders = [
+  { src: '/images/lambda.svg', alt: 'Lambda' },
+  { src: '/images/Odea.svg', alt: 'Odea' },
+  { src: '/images/MATTY-Platform_1.avif', alt: 'Matty Platform' },
+  { src: '/images/Algopatties-logo_1.avif', alt: 'AlgoPatties' },
+  { src: '/images/Group_1.avif', alt: 'DropChain builder' },
+];
+---
+
+<BaseLayout
+  title="Web3 Single Sign On - DropChain"
+  description="Create seamless onboarding experiences for your users. Make your app easy for anyone to use with the one-click single sign-on solution from DropChain."
+>
+  <PageHero
+    eyebrow="Web3 Single Sign On"
+    title="Easily onboard users with Web3 SSO"
+    sub="Joining your web3 app needs to be easy to grow your user base. With DropChain SSO, you can onboard the masses and focus on creating a beautiful and useful product."
+  >
+    <div class="actions">
+      <Button href={CONSOLE_URL}>Get Started</Button>
+      <Button href={SSO_DOCS} variant="ghost" icon="arrow">Read the Docs</Button>
+    </div>
+    <img class="hero-image" src="/images/Group-421-1_1.avif" alt="" loading="lazy" />
+  </PageHero>
+
+  <LinkCards
+    heading="See What Web3 SSO can do for you"
+    items={ssoFeatures}
+    columns={3}
+  />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <img class="showcase" src="/images/SSO-page.avif" alt="The DropChain single sign-on screen" loading="lazy" />
+    </div>
+  </section>
+
+  <Split
+    tight
+    heading="Build trust with your users"
+    sub="DropChain handles multi-chain wallet custody for your users so you don't have to. We use industry-standard security methods to safely store your users' most sensitive data."
+    image="/images/Frame-46-2_1.avif"
+  >
+    <div class="actions">
+      <Button href={CONSOLE_URL}>Get Started</Button>
+      <Button href={SSO_DOCS} variant="ghost" icon="arrow">Read Documentation</Button>
+    </div>
+  </Split>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>What creators say about DropChain</h2>
+      </header>
+      <ul class="quotes">
+        {creatorQuotes.map((item) => (
+          <li class="quote">
+            <blockquote>{item.quote}</blockquote>
+            <footer>
+              <img src={item.avatar} alt="" loading="lazy" />
+              <span>
+                <span class="quote__name">{item.name}</span>
+                <span class="quote__role">{item.role}</span>
+              </span>
+            </footer>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Empowering Builders Everywhere</h2>
+        <p class="dc-lead">
+          Don't just take our word for it. DropChain is powering some of the most
+          innovative builders in web3. Join a growing community of those shaping the
+          future in our Discord channel.
+        </p>
+      </header>
+      <ul class="builders">
+        {builders.map((logo) => <li><img src={logo.src} alt={logo.alt} loading="lazy" /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <Split
+    reverse
+    tight
+    heading="Learn how to make your first web3 app in under 15 Minutes"
+    sub="We'll walk you through exactly how to create your first web3 application. No web3 experience is required to get started."
+    image="/images/Front-1_1.avif"
+  >
+    <div class="actions">
+      <Button href={TUTORIAL} icon="arrow">Start Your Tutorial</Button>
+    </div>
+  </Split>
+
+  <CtaBand
+    heading="Ready to Start? Start building for Free!"
+    sub="Build for free forever. Only pay when you grow."
+    cta="Get Started"
+    href={CONSOLE_URL}
+  />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .hero-image { margin-top: var(--dc-space-xl); border-radius: var(--dc-radius-lg); }
+  .showcase { width: 100%; border-radius: var(--dc-radius-lg); }
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .quotes, .builders { list-style: none; margin: 0; padding: 0; }
+  .quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .quote {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dc-space-md);
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .quote blockquote { margin: 0; font-size: var(--dc-text-sm); line-height: 1.7; flex: 1; }
+  .quote footer { display: flex; align-items: center; gap: 0.75rem; }
+  .quote footer > span { display: grid; gap: 0.15rem; }
+  .quote footer img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; }
+  .quote__name { font-weight: 600; font-size: var(--dc-text-sm); }
+  .quote__role { color: var(--dc-text-muted); font-size: var(--dc-text-xs); }
+
+  .builders { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dc-space-xl); }
+  .builders img { height: 34px; width: auto; opacity: 0.7; filter: grayscale(1); }
+  .builders li:hover img { opacity: 1; filter: grayscale(0); }
+
+  @media (max-width: 900px) { .quotes { grid-template-columns: 1fr; } }
+</style>

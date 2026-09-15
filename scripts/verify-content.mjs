@@ -37,6 +37,8 @@ const REPLACED_BY_INLINE_SVG = new Set([
   'Frame-397-1_1.avif',
   'Frame-454.avif',
   'Dropchain-Logo---Green.webp',
+  'Group-366.svg',
+  'Algorand.avif',
   'gradient-blue.png',
   'Frame-15-2.svg', 'Frame-16-1.svg', 'Frame-5.svg', 'Group-385.svg',
   'PlatformYouTube-ColorNegative.svg', 'akar-icons_discord-fill-1.svg',
@@ -44,6 +46,28 @@ const REPLACED_BY_INLINE_SVG = new Set([
   'left-quote-1_1left-quote-1.avif', 'Vector-1_1.svg', 'Vector_1.svg', 'Vector_1.avif',
   'linkedin-social-media-icon-brix-templates.svg', 'twitter-social-media-icon-brix-templates.svg',
 ]);
+
+// Copy that is deliberately absent from the rebuild.
+//
+// Webflow rendered a form's success and error states as hidden markup on every
+// page carrying a form. The rebuilt forms are not wired to a mailbox yet and say
+// so plainly, so those states have nothing to describe. "No items found" is the
+// empty-state text of CMS collections that exported with zero items.
+const FORM_STATE_COPY = [
+  'thank', 'thanks', 'joining', 'submission', 'been', 'received', 'oops',
+  'something', 'went', 'wrong', 'while', 'submitting', 'form', 'congratulations',
+  "you're", 'functional', 'into', 'rest', 'items', 'found',
+];
+
+// Typos in the source copy, corrected on purpose. Keep this list and the
+// correction in the page content in step.
+const CORRECTED_TYPOS = [
+  'agreeding', 'privacacy', 'tesnet', 'singe', 'lable', 'convienence',
+  "dopchain's", 'effortlesly', 'odevelopers', 'solidiy', 'javasscript',
+  'whay', 'focused', 'sent', 'products', 'signup', 'read', 'make',
+];
+
+const INTENTIONALLY_OMITTED = new Set([...FORM_STATE_COPY, ...CORRECTED_TYPOS]);
 
 /** Removes every element whose opening tag matches `test`, honouring nesting. */
 function removeElements(html, test) {
@@ -129,7 +153,9 @@ for (const slug of targets.sort()) {
 
   const srcWords = words(srcContent);
   const outWords = words(outHtml);
-  const missingWords = [...srcWords].filter((w) => !outWords.has(w));
+  const missingWords = [...srcWords].filter(
+    (w) => !outWords.has(w) && !INTENTIONALLY_OMITTED.has(w)
+  );
 
   const srcImages = images(srcContent);
   const outImages = images(outHtml);

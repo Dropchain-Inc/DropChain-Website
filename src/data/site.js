@@ -100,4 +100,36 @@ export const plans = [
   },
 ];
 
+
+// Shown on the Single Sign On and Subscribe pages.
+export const creatorQuotes = [
+  {
+    quote: "DropChain is now our go-to solution for building web3 apps. Every client we work with wants the assurance that we can undo mistakes made by us or our users. DropChain\u2019s flexibility makes it a perfect solution.",
+    name: 'Ryan Radomski',
+    role: 'CTO, Lambda Labs',
+    avatar: '/images/Group-361.avif',
+  },
+  {
+    quote: 'Dropchain saved us hundreds of developer hours when we built out the Odea creator token product. It gave us the time and the resources to focus on what we do best, helping artists!',
+    name: 'Will Preble',
+    role: 'CEO, Odea',
+    avatar: '/images/Group-362.avif',
+  },
+  {
+    quote: "DropChain as a web2 to web3 API bridge is very powerful because you don't need to worry about setting up a wallet, running or connecting to a node and/or indexer, and learning the intricacies of each blockchain.",
+    name: 'LogioTek',
+    role: 'Senior Developer',
+    avatar: '/images/algo.svg',
+  },
+];
+
+// Single Sign On capability set, also surfaced on the enterprise page.
+export const ssoFeatures = [
+  { lordicon: 'uqpazftn', title: 'Auto Generated User Wallets', blurb: 'DropChain automatically makes a wallet for the users who sign up for your web3 application.' },
+  { lordicon: 'zbdlroww', title: 'Easy Onboarding', blurb: 'Allow anyone to sign in or sign up to your web3 app using web2 credentials like Google & Apple.' },
+  { lordicon: 'mecwbjnp', title: 'Axe Txns', blurb: 'Signing transactions is confusing. With DropChain, your users will never have to sign smart contracts.' },
+  { lordicon: 'gqdnbnwt', title: 'Simple Integration', blurb: 'Seamlessly integrate with no-code tools like Bubble and Wix. Add 5 lines of code to your programmed app.' },
+  { title: 'Grow your user base', blurb: "Make your app accessible to anyone. Skyrocket your web3 product's growth with DropChain SSO." },
+];
+
 export { APP_URL, CONSOLE_URL };

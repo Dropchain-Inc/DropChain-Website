@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const DISCORD = 'https://discord.gg/SPyRTYsxuP';
+
+const milestones = [
+  { title: 'DropChain SSO v1 Launch', when: 'Q4 2022' },
+  { title: 'Launch of DropChain Network Betanet', when: 'Q4 2022' },
+  { title: 'DropChain API v2 Launch', when: 'Q1 2023' },
+  { title: 'DropChain Smart Contract API', when: 'Q1 2023' },
+  { title: 'Fiat Payment Gateways', when: 'Q1 2023' },
+  { title: 'Developer DAO Tooling Suite', when: 'Q2 2023' },
+  { title: 'Algorand Network Smart Contract API', when: 'Q2 2023' },
+  { title: 'DropChain Library Launch', when: 'Q3 2023' },
+  { title: 'EVM Compatibility', when: 'Q3 2023' },
+  { title: 'Algorand Bridge Launch', when: 'Q4 2023' },
+  { title: 'First Self Custody Solutions', when: 'Q1 2024' },
+];
+---
+
+<BaseLayout
+  title="Roadmap - DropChain API"
+  description="DropChain is on a mission to onboard the next 1 million web3 developers and 1 billion new web3 users by simplifying the process of building and using web3 apps."
+>
+  <PageHero
+    eyebrow="Roadmap"
+    title="DropChain Roadmap"
+    sub="We're on an ambitious mission to onboard the next 1 million web3 developers and the next 1 billion web3 users. We encourage you to subscribe to our newsletter and join the DropChain Discord to keep up with each update."
+  >
+    <div class="actions">
+      <Button href="/subscribe">Subscribe for updates</Button>
+      <Button href={DISCORD} variant="ghost" icon="arrow">Join the Discord</Button>
+    </div>
+  </PageHero>
+
+  <section class="dc-section--tight">
+    <div class="dc-container dc-container--narrow">
+      <ol class="timeline">
+        {milestones.map((item) => (
+          <li class="milestone">
+            <span class="milestone__dot" aria-hidden="true"></span>
+            <div class="milestone__body">
+              <h2>{item.title}</h2>
+              <p class="milestone__when">{item.when}</p>
+            </div>
+            <a class="milestone__cta" href="/subscribe">
+              Get Notified
+              <Icon name="arrow" size={14} />
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Stay up to date"
+    sub="Be the first to hear about every update, partnerships, and promos. Follow the journey."
+    cta="Subscribe"
+    href="/subscribe"
+  />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-lg); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 var(--dc-space-lg); position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0.75rem;
+    bottom: 0.75rem;
+    width: 2px;
+    background: linear-gradient(180deg, var(--dc-green), var(--dc-border));
+  }
+  .milestone {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--dc-space-md);
+    padding: var(--dc-space-md) var(--dc-space-lg);
+    margin-bottom: 0.6rem;
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .milestone__dot {
+    position: absolute;
+    left: calc(var(--dc-space-lg) * -1);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--dc-green);
+    box-shadow: 0 0 0 4px #01f08926;
+  }
+  .milestone__body { flex: 1; min-width: 200px; }
+  .milestone h2 { font-size: var(--dc-text-base); font-weight: 600; }
+  .milestone__when { color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+  .milestone__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-sm);
+    color: var(--dc-text-muted);
+    font-size: var(--dc-text-xs);
+    font-weight: 500;
+  }
+  .milestone__cta:hover { color: var(--dc-green); border-color: var(--dc-green); }
+</style>
