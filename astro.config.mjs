@@ -7,7 +7,10 @@ export default defineConfig({
   // Webflow served extensionless URLs; keep them identical so inbound links survive.
   trailingSlash: 'never',
   build: {
-    format: 'file',
+    // 'directory' emits pricing/index.html rather than pricing.html, so the
+    // extensionless URLs Webflow served resolve on any static host without
+    // needing a cleanUrls rewrite. 'file' only worked behind Vercel.
+    format: 'directory',
   },
   integrations: [
     sitemap({

@@ -6,16 +6,90 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/home", "destination": "/", "permanent": true }
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/symbols-and-elements",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/homepage-sandbox",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/rich-text",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/solutions/template",
+      "destination": "/solutions/enterprise",
+      "permanent": true
+    },
+    {
+      "source": "/detail_post",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/detail_faq",
+      "destination": "/frequently-asked-questions-faq",
+      "permanent": true
+    },
+    {
+      "source": "/detail_members",
+      "destination": "/meet-the-team",
+      "permanent": true
+    },
+    {
+      "source": "/detail_nft-collection",
+      "destination": "/nft-marketplace",
+      "permanent": true
+    },
+    {
+      "source": "/detail_testimonials",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/401",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/access-denied",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sign-up",
+      "destination": "https://console.dropchain.network/login",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/images/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/icons/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }

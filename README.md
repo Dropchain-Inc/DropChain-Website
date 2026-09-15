@@ -40,6 +40,13 @@ Page file paths deliberately match what Webflow served, including awkward ones
 like `/company/about-us-dropchain-official`. Renaming a file changes a live URL,
 so add a redirect in `vercel.json` if you do.
 
+The build uses `format: 'directory'`, so `/pricing` is emitted as
+`dist/pricing/index.html`. That resolves the extensionless URLs Webflow served on
+any static host, with or without a `cleanUrls` rewrite.
+
+Run `node scripts/check-slugs.mjs` to confirm every URL the old site served still
+resolves. It currently reports zero 404s across all 60 exported URLs.
+
 ## Nothing depends on Webflow
 
 Everything the site needs is in this repo:
@@ -56,6 +63,7 @@ Everything the site needs is in this repo:
 | --- | --- |
 | `node scripts/verify-content.mjs` | Diffs every built page against its Webflow source and reports missing copy or images |
 | `node scripts/outline.mjs --text <slug>` | Dumps a source page's copy, images, links and icon ids |
+| `node scripts/check-slugs.mjs` | Confirms every URL the old Webflow site served still resolves |
 | `node scripts/audit.mjs` | Reports how much real content each exported page has |
 | `node scripts/build-legal-pages.mjs` | Regenerates the five legal pages from the export |
 | `node scripts/recolor-icons.mjs` | Recolours the vendored Lottie icons to the brand palette |
@@ -83,6 +91,11 @@ nav drawer.
   Webflow's own endpoint. Rather than fail silently, each page now shows a
   visible notice and routes people to email or Discord. Wiring these to a
   serverless function is outstanding work.
+- **Blog posts at `/post/<slug>` are not in the rebuild and will 404.** The CMS
+  collections exported empty, so those URLs cannot be recovered from the export.
+  Two are linked from the API page
+  (`/post/super-algorand-chooses-dropchain`, `/post/niftgen-x-dropchain`); there
+  are likely more. Export the full list from Webflow before the account closes.
 - **Five pages have no content.** `academy`, `guides`, `changelog`,
   `case-studies` and `frequently-asked-questions-faq` were Webflow CMS
   collections that exported with zero items. They exist as placeholders that

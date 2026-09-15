@@ -17,8 +17,6 @@ const {
   noindex = false,
 } = Astro.props;
 
-// Astro's `format: 'file'` build emits /index for the homepage; the canonical
-// URL for it is the site root.
 const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');
 const canonical = new URL(path, Astro.site).href;
 const ogImage = new URL(image, Astro.site).href;
