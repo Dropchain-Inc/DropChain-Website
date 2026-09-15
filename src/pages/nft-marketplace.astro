@@ -8,37 +8,44 @@ import CtaBand from '../components/CtaBand.astro';
 import { CONSOLE_URL, DOCS_URL } from '../data/navigation.js';
 import { fiatFeatures } from '../data/features.js';
 
-const FIAT_DOCS = 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-overview/fiat-onramp';
-
+const seamless = [
+  { lordicon: 'rqqkvjqf', title: 'No KYC', blurb: 'No more lengthy KYC process. Let your users buy NFTs instantly.' },
+  { lordicon: 'cjieiyzp', title: 'Credit Card', blurb: 'Accept credit card payments on all of your NFT sales.' },
+  { lordicon: 'jjjmlddk', title: 'Wallets', blurb: 'Wallets auto generate for users upon NFT purchase.' },
+];
 ---
 
 <BaseLayout
-  title="Sell NFTs & Credit Cards | DropChain"
+  title="NFT Marketplace"
   description="Use DropChain to let everyone buy your NFTs, not just people with a wallet. Let anyone with a credit card buy your NFT and other blockchain assets."
 >
   <PageHero
-    eyebrow="Onboard the Masses"
-    title="Accept Credit Cards for your NFT Sales"
-    sub="Allow anyone to buy your NFTs, even if they don't have a wallet."
+    eyebrow="NFT Marketplace"
+    title="Sell NFTs on the Most Inclusive Marketplace"
+    sub="Accept credit cards & crypto for your digital assets & collectibles. Let anyone join your game or community."
   >
-    <div class="hero-actions">
-      <Button href={CONSOLE_URL}>Get Started - Free</Button>
-      <Button href={DOCS_URL} variant="ghost" icon="arrow">Docs</Button>
+    <div class="actions">
+      <Button href={CONSOLE_URL}>Get Listed</Button>
+      <Button href="https://marketplace.dropchain.network/" variant="ghost" icon="arrow">Shop Now</Button>
     </div>
-    <img class="hero-image" src="/images/Frame-172-1.avif" alt="" loading="lazy" />
+    <img class="hero-image" src="/images/App-Store-3_1.avif" alt="" loading="lazy" />
   </PageHero>
 
+  <LinkCards heading="Making a Seamless NFT Experience" items={seamless} />
+
   <Split
+    tight
     heading="Make Buying Your NFTs Easy For Anyone with a Credit Card"
     sub="Buying NFTs is too complicated. Allow anyone with a Credit Card to buy, not just people with a crypto wallet."
     image="/images/Group-22_1.avif"
   >
+    <p class="compare"><span>With DropChain</span> versus <span>Without DropChain</span></p>
     <h3 class="split-sub">Accept Credit Cards payments, sell NFTs to anyone</h3>
     <p class="dc-muted">
       Sell NFTs for credit card payments, eliminating extra fees and verification
       processes. Make buying NFTs easy with a streamlined payment process.
     </p>
-    <div class="hero-actions">
+    <div class="actions">
       <Button href={CONSOLE_URL}>Quick Start</Button>
       <Button href={DOCS_URL} variant="ghost" icon="arrow">Learn More</Button>
     </div>
@@ -52,7 +59,7 @@ const FIAT_DOCS = 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-ove
     sub="Buying an NFT requires lots of upfront work, technical skill, and tons of time."
     image="/images/Frame-5-5.avif"
   >
-    <div class="hero-actions">
+    <div class="actions">
       <Button href={CONSOLE_URL}>Quick Start</Button>
       <Button href={DOCS_URL} variant="ghost" icon="arrow">Learn More</Button>
     </div>
@@ -64,20 +71,13 @@ const FIAT_DOCS = 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-ove
     items={fiatFeatures}
   />
 
-  <LinkCards
-    heading="Keep going"
-    items={[
-      { title: 'Bubble Integration', blurb: 'Add the DropChain API to a no-code Bubble app.', href: 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-examples/integrating-dropchain-api-into-no-code-bubble.io-app' },
-      { title: 'Python SDK', blurb: 'Build web3 apps in Python without Solidity.', href: 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-overview/dropchain-sdk' },
-    ]}
-    columns={2}
-  />
-
-  <CtaBand heading="Start selling to everyone" sub="Free to start. No credit card required." href={CONSOLE_URL} />
+  <CtaBand heading="Get listed on the marketplace" sub="Free to start. No credit card required." cta="Get Listed" href={CONSOLE_URL} />
 </BaseLayout>
 
 <style>
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
   .hero-image { margin-top: var(--dc-space-xl); border-radius: var(--dc-radius-lg); }
   .split-sub { font-size: var(--dc-h5); margin-top: var(--dc-space-sm); }
+  .compare { color: var(--dc-text-dim); font-size: var(--dc-text-xs); text-transform: uppercase; letter-spacing: 0.06em; }
+  .compare span { color: var(--dc-green); }
 </style>

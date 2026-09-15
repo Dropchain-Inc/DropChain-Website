@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import LinkCards from '../components/LinkCards.astro';
+import Split from '../components/Split.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL, DOCS_URL } from '../data/navigation.js';
+
+const steps = [
+  { lordicon: 'sbiheqdr', step: '1. Build in Bubble', title: 'Build your app in Bubble', blurb: 'Bubble is a no-code app builder. Get started with a suite of templates or build your own.', cta: { label: 'Learn More', href: DOCS_URL } },
+  { lordicon: 'etwtznjn', step: '2. Enhance', title: 'Add the DropChain Plugin', blurb: 'Add the DropChain API Plugin to your Bubble app to access 30+ premade web3 functions.', cta: { label: 'See All Functions', href: '/api' } },
+  { lordicon: 'uqpazftn', step: '3. Onboard', title: 'Connect SSO to grow', blurb: "When you're ready to launch, connect your Single Sign On page to onboard anyone with web2 credentials.", cta: { label: 'Learn More', href: '/sso' } },
+];
+
+const benefits = [
+  { lordicon: 'uqpazftn', title: 'Accept Credit Card Payments', blurb: 'Allow anyone to purchase in-app assets with credit card or crypto.', href: '/nft-fiat-onramp' },
+  { lordicon: 'zbdlroww', title: 'Axe Gas Fees', blurb: 'Paying for gas can quickly add up. With DropChain, you and your users will never have to pay gas fees.' },
+  { lordicon: 'mecwbjnp', title: 'Simple Integration', blurb: 'Integrate tokens, NFTs, transactions, and more in under 10 minutes.', href: DOCS_URL },
+  { lordicon: 'gqdnbnwt', title: 'Grow your user base', blurb: "Make your app accessible to anyone. Skyrocket your web3 product's growth with DropChain SSO.", href: '/sso' },
+];
+
+const chains = ['Algorand', 'ADA', 'POLYGON', 'base-1', 'VECHAIN', 'eTH', 'ripple-1'];
+const frameworks = ['BUBBLE', 'NODE-JS', 'PYTHON', 'CSHARP', 'JS', 'FLUTTER-FLOW'];
+---
+
+<BaseLayout
+  title="Build A Web3 App With No Code"
+  description="Create robust web3 apps without coding using the DropChain API. Easily integrate with top no-code builders for seamless blockchain functionality."
+>
+  <PageHero
+    eyebrow="No code"
+    title="Build Web3 Apps Without Code"
+    sub="Building a web3 app no longer requires code. Integrate the DropChain API with the most popular no-code builders to enhance and launch your first web3 app."
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </PageHero>
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <ol class="steps">
+        {steps.map((item) => (
+          <li class="step">
+            <p class="step__label">{item.step}</p>
+            <h2>{item.title}</h2>
+            <p class="step__blurb">{item.blurb}</p>
+            <Button href={item.cta.href} variant="ghost" icon="arrow">{item.cta.label}</Button>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <Split
+    tight
+    eyebrow="30+ Ready-Made Functions"
+    heading="Send Your First API Request in 10 Minutes"
+    sub="Learn how to use the DropChain API to send your first API request without a single line of code."
+    image="/images/SSO-page_1.avif"
+  >
+    <div class="actions">
+      <Button href={CONSOLE_URL}>Get Started</Button>
+      <Button href={DOCS_URL} variant="ghost" icon="arrow">See More Tutorials</Button>
+    </div>
+  </Split>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <div class="showcase">
+        <p class="dc-eyebrow">See It In Action</p>
+        <h2>Build a Web3 App Without Code</h2>
+        <p class="dc-lead">
+          AlgoPatties is a web3 RPG built no-code with DropChain and Bubble. Built by a
+          band director with no experience, so anyone can do it.
+        </p>
+        <Button href="https://algopatties.com/" icon="arrow">Play AlgoPatties</Button>
+      </div>
+    </div>
+  </section>
+
+  <LinkCards heading="Why build on DropChain?" items={benefits} columns={4} />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <p class="dc-eyebrow">DropChain is cross chain</p>
+        <h2>DropChain Works with the Most Popular Blockchains and Frameworks</h2>
+        <p class="dc-lead">
+          The DropChain API connects your app to 30+ premade web3 functions. Create apps
+          almost instantly for the most popular chains.
+        </p>
+      </header>
+
+      <h3 class="strip__title">Blockchains</h3>
+      <ul class="strip">
+        {chains.map((name) => <li><img src={`/images/${name}.svg`} alt={name} loading="lazy" /></li>)}
+      </ul>
+
+      <h3 class="strip__title">Frameworks</h3>
+      <ul class="strip">
+        {frameworks.map((name) => <li><img src={`/images/${name}.svg`} alt={name} loading="lazy" /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand heading="Build your first web3 app" sub="Free to start. No credit card required." href={CONSOLE_URL} />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-eyebrow { margin-bottom: 0.6rem; }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .steps, .strip { list-style: none; margin: 0; padding: 0; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .step__label { color: var(--dc-green); font-size: var(--dc-text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  .step h2 { font-size: var(--dc-h5); }
+  .step__blurb { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; flex: 1; }
+
+  .showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--dc-space-sm);
+    padding: var(--dc-space-xl);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+    background: radial-gradient(90% 140% at 12% 0%, #01f0891f, transparent 60%), var(--dc-surface);
+  }
+  .showcase .dc-lead { max-width: 58ch; }
+  .showcase :global(.btn) { margin-top: var(--dc-space-sm); }
+
+  .strip__title { font-size: var(--dc-h6); color: var(--dc-text-muted); margin-block: var(--dc-space-lg) var(--dc-space-md); }
+  .strip { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dc-space-lg); }
+  .strip img { height: 30px; width: auto; opacity: 0.75; }
+  .strip li:hover img { opacity: 1; }
+
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Split from '../components/Split.astro';
+import LinkCards from '../components/LinkCards.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL } from '../data/navigation.js';
+
+const steps = [
+  { n: '1', title: 'Create Your NFT or Token', blurb: "Use the no-code builder to mint your NFT or token directly on DropChain's gasless Layer 1 blockchain.", image: '/images/Screenshot-2025-04-12-at-6.46.23-PM.png' },
+  { n: '2', title: 'Enable Payments', blurb: "Let buyers pay in USD or crypto. DropChain handles the entire checkout flow and generates wallets for users who don't have one.", image: '/images/Screenshot-2025-04-12-at-6.45.42-PM.png' },
+  { n: '3', title: 'Track and Engage Your Holders', blurb: 'Everyone who buys is added to your CRM. Send emails, segment your holders, and track performance in one place.', image: '/images/Screenshot-2025-04-12-at-6.47.27-PM.png' },
+];
+
+const shortfalls = [
+  { icon: '/images/Code.svg', problem: 'Developers Not Needed', blurb: 'Launching a smart contract often means hiring an expensive Solidity developer.', answer: 'No-Code Minting' },
+  { icon: '/images/Wallet.svg', problem: 'Wallets Not Required', blurb: 'Other platforms like OpenSea only work for buyers who already have a wallet.', answer: 'USD Checkout and Auto Wallets' },
+  { icon: '/images/mail-icon.svg', problem: 'Build Loyalty', blurb: 'You sell your NFT and never build brand loyalty through ongoing nurturing.', answer: 'Full CRM and Email Tools' },
+];
+
+const analytics = [
+  'Track total revenue by token or NFT',
+  'See which drops drive the most engagement',
+  'Identify top holders and wallet activity',
+  'Monitor purchases by payment type and source',
+  'Use real data to improve future launches',
+];
+
+const platform = [
+  { title: 'No-Code Builder', blurb: 'Launch NFTs & tokens without writing a single line of code. Get started fast with a simple interface.' },
+  { title: 'Sell in USD or Crypto', blurb: 'Accept payments through credit cards, Apple Pay, or crypto. Give your audience options.' },
+  { title: 'Zero Gas Fees', blurb: "DropChain's Layer 1 blockchain makes minting free for both you and your buyers." },
+  { title: 'Auto Wallet Generation', blurb: "New users don't need a wallet. DropChain handles that for them so you don't lose conversions." },
+  { title: 'Full CRM Integration', blurb: "Every buyer becomes a contact with wallet and email data that's ready to use." },
+  { title: 'Analytics and Post-Sale Tools', blurb: 'Track sales, engagement, and growth with dashboards built for NFT and token projects.' },
+];
+---
+
+<BaseLayout
+  title="Mint NFTs and Tokens for Free"
+  description="Mint NFTs and tokens without code using DropChain. Launch, sell, and track your collection with zero gas fees, USD or crypto payments, CRM integration, and built-in analytics, all in one platform."
+>
+  <PageHero
+    eyebrow="For Creators and Web3 Brands"
+    title="Mint NFTs and Tokens Without Code"
+    sub="DropChain makes it simple to launch and sell NFTs and tokens. Whether you're creating art, minting a token, launching a membership, or building a loyalty program, DropChain gives you everything you need to mint, sell, and grow."
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+    <img class="hero-image" src="/images/Screenshot-2025-04-06-at-4.27.46-PM.png" alt="" loading="lazy" />
+  </PageHero>
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <h2 class="section-head">How to Start Minting Tokens &amp; NFTs with DropChain</h2>
+      <ol class="steps">
+        {steps.map((step) => (
+          <li class="step">
+            <img src={step.image} alt="" loading="lazy" />
+            <span class="step__n">{step.n}</span>
+            <h3>{step.title}</h3>
+            <p>{step.blurb}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Other Minting Platforms Fall Short</h2>
+        <p class="dc-lead">
+          Most NFT tools stop at the mint. DropChain goes further by helping you build
+          relationships with your buyers and community.
+        </p>
+      </header>
+      <ul class="shortfalls">
+        {shortfalls.map((item) => (
+          <li>
+            <img src={item.icon} alt="" loading="lazy" />
+            <h3>{item.problem}</h3>
+            <p>{item.blurb}</p>
+            <p class="shortfalls__answer"><Icon name="check" size={16} />{item.answer}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Split
+    eyebrow="Marketing Solutions"
+    heading="Keep your Web3 Brand Growing and Community Thriving"
+    sub="DropChain removes the barriers between launching your collection and building a thriving community. Create digital collectibles, sell access tokens, or launch in-game currencies without writing any code. With built-in analytics and email marketing, you can mint with a strategy and grow beyond the drop."
+    image="/images/ChatGPT-Image-Apr-4-2025-04_16_08-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <Split
+    reverse
+    tight
+    eyebrow="Capture Data from Every Purchase"
+    heading="Turn Every Buyer Into a Repeat Customer"
+    sub="When someone buys your NFT or token, DropChain automatically collects their email and wallet data. Launch follow-up campaigns, reward loyal holders, or send exclusive content based on what they own and how they engage. Use on-chain behavior, like staking, holding, or selling, to trigger personalized experiences that keep people coming back."
+    image="/images/ChatGPT-Image-Apr-4-2025-04_23_00-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <Split
+    tight
+    eyebrow="Advanced Analytics"
+    heading="Track Your Collection &amp; Token's Growth"
+    sub="You should know exactly what's working and who is buying."
+    image="/images/ChatGPT-Image-Mar-30-2025-07_51_43-PM.png"
+  >
+    <ul class="analytics">
+      {analytics.map((item) => <li><Icon name="check" size={16} />{item}</li>)}
+    </ul>
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <LinkCards heading="The Best Platform by Far" items={platform} />
+
+  <CtaBand
+    heading="Take your first step toward monetization today"
+    sub="No credit card required."
+    cta="Get Started"
+    href={CONSOLE_URL}
+  />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .hero-image { margin-top: var(--dc-space-xl); border-radius: var(--dc-radius-lg); }
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .steps, .shortfalls, .analytics { list-style: none; margin: 0; padding: 0; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .step img { border-radius: var(--dc-radius-sm); margin-bottom: var(--dc-space-xs); }
+  .step__n {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-image: var(--dc-gradient);
+    color: var(--dc-text-inverse);
+    font-size: var(--dc-text-sm);
+    font-weight: 600;
+  }
+  .step h3 { font-size: var(--dc-h5); }
+  .step p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; }
+
+  .shortfalls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .shortfalls li {
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .shortfalls img { width: 32px; height: 32px; }
+  .shortfalls h3 { font-size: var(--dc-h5); }
+  .shortfalls p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; }
+  .shortfalls__answer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--dc-green) !important;
+    font-weight: 500;
+  }
+
+  .analytics { display: grid; gap: 0.6rem; margin-top: var(--dc-space-sm); }
+  .analytics li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+  .analytics :global(svg) { color: var(--dc-green); flex: none; margin-top: 0.2rem; }
+
+  @media (max-width: 900px) { .steps, .shortfalls { grid-template-columns: 1fr; } }
+</style>
