@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import DiscordBand from '../components/DiscordBand.astro';
+import { DISCORD_URL } from '../data/navigation.js';
+
+const EMAIL = 'team@dropchain.network';
+---
+
+<BaseLayout
+  title="Contact - DropChain Official Site"
+  description="Let us know how we can help you build your next web3 application. Get help adding the web3 API and single sign-on solution to your app. Drop us a line."
+>
+  <PageHero
+    title="Contact us"
+    sub="Tell us what you are building and how we can help. We read everything that comes in."
+  />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <div class="contact">
+        <form class="contact__form" method="post" action={`mailto:${EMAIL}`} enctype="text/plain">
+          <p class="contact__notice" role="status">
+            This form is not connected to a mailbox yet. Email us directly at
+            <a href={`mailto:${EMAIL}?subject=You've%20got%20mail!`}>{EMAIL}</a>
+            and we will get straight back to you.
+          </p>
+
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Enter your name" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="6" placeholder="What's on your mind?" required></textarea>
+          </label>
+
+          <Button href={`mailto:${EMAIL}?subject=You've%20got%20mail!`} icon="arrow">
+            Email us instead
+          </Button>
+        </form>
+
+        <aside class="contact__aside">
+          <div class="contact__card">
+            <span class="contact__icon"><Icon name="mail" size={22} /></span>
+            <h2>Email</h2>
+            <p class="dc-muted">The fastest way to reach the team directly.</p>
+            <a href={`mailto:${EMAIL}?subject=You've%20got%20mail!`}>{EMAIL}</a>
+          </div>
+
+          <div class="contact__card">
+            <span class="contact__icon"><Icon name="discord" size={22} /></span>
+            <h2>Discord</h2>
+            <p class="dc-muted">
+              Join the conversation with other builders and the DropChain team.
+            </p>
+            <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer">Join the Discord</a>
+          </div>
+
+          <div class="contact__card">
+            <span class="contact__icon"><Icon name="users" size={22} /></span>
+            <h2>Talk to a founder</h2>
+            <p class="dc-muted">Book a 30 minute call with someone on the founding team.</p>
+            <a href="/meet-the-team">Schedule a call</a>
+          </div>
+
+          <div class="contact__card">
+            <span class="contact__icon"><Icon name="link" size={22} /></span>
+            <h2>Want to contribute to the DropChain Library?</h2>
+            <p class="dc-muted">Share a contract or snippet with the wider developer community.</p>
+            <a href={`mailto:${EMAIL}?subject=Submit%20your%20code`}>Submit your code</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <DiscordBand />
+</BaseLayout>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--dc-space-2xl);
+    align-items: start;
+  }
+
+  .contact__form { display: grid; gap: var(--dc-space-md); }
+  .contact__notice {
+    padding: var(--dc-space-md);
+    border: 1px solid var(--dc-green);
+    border-radius: var(--dc-radius-sm);
+    background: #01f0891a;
+    color: var(--dc-text);
+    font-size: var(--dc-text-sm);
+    line-height: 1.6;
+  }
+  .contact__form label { display: grid; gap: 0.4rem; }
+  .contact__form span { font-size: var(--dc-text-sm); font-weight: 500; }
+  .contact__form input,
+  .contact__form textarea {
+    padding: 0.75rem 0.9rem;
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-sm);
+    color: var(--dc-text);
+    font-size: var(--dc-text-sm);
+  }
+  .contact__form input::placeholder,
+  .contact__form textarea::placeholder { color: var(--dc-text-dim); }
+  .contact__form input:focus, .contact__form textarea:focus { border-color: var(--dc-green); outline: none; }
+  .contact__form textarea { resize: vertical; }
+
+  .contact__aside { display: grid; gap: var(--dc-space-md); }
+  .contact__card {
+    display: grid;
+    gap: 0.4rem;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .contact__icon { color: var(--dc-green); }
+  .contact__card h2 { font-size: var(--dc-h5); }
+  .contact__card p { font-size: var(--dc-text-sm); }
+  .contact__card a { font-size: var(--dc-text-sm); font-weight: 500; }
+
+  @media (max-width: 900px) { .contact { grid-template-columns: 1fr; gap: var(--dc-space-xl); } }
+</style>

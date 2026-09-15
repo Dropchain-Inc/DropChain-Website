@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+
+const logos = [
+  { name: 'DropChain Green', file: '/images/DropChain-Green_1.svg', background: 'dark', formats: [['SVG', '/images/DropChain-Green_1.svg'], ['PNG', '/images/DropChain-Green.avif']] },
+  { name: 'DropChain Black', file: '/images/DropChain-Black.svg', background: 'light', formats: [['SVG', '/images/DropChain-Black.svg'], ['PNG', '/images/DropChain-Black.avif']] },
+  { name: 'DropChain White', file: '/images/DropChain-White.svg', background: 'dark', formats: [['SVG', '/images/DropChain-White.svg'], ['PNG', '/images/DropChain-White.avif']] },
+];
+
+const marks = [
+  { name: 'Icon 01', file: '/images/Frame-5.svg', formats: [['SVG', '/images/Frame-5.svg'], ['PNG', '/images/Frame-5.avif'], ['JPG', '/images/Frame-5_2.avif']] },
+  { name: 'Icon 02', file: '/images/Frame-4.svg', formats: [['SVG', '/images/Frame-4.svg'], ['PNG', '/images/Frame-4.avif'], ['JPG', '/images/Frame-4_1.avif']] },
+  { name: 'Icon 03', file: '/images/Frame-6.svg', formats: [['SVG', '/images/Frame-6.svg'], ['PNG', '/images/Frame-6.avif'], ['JPG', '/images/Frame-6_1.avif']] },
+  { name: 'Icon 04', file: '/images/Frame-7.svg', formats: [['SVG', '/images/Frame-7.svg'], ['PNG', '/images/Frame-5_1.avif'], ['JPG', '/images/Frame-7_1.avif']] },
+  { name: 'Icon 05', file: '/images/Frame-8.svg', formats: [['SVG', '/images/Frame-8.svg'], ['PNG', '/images/Frame-8_1.avif'], ['JPG', '/images/Frame-8_2.avif']] },
+  { name: 'Icon 06', file: '/images/Frame-9.svg', formats: [['SVG', '/images/Frame-9.svg'], ['PNG', '/images/Frame-9_1.avif'], ['JPG', '/images/Frame-9_2.avif']] },
+];
+
+const headshots = [
+  { name: 'Carter Razink', file: '/images/Carter-1_1.avif', formats: [['PNG', '/images/Carter-1_1.avif'], ['JPG', '/images/Carter-1_2.avif']] },
+  { name: 'Nathaniel Thoreson', file: '/images/Nate-1_1.avif', formats: [['PNG', '/images/Nate-1_1.avif'], ['JPG', '/images/Nate-1_2.avif']] },
+];
+
+const palette = [
+  { name: 'Brand Green', hex: '#01F089' },
+  { name: 'Soft Green', hex: '#BDFFE2' },
+  { name: 'Background', hex: '#0E0E0F' },
+  { name: 'Container', hex: '#222426' },
+  { name: 'Title Text', hex: '#E4E9F0' },
+];
+---
+
+<BaseLayout
+  title="Media Kit | DropChain"
+  description="Download DropChain logos, brand marks, headshots and brand colours."
+>
+  <PageHero
+    eyebrow="Media kit"
+    title="DropChain brand assets"
+    sub="Logos, marks, headshots and colours, ready to drop into your article, deck or integration."
+  />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <h2 class="group__title">Logos</h2>
+      <ul class="grid">
+        {logos.map((asset) => (
+          <li class="asset">
+            <div class:list={['asset__preview', `asset__preview--${asset.background}`]}>
+              <img src={asset.file} alt={asset.name} loading="lazy" />
+            </div>
+            <h3>{asset.name}</h3>
+            <ul class="asset__formats">
+              {asset.formats.map(([label, href]) => (
+                <li><a href={href} download>{label}<Icon name="arrow" size={14} /></a></li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+
+      <h2 class="group__title">Brand marks</h2>
+      <ul class="grid grid--tight">
+        {marks.map((asset) => (
+          <li class="asset">
+            <div class="asset__preview asset__preview--dark">
+              <img src={asset.file} alt={asset.name} loading="lazy" />
+            </div>
+            <h3>{asset.name}</h3>
+            <ul class="asset__formats">
+              {asset.formats.map(([label, href]) => (
+                <li><a href={href} download>{label}<Icon name="arrow" size={14} /></a></li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+
+      <h2 class="group__title">Headshots</h2>
+      <ul class="grid">
+        {headshots.map((asset) => (
+          <li class="asset">
+            <div class="asset__preview asset__preview--photo">
+              <img src={asset.file} alt={asset.name} loading="lazy" />
+            </div>
+            <h3>{asset.name}</h3>
+            <ul class="asset__formats">
+              {asset.formats.map(([label, href]) => (
+                <li><a href={href} download>{label}<Icon name="arrow" size={14} /></a></li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+
+      <h2 class="group__title">Colours</h2>
+      <ul class="swatches">
+        {palette.map((colour) => (
+          <li class="swatch">
+            <span class="swatch__chip" style={`background:${colour.hex}`}></span>
+            <span class="swatch__name">{colour.name}</span>
+            <code>{colour.hex}</code>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .group__title { font-size: var(--dc-h4); margin-bottom: var(--dc-space-md); }
+  .group__title:not(:first-child) { margin-top: var(--dc-space-2xl); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--dc-space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .grid--tight { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+  .asset {
+    display: grid;
+    gap: 0.5rem;
+    padding: var(--dc-space-md);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .asset__preview {
+    display: grid;
+    place-items: center;
+    padding: var(--dc-space-lg);
+    border-radius: var(--dc-radius-sm);
+    min-height: 110px;
+  }
+  .asset__preview--dark { background: var(--dc-bg); }
+  .asset__preview--light { background: #ffffff; }
+  .asset__preview--photo { padding: 0; overflow: hidden; }
+  .asset__preview--photo img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .asset__preview img { max-height: 70px; width: auto; }
+  .asset h3 { font-size: var(--dc-text-sm); font-weight: 600; }
+
+  .asset__formats { display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; margin: 0; padding: 0; }
+  .asset__formats a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-sm);
+    color: var(--dc-text-muted);
+    font-size: var(--dc-text-xs);
+  }
+  .asset__formats a:hover { color: var(--dc-green); border-color: var(--dc-green); }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--dc-space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .swatch {
+    display: grid;
+    gap: 0.3rem;
+    padding: var(--dc-space-md);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .swatch__chip { display: block; height: 56px; border-radius: var(--dc-radius-sm); }
+  .swatch__name { font-size: var(--dc-text-sm); font-weight: 500; }
+  .swatch code { color: var(--dc-text-muted); font-family: var(--dc-font-mono); font-size: var(--dc-text-xs); }
+
+  @media (max-width: 900px) { .grid--tight { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .grid, .grid--tight { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

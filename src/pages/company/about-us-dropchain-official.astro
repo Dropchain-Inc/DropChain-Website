@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const founders = [
+  {
+    name: 'Carter Razink',
+    role: 'CEO / Tech Lead',
+    image: '/images/carter.avif',
+    bio: 'Graduated from the University of North Dakota with degrees in Physics and Mathematics. Proven experience building profitable startups, scaling from 0 to 30,000 users in 1.5 years. 7+ years in tokenomics, web2, and web3 product management and development.',
+    links: [
+      { icon: 'linkedin', href: 'https://www.linkedin.com/in/carterrazink/', label: 'Carter Razink on LinkedIn' },
+      { icon: 'twitter', href: 'https://twitter.com/crazink', label: 'Carter Razink on Twitter' },
+    ],
+  },
+  {
+    name: 'Nathaniel Thoreson',
+    role: 'CMO / Growth Lead',
+    image: '/images/Nathaniel-1.avif',
+    bio: 'Educated in Marketing from NDSU. Extensive experience across marketing disciplines as a startup CMO, marketing strategist and comms manager at Microsoft. Powerful community evangelist, growing communities from 0 to >50,000.',
+    links: [
+      { icon: 'linkedin', href: 'https://www.linkedin.com/in/nathaniel-j-thoreson-617501120/', label: 'Nathaniel Thoreson on LinkedIn' },
+      { icon: 'twitter', href: 'https://twitter.com/thoreson_nate', label: 'Nathaniel Thoreson on Twitter' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="About Us | DropChain Official"
+  description="Learn about our mission and team"
+>
+  <PageHero
+    eyebrow="With DropChain"
+    title="Learn about us"
+    sub="DropChain builds developer tools that allow anyone to build and use web3 applications. Our mission is to onboard the next 1 million web3 builders."
+  />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <figure class="snippet">
+        <figcaption>Fetch all NFTs from an ERC-721 contract on Polygon</figcaption>
+        <pre><code>{`import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+
+const sdk = new ThirdwebSDK("polygon");
+const contract = await sdk.getContract("0x..");
+const nfts = await contract.erc721.getAll();`}</code></pre>
+      </figure>
+
+      <ul class="founders">
+        {founders.map((person) => (
+          <li class="founder">
+            <img src={person.image} alt={person.name} loading="lazy" />
+            <div class="founder__body">
+              <h2>{person.name}</h2>
+              <p class="founder__role">{person.role}</p>
+              <p class="dc-muted">{person.bio}</p>
+              <ul class="founder__links">
+                {person.links.map((link) => (
+                  <li>
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+                      <Icon name={link.icon} size={18} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Come build with us"
+    sub="Start free, no credit card required."
+  />
+</BaseLayout>
+
+<style>
+  .snippet {
+    margin: 0 0 var(--dc-space-xl);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    overflow: hidden;
+  }
+  .snippet figcaption {
+    padding: 0.7rem var(--dc-space-lg);
+    border-bottom: 1px solid var(--dc-border);
+    color: var(--dc-text-muted);
+    font-size: var(--dc-text-xs);
+  }
+  .snippet pre { margin: 0; padding: var(--dc-space-lg); overflow-x: auto; }
+  .snippet code {
+    font-family: var(--dc-font-mono);
+    font-size: var(--dc-text-sm);
+    line-height: 1.7;
+    color: var(--dc-green-soft);
+  }
+  .founder__role { color: var(--dc-green); font-size: var(--dc-text-sm); font-weight: 500; }
+
+  .founders { display: grid; gap: var(--dc-space-md); list-style: none; margin: 0; padding: 0; }
+  .founder {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--dc-space-lg);
+    align-items: center;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+  }
+  .founder img { width: 100%; border-radius: var(--dc-radius); aspect-ratio: 1; object-fit: cover; }
+  .founder__body { display: grid; gap: 0.6rem; }
+  .founder h2 { font-size: var(--dc-h4); }
+  .founder p { font-size: var(--dc-text-sm); line-height: 1.7; }
+  .founder__links { display: flex; gap: 0.5rem; list-style: none; margin: 0.4rem 0 0; padding: 0; }
+  .founder__links a {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-sm);
+    color: var(--dc-text-muted);
+  }
+  .founder__links a:hover { color: var(--dc-green); border-color: var(--dc-green); }
+
+  @media (max-width: 720px) {
+    .founder { grid-template-columns: 1fr; }
+    .founder img { max-width: 180px; }
+  }
+</style>

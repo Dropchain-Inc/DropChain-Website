@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import DiscordBand from '../components/DiscordBand.astro';
+
+const calls = [
+  {
+    name: 'Carter Razink',
+    role: 'Co-founder',
+    href: 'https://calendly.com/carter-dropchain/30min',
+    label: 'Meet With Carter Razink',
+    image: '/images/carter.avif',
+  },
+  {
+    name: 'Nathaniel Thoreson',
+    role: 'Co-founder',
+    href: 'https://calendly.com/nathanielthoreson/30min',
+    label: 'Meet With Nathaniel Thoreson',
+    image: '/images/Nathaniel-1.avif',
+  },
+  {
+    name: 'The Full Founding Team',
+    role: 'Group call',
+    href: 'https://meet.brevo.com/dropchain',
+    label: 'Meet With Full Founding Team',
+  },
+];
+---
+
+<BaseLayout
+  title="Meet the Team | DropChain"
+  description="Schedule a call with the DropChain founding team to talk through your web3 project."
+>
+  <PageHero
+    center
+    eyebrow="Meet the team"
+    title="Schedule a Call with our Team"
+    sub="Book thirty minutes with a founder and talk through what you are building."
+  />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <ul class="team">
+        {calls.map((person) => (
+          <li class="member">
+            {person.image
+              ? <img class="member__photo" src={person.image} alt={person.name} loading="lazy" />
+              : <span class="member__photo member__photo--icon"><Icon name="users" size={30} /></span>}
+            <h2>{person.name}</h2>
+            <p class="dc-muted">{person.role}</p>
+            <a class="member__cta" href={person.href} target="_blank" rel="noopener noreferrer">
+              {person.label}
+              <Icon name="arrow" size={16} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <DiscordBand />
+</BaseLayout>
+
+<style>
+  .team {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--dc-space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-align: center;
+    padding: var(--dc-space-xl) var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .member__photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--dc-space-sm);
+  }
+  .member__photo--icon {
+    display: grid;
+    place-items: center;
+    background: var(--dc-surface-accent);
+    color: var(--dc-green);
+  }
+  .member h2 { font-size: var(--dc-h5); }
+  .member p { font-size: var(--dc-text-sm); }
+  .member__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: var(--dc-space-md);
+    padding: 0.6rem 1.25rem;
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-sm);
+    color: var(--dc-text);
+    font-size: var(--dc-text-sm);
+    font-weight: 500;
+  }
+  .member__cta:hover { border-color: var(--dc-green); color: var(--dc-green); }
+
+  @media (max-width: 860px) { .team { grid-template-columns: 1fr; } }
+</style>

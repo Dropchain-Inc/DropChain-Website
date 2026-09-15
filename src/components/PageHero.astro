@@ -1,0 +1,21 @@
+---
+interface Props { eyebrow?: string; title: string; sub?: string; center?: boolean; }
+const { eyebrow, title, sub, center = false } = Astro.props;
+---
+<section class:list={['page-hero', center && 'page-hero--center']}>
+  <div class="dc-container">
+    {eyebrow && <p class="dc-eyebrow">{eyebrow}</p>}
+    <h1 set:html={title} />
+    {sub && <p class="dc-lead">{sub}</p>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .page-hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) var(--dc-space-lg); }
+  .page-hero h1 { max-width: 22ch; }
+  .page-hero .dc-eyebrow { margin-bottom: 0.7rem; }
+  .page-hero .dc-lead { max-width: 60ch; margin-top: var(--dc-space-md); }
+  .page-hero--center { text-align: center; }
+  .page-hero--center h1, .page-hero--center .dc-lead { margin-inline: auto; }
+</style>
