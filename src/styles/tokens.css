@@ -1,0 +1,70 @@
+/* DropChain design tokens.
+   Values carried over from the Webflow build so the brand stays consistent. */
+
+:root {
+  /* Brand */
+  --dc-green: #01f089;
+  --dc-green-soft: #bdffe2;
+  --dc-green-dark: #243a30;
+  --dc-green-fade: #01f0894d;
+  --dc-gradient: linear-gradient(72deg, #13fec3, #30f29f 41%);
+  --dc-gradient-text: linear-gradient(65deg, #00febd, #2df29d);
+
+  /* Surfaces */
+  --dc-bg: #0e0e0f;
+  --dc-bg-raised: #121317;
+  --dc-surface: #222426;
+  --dc-surface-accent: #2e3033;
+  --dc-border: #2e3033;
+  --dc-border-soft: #ffffff14;
+
+  /* Text */
+  --dc-text: #e4e9f0;
+  --dc-text-muted: #959da6;
+  --dc-text-dim: #575d66;
+  --dc-text-inverse: #0e0e0f;
+
+  /* Type */
+  --dc-font: Poppins, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --dc-font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --dc-text-xs: 0.8125rem;
+  --dc-text-sm: 0.9375rem;
+  --dc-text-base: 1rem;
+  --dc-text-lg: 1.05rem;
+  --dc-text-xl: 1.25rem;
+  --dc-h6: 0.875rem;
+  --dc-h5: 1.125rem;
+  --dc-h4: 1.5rem;
+  --dc-h3: 1.875rem;
+  --dc-h2: 2.25rem;
+  --dc-h1: 3rem;
+
+  /* Spacing scale */
+  --dc-space-xs: 0.5rem;
+  --dc-space-sm: 0.75rem;
+  --dc-space-md: 1.25rem;
+  --dc-space-lg: 2rem;
+  --dc-space-xl: 3rem;
+  --dc-space-2xl: 4.5rem;
+  --dc-space-3xl: 7rem;
+
+  /* Layout */
+  --dc-container: 1400px;
+  --dc-container-narrow: 900px;
+  --dc-gutter: clamp(1rem, 4vw, 2.5rem);
+
+  /* Shape */
+  --dc-radius-sm: 0.3125rem;
+  --dc-radius: 0.75rem;
+  --dc-radius-lg: 1.25rem;
+  --dc-radius-pill: 999px;
+
+  /* Effects */
+  --dc-glow: 0 2px 20px #57feb67d;
+  --dc-shadow: 0 18px 40px #00000059;
+  --dc-transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Chrome */
+  --dc-nav-height: 72px;
+}

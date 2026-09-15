@@ -1,0 +1,46 @@
+---
+import { testimonials } from '../data/site.js';
+---
+<section class="quotes dc-section">
+  <div class="dc-container">
+    <ul class="quotes__grid">
+      {testimonials.map((item) => (
+        <li class="quote">
+          <svg class="quote__mark" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M9.5 4C6.46 4 4 6.46 4 9.5S6.46 15 9.5 15h.3c-.5 2.2-2 3.6-4.3 4.3a1 1 0 0 0 .6 1.9c4.4-1.4 6.9-4.8 6.9-10V9.5C13 6.46 12.54 4 9.5 4zm11 0C17.46 4 15 6.46 15 9.5S17.46 15 20.5 15h.3c-.5 2.2-2 3.6-4.3 4.3a1 1 0 0 0 .6 1.9c4.4-1.4 6.9-4.8 6.9-10V9.5C24 6.46 23.54 4 20.5 4z"/>
+          </svg>
+          <blockquote>{item.quote}</blockquote>
+          <footer>
+            <span class="quote__name">{item.name}</span>
+            <span class="quote__role">{item.role}</span>
+          </footer>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .quotes__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--dc-space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .quote {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dc-space-md);
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .quote__mark { width: 28px; height: 28px; color: var(--dc-green); flex: none; }
+  .quote blockquote { margin: 0; color: var(--dc-text); font-size: var(--dc-text-sm); line-height: 1.7; flex: 1; }
+  .quote footer { display: flex; flex-direction: column; gap: 0.15rem; }
+  .quote__name { color: var(--dc-text); font-size: var(--dc-text-sm); font-weight: 600; }
+  .quote__role { color: var(--dc-text-muted); font-size: var(--dc-text-xs); }
+</style>

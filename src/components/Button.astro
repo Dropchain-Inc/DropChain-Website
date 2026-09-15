@@ -1,0 +1,61 @@
+---
+import Icon from './Icon.astro';
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  icon?: string | false;
+  external?: boolean;
+  class?: string;
+}
+const { href, variant = 'primary', icon = 'bolt', external, class: className } = Astro.props;
+const isExternal = external ?? /^https?:/.test(href);
+---
+<a
+  href={href}
+  class:list={['btn', `btn--${variant}`, className]}
+  {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+>
+  <span><slot /></span>
+  {icon && <Icon name={icon} size={18} />}
+</a>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.75rem;
+    border-radius: var(--dc-radius-sm);
+    font-size: var(--dc-text-base);
+    font-weight: 500;
+    line-height: 1.25rem;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: transform var(--dc-transition), box-shadow var(--dc-transition),
+      background-color var(--dc-transition), border-color var(--dc-transition), color var(--dc-transition);
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn--primary {
+    background-image: var(--dc-gradient);
+    color: var(--dc-text-inverse);
+    box-shadow: var(--dc-glow);
+  }
+  .btn--primary:hover { color: var(--dc-text-inverse); box-shadow: 0 4px 28px #57feb6a6; }
+
+  .btn--secondary {
+    background-color: var(--dc-surface);
+    border-color: var(--dc-border);
+    color: var(--dc-text);
+  }
+  .btn--secondary:hover { border-color: var(--dc-green); color: var(--dc-text); }
+
+  .btn--ghost {
+    background-color: transparent;
+    border-color: var(--dc-border);
+    color: var(--dc-text);
+  }
+  .btn--ghost:hover { border-color: var(--dc-green); color: var(--dc-green); }
+</style>

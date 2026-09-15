@@ -1,0 +1,350 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import LordIcon from '../components/LordIcon.astro';
+import LogoStrip from '../components/LogoStrip.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Pricing from '../components/Pricing.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { APP_URL } from '../data/navigation.js';
+
+const pillars = [
+  {
+    image: '/images/Frame-99-1_1.avif',
+    title: 'Easy Lead Capture',
+    blurb:
+      'Seamlessly onboard members and distribute NFTs with one-click sign-ins through Apple, Google, and Meta. No wallets or gas fees required.',
+  },
+  {
+    image: '/images/Frame-100-1_1.avif',
+    title: 'Connect Data',
+    blurb:
+      'Sync wallet and email data from your new or existing NFT collection or token contracts to build a complete profile of your community members.',
+  },
+  {
+    image: '/images/Frame-101-5_1.avif',
+    title: 'Marketing CRM',
+    blurb:
+      'Unlock marketing opportunities currently unavailable in web3. Run targeted and automated email campaigns to engage and grow your token or NFT community.',
+  },
+];
+
+const benefits = [
+  { icon: 'vpbspaec', title: 'Email Marketing', blurb: 'Create, automate, and send personalized email campaigns to engage your web3 community.' },
+  { icon: 'fgxwhgfp', title: 'Post Quantum Security', blurb: 'The blockchain can be risky for new users. Our custom Layer-1 blockchain protects you and your customers.' },
+  { icon: 'gsjfryhc', title: 'Cross-Chain Compatibility', blurb: 'Onboard, engage, and gather data from community members across any major blockchain.' },
+  { icon: 'urswgamh', title: 'Easy Onboarding', blurb: 'DropChain automatically creates wallets for users with web2 credentials.' },
+  { icon: 'yvjimpju', title: 'Unified Data', blurb: 'Combine wallet activity and email data in one platform to easily track, segment, and understand your community.' },
+];
+
+const solutions = [
+  { title: 'DropChain API', blurb: 'Explore all 30+ API endpoints', href: '/api' },
+  { title: 'Single Sign On', blurb: 'Onboard everyone, even users without a wallet', href: '/sso' },
+  { title: 'Payments', blurb: 'Accept credit cards for NFT sales', href: '/nft-fiat-onramp' },
+  { title: 'Python SDK', blurb: 'Build web3 apps without Solidity', href: '/sdk/python' },
+  { title: 'No-Code Solutions', blurb: 'Build web3 apps with 100% no code', href: '/no-code' },
+  { title: 'JavaScript SDK', blurb: 'Build web3 apps with JavaScript', href: '/sdk/javascript' },
+  { title: 'Enterprise', blurb: 'See what DropChain can do for your business', href: '/solutions/enterprise' },
+  { title: 'DropChain Network', blurb: 'Learn about our infrastructure', href: '/network' },
+];
+
+const steps = [
+  {
+    step: 'Step 1',
+    title: 'Create Your Free Account',
+    blurb: 'Sign up for DropChain in minutes and access all the tools you need to grow your web3 community, completely free to start.',
+  },
+  {
+    step: 'Step 2',
+    title: 'Import Your Data & Onboard Members',
+    blurb: 'Easily upload your community data via CSV or contract address and have your community automatically populated.',
+  },
+  {
+    step: 'Step 3',
+    title: 'Automate Community Engagement',
+    blurb: 'Run targeted and automated email campaigns to connect with your community, drive brand engagement, and grow your audience.',
+  },
+];
+---
+
+<BaseLayout
+  title="DropChain | Marketing CRM for Web3 Communities"
+  description="DropChain is the most powerful marketing platform for web3 communities. Manage and grow your audience with seamless onboarding, unified web2 and web3 data, and email campaigns."
+>
+  <section class="hero">
+    <div class="dc-container hero__inner">
+      <div class="hero__content">
+        <p class="dc-eyebrow">For small businesses with Token-Holder Communities</p>
+        <h1>
+          <span class="dc-gradient-text">Marketing CRM</span>{' '}to Grow &amp; Engage Your{' '}
+          <span class="dc-gradient-text">Token</span>{' '}Community
+        </h1>
+        <p class="dc-lead">
+          Marketing tools to easily grow and manage web3 communities. With unified email
+          and wallet data, run automated campaigns to scale your community.
+        </p>
+        <div class="hero__actions">
+          <Button href={APP_URL}>Start For Free</Button>
+          <Button
+            href="https://claim.dropchain.network/claim/v3/ad511153-407e-444c-b89d-e6621e10c084"
+            variant="ghost"
+            icon="arrow"
+          >See How it Works</Button>
+        </div>
+      </div>
+      <div class="hero__media">
+        <img
+          src="/images/Group-48-1_1.avif"
+          alt="The DropChain marketing CRM dashboard"
+          width="820"
+          height="620"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <LogoStrip />
+
+  <section class="dc-section" id="how-it-works">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Grow &amp; Nurture Your Community with Web2 + Web3 Data</h2>
+        <p class="dc-lead">
+          Unlock powerful marketing tools to engage and expand your NFT or token ecosystem.
+        </p>
+      </header>
+      <ul class="pillars">
+        {pillars.map((pillar) => (
+          <li class="pillar">
+            <img src={pillar.image} alt="" loading="lazy" />
+            <h3>{pillar.title}</h3>
+            <p>{pillar.blurb}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <div class="split">
+        <div>
+          <h2>Unlock New Marketing Opportunities to your Web3 Audience</h2>
+          <p class="dc-lead">
+            Until now, web3 communities had no way to interact with their audience outside
+            of crowded social media platforms.
+          </p>
+          <Button href={APP_URL} class="split__cta">Start For Free</Button>
+        </div>
+        <img src="/images/image-9_1.avif" alt="" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <section class="dc-section benefits">
+    <div class="dc-container">
+      <header class="section-head">
+        <p class="dc-eyebrow">Benefits</p>
+        <h2>Why use <span class="dc-gradient-text">DropChain</span> over the competition?</h2>
+      </header>
+      <ul class="benefits__grid">
+        {benefits.map((benefit) => (
+          <li class="benefit">
+            <LordIcon id={benefit.icon} size={40} />
+            <h3>{benefit.title}</h3>
+            <p>{benefit.blurb}</p>
+          </li>
+        ))}
+      </ul>
+      <div class="benefits__cta">
+        <Button href={APP_URL}>Start For Free</Button>
+        <p class="dc-muted">Go Pro for only $1</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dc-section" id="solutions">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Solutions</h2>
+      </header>
+      <ul class="solutions">
+        {solutions.map((solution) => (
+          <li>
+            <a class="solution" href={solution.href}>
+              <span class="solution__title">
+                {solution.title}
+                <Icon name="arrow" size={16} />
+              </span>
+              <span class="solution__blurb">{solution.blurb}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="dc-section steps">
+    <div class="dc-container">
+      <header class="section-head section-head--center">
+        <h2>How to Get Started</h2>
+      </header>
+      <ol class="steps__grid">
+        {steps.map((item) => (
+          <li class="step">
+            <p class="step__label">{item.step}</p>
+            <h3>{item.title}</h3>
+            <p class="step__blurb">{item.blurb}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <Pricing />
+
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  .hero { padding-block: clamp(3rem, 8vw, 6.5rem) var(--dc-space-2xl); }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: var(--dc-space-2xl);
+  }
+  .hero__content { display: flex; flex-direction: column; gap: var(--dc-space-md); align-items: flex-start; }
+  .hero__content h1 { max-width: 18ch; }
+  .hero__content .dc-lead { max-width: 52ch; }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-xs); }
+  .hero__media img { border-radius: var(--dc-radius-lg); }
+
+  .section-head { max-width: 62ch; margin-bottom: var(--dc-space-xl); }
+  .section-head--center { margin-inline: auto; text-align: center; }
+  .section-head .dc-eyebrow { margin-bottom: 0.6rem; }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--dc-space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .pillar { display: flex; flex-direction: column; gap: 0.6rem; }
+  .pillar img { border-radius: var(--dc-radius); margin-bottom: var(--dc-space-xs); }
+  .pillar h3 { font-size: var(--dc-h4); }
+  .pillar p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--dc-space-2xl);
+  }
+  .split .dc-lead { margin-top: var(--dc-space-md); }
+  .split__cta { margin-top: var(--dc-space-lg); }
+  .split img { border-radius: var(--dc-radius-lg); }
+
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--dc-space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .benefit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .benefit h3 { font-size: var(--dc-h5); margin-top: 0.25rem; }
+  .benefit p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; }
+  .benefits__cta {
+    display: flex;
+    align-items: center;
+    gap: var(--dc-space-md);
+    margin-top: var(--dc-space-xl);
+  }
+
+  .solutions {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--dc-space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .solution {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    height: 100%;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    color: var(--dc-text);
+    transition: border-color var(--dc-transition), transform var(--dc-transition);
+  }
+  .solution:hover { border-color: var(--dc-green); transform: translateY(-2px); color: var(--dc-text); }
+  .solution__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: var(--dc-text-base);
+    font-weight: 600;
+  }
+  .solution:hover .solution__title :global(svg) { color: var(--dc-green); }
+  .solution__blurb { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.55; }
+
+  .steps__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--dc-space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: step;
+  }
+  .step {
+    padding: var(--dc-space-lg);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    background: linear-gradient(180deg, #ffffff08, transparent);
+  }
+  .step__label {
+    color: var(--dc-green);
+    font-size: var(--dc-text-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .step h3 { font-size: var(--dc-h5); margin-block: 0.5rem; }
+  .step__blurb { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; }
+
+  @media (max-width: 1050px) {
+    .solutions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 900px) {
+    .hero__inner, .split { grid-template-columns: 1fr; gap: var(--dc-space-xl); }
+    .pillars, .steps__grid { grid-template-columns: 1fr; }
+    .split img { order: -1; }
+  }
+  @media (max-width: 560px) {
+    .solutions { grid-template-columns: 1fr; }
+    .benefits__cta { flex-direction: column; align-items: flex-start; }
+  }
+</style>

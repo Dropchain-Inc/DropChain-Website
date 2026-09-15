@@ -1,0 +1,46 @@
+---
+import { logos } from '../data/site.js';
+interface Props { title?: string; }
+const { title = 'Trusted by Hundreds of Communities' } = Astro.props;
+---
+<section class="logos dc-section--tight">
+  <div class="dc-container">
+    <h2 class="logos__title">{title}</h2>
+    <ul class="logos__grid">
+      {logos.map((logo) => (
+        <li><img src={logo.src} alt={logo.alt} loading="lazy" /></li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .logos__title {
+    text-align: center;
+    color: var(--dc-text-muted);
+    font-size: var(--dc-h6);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--dc-space-lg);
+  }
+  .logos__grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--dc-space-xl);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .logos__grid img {
+    height: 34px;
+    width: auto;
+    opacity: 0.65;
+    filter: grayscale(1);
+    transition: opacity var(--dc-transition), filter var(--dc-transition);
+  }
+  .logos__grid li:hover img { opacity: 1; filter: grayscale(0); }
+  @media (max-width: 640px) { .logos__grid { gap: var(--dc-space-lg); } .logos__grid img { height: 26px; } }
+</style>

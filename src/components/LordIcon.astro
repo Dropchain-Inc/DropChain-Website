@@ -1,0 +1,54 @@
+---
+// Self-hosted Lottie icon. The animation files were vendored from Lordicon into
+// /public/icons, so the site has no runtime dependency on their CDN.
+interface Props { id: string; size?: number; class?: string; }
+const { id, size = 35, class: className } = Astro.props;
+---
+<span
+  class:list={['lordicon', className]}
+  data-icon={`/icons/${id}.json`}
+  style={`width:${size}px;height:${size}px`}
+  aria-hidden="true"
+></span>
+
+<style>
+  .lordicon { display: inline-block; flex: none; }
+</style>
+
+<script>
+  // Lazily boot Lottie only if animated icons are actually on the page, and only
+  // once they scroll into view.
+  const icons = document.querySelectorAll<HTMLElement>('.lordicon:not([data-loaded])');
+  if (icons.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(async (entries, obs) => {
+      const visible = entries.filter((e) => e.isIntersecting);
+      if (!visible.length) return;
+      try {
+        // lottie-web ships UMD, so the namespace shape varies after bundling.
+        const mod: any = await import('lottie-web/build/player/lottie_light.min.js');
+        const lottie = mod.default ?? mod.lottie ?? mod;
+        for (const entry of visible) {
+          const el = entry.target as HTMLElement;
+          obs.unobserve(el);
+          if (el.dataset.loaded) continue;
+          el.dataset.loaded = 'true';
+          const animation = lottie.loadAnimation({
+            container: el,
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: el.dataset.icon!,
+          });
+          // The Webflow build used Lordicon's delay="2000", so each icon rests
+          // fully drawn for two seconds before replaying.
+          animation.addEventListener('complete', () => {
+            window.setTimeout(() => animation.goToAndPlay(0, true), 2000);
+          });
+        }
+      } catch (error) {
+        console.warn('[dropchain] animated icons unavailable', error);
+      }
+    }, { rootMargin: '200px' });
+    icons.forEach((el) => observer.observe(el));
+  }
+</script>

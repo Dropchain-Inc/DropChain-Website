@@ -1,0 +1,131 @@
+---
+import Icon from './Icon.astro';
+import Button from './Button.astro';
+import { footerColumns, socialLinks, legalLinks, APP_URL, DISCORD_URL } from '../data/navigation.js';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="dc-container">
+    <div class="footer__top">
+      <div class="footer__intro">
+        <a href="/" class="footer__brand" aria-label="DropChain home">
+          <img src="/images/DropChain-Green.svg" alt="DropChain" width="350" height="53" />
+        </a>
+        <p class="footer__tagline">
+          The marketing platform for web3 communities. Unify your email and wallet
+          data, then run the campaigns that grow it.
+        </p>
+        <div class="footer__cta">
+          <Button href={APP_URL}>Get Started</Button>
+          <Button href={DISCORD_URL} variant="ghost" icon={false}>Join the Discussion</Button>
+        </div>
+      </div>
+
+      <nav class="footer__columns" aria-label="Footer">
+        {footerColumns.map((column) => (
+          <div class="footer__column">
+            <h2 class="footer__column-title">{column.title}</h2>
+            <ul>
+              {column.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    {...link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+                  >{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; {year} DropChain. All rights reserved.</p>
+
+      <ul class="footer__legal">
+        {legalLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+
+      <ul class="footer__social">
+        {socialLinks.map((link) => (
+          <li>
+            <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+              <Icon name={link.icon} size={18} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--dc-border-soft);
+    background: var(--dc-bg-raised);
+    padding-block: var(--dc-space-2xl) var(--dc-space-lg);
+    margin-top: var(--dc-space-3xl);
+  }
+  .footer__top {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) 2.2fr;
+    gap: var(--dc-space-2xl);
+    padding-bottom: var(--dc-space-2xl);
+  }
+  .footer__brand { display: inline-flex; margin-bottom: var(--dc-space-md); }
+  .footer__brand img { width: 170px; height: auto; }
+  .footer__tagline { color: var(--dc-text-muted); font-size: var(--dc-text-sm); max-width: 38ch; }
+  .footer__cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+
+  .footer__columns {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--dc-space-lg);
+  }
+  .footer__column-title {
+    color: var(--dc-text);
+    font-size: var(--dc-h6);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+  }
+  .footer__column ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+  .footer__column a { color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+  .footer__column a:hover { color: var(--dc-green); }
+
+  .footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--dc-space-md);
+    padding-top: var(--dc-space-lg);
+    border-top: 1px solid var(--dc-border-soft);
+  }
+  .footer__copy { color: var(--dc-text-dim); font-size: var(--dc-text-xs); }
+  .footer__legal, .footer__social { display: flex; flex-wrap: wrap; align-items: center; list-style: none; margin: 0; padding: 0; }
+  .footer__legal { gap: 0.4rem 1.1rem; }
+  .footer__legal a { color: var(--dc-text-dim); font-size: var(--dc-text-xs); }
+  .footer__legal a:hover { color: var(--dc-green); }
+  .footer__social { gap: 0.4rem; }
+  .footer__social a {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-sm);
+    color: var(--dc-text-muted);
+  }
+  .footer__social a:hover { color: var(--dc-green); border-color: var(--dc-green); }
+
+  @media (max-width: 900px) {
+    .footer__top { grid-template-columns: 1fr; gap: var(--dc-space-xl); }
+    .footer__columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .footer__bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>

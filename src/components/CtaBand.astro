@@ -1,0 +1,40 @@
+---
+import Button from './Button.astro';
+import { APP_URL } from '../data/navigation.js';
+interface Props { heading?: string; sub?: string; cta?: string; href?: string; }
+const {
+  heading = 'Start growing your token community today',
+  sub = 'Free to start. No credit card required.',
+  cta = 'Start For Free',
+  href = APP_URL,
+} = Astro.props;
+---
+<section class="cta-band dc-section--tight">
+  <div class="dc-container">
+    <div class="cta-band__inner">
+      <div>
+        <h2>{heading}</h2>
+        <p class="dc-lead">{sub}</p>
+      </div>
+      <Button href={href}>{cta}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--dc-space-lg);
+    padding: var(--dc-space-xl);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+    background:
+      radial-gradient(90% 140% at 12% 0%, #01f0891f, transparent 60%),
+      var(--dc-surface);
+  }
+  .cta-band__inner .dc-lead { margin-top: 0.5rem; }
+  @media (max-width: 640px) { .cta-band__inner { padding: var(--dc-space-lg); } }
+</style>

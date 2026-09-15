@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Webflow export kept locally as a content reference, not shipped
+dropchain-6028cb.webflow/
+
+# OS
+.DS_Store
+**/.DS_Store
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/
+.idea/

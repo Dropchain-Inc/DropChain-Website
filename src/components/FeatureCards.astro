@@ -1,0 +1,68 @@
+---
+import Icon from './Icon.astro';
+interface Item { title: string; blurb?: string; href?: string; icon?: string; image?: string; }
+interface Props { eyebrow?: string; heading?: string; sub?: string; items: Item[]; columns?: number; }
+const { eyebrow, heading, sub, items, columns = 3 } = Astro.props;
+---
+<section class="features dc-section">
+  <div class="dc-container">
+    {(eyebrow || heading || sub) && (
+      <header class="features__head">
+        {eyebrow && <p class="dc-eyebrow">{eyebrow}</p>}
+        {heading && <h2 set:html={heading} />}
+        {sub && <p class="dc-lead">{sub}</p>}
+      </header>
+    )}
+
+    <ul class="features__grid" style={`--cols:${columns}`}>
+      {items.map((item) => {
+        const Tag = item.href ? 'a' : 'div';
+        return (
+          <li>
+            <Tag class="feature" {...item.href ? { href: item.href } : {}}>
+              {item.image && <img class="feature__image" src={item.image} alt="" loading="lazy" />}
+              {item.icon && <span class="feature__icon"><Icon name={item.icon} size={22} /></span>}
+              <h3 class="feature__title">{item.title}</h3>
+              {item.blurb && <p class="feature__blurb">{item.blurb}</p>}
+            </Tag>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .features__head { max-width: 62ch; margin-bottom: var(--dc-space-xl); }
+  .features__head .dc-eyebrow { margin-bottom: 0.6rem; }
+  .features__head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .features__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+    gap: var(--dc-space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .feature {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    height: 100%;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    color: var(--dc-text);
+    transition: border-color var(--dc-transition), transform var(--dc-transition);
+  }
+  a.feature:hover { border-color: var(--dc-green); transform: translateY(-2px); color: var(--dc-text); }
+  .feature__image { border-radius: var(--dc-radius-sm); margin-bottom: var(--dc-space-xs); }
+  .feature__icon { color: var(--dc-green); }
+  .feature__title { font-size: var(--dc-h5); font-weight: 600; }
+  .feature__blurb { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; }
+
+  @media (max-width: 960px) { .features__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .features__grid { grid-template-columns: 1fr; } }
+</style>
