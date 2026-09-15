@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import LinkCards from '../components/LinkCards.astro';
+import Split from '../components/Split.astro';
+import Pricing from '../components/Pricing.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL, DOCS_URL } from '../data/navigation.js';
+
+const pillars = [
+  { image: '/images/Group-1.svg', title: 'Focus on what you know', blurb: 'Building web 3.0 products is hard. Focus on building a great app. Let the API do the heavy lifting.' },
+  { image: '/images/Group-5.svg', title: 'Build anywhere', blurb: 'Use the API to add web3 functionality to your fully programmed app or enhance your no-code app.' },
+  { image: '/images/Group-2.svg', title: 'Brick by Brick', blurb: 'Access pre-made smart contracts through the DropChain API. Build entire blockchain apps like LEGO bricks.' },
+  { image: '/images/Group-4.svg', title: 'Chain Agnostic', blurb: 'The DropChain API supports all major blockchains. Build and grow your community anywhere.' },
+];
+
+const endpoints = [
+  { icon: '/images/Vector.svg', name: 'asset_mint', blurb: 'Allow users to create NFTs and other assets from your app.' },
+  { icon: '/images/Group.svg', name: 'get_address_from_uid', blurb: "Fetch the wallet address associated with the user's unique ID." },
+  { icon: '/images/Group-6.svg', name: 'atomic_swap', blurb: 'Allow users to swap assets from within your app. (Example: ALGO to FAME)' },
+  { icon: '/images/Group-7.svg', name: 'delete_asset', blurb: "When they're done using an asset, your users can delete it with this endpoint." },
+  { icon: '/images/Group-8.svg', name: 'asset_optin', blurb: 'Let users access new tokens and NFTs directly within your platform.' },
+  { icon: '/images/Group-9.svg', name: 'redeem_session_token', blurb: 'Enable mass adoption with web 2.0 credential sign-on using DropChain Single Sign-On.' },
+  { icon: '/images/Group-11.svg', name: 'send_asset', blurb: 'Enable users to send NFTs and tokens directly to other users of your game or platform.' },
+  { icon: '/images/Vector-1.svg', name: 'asset_get_note_from_txid', blurb: 'Fetch the note associated with transactions.' },
+  { icon: '/images/Group-8.svg', name: 'freeze_asset', blurb: 'Let users securely store assets in their wallet that cannot be moved. Also called "soul bound", by pausing transactions for that token or ASA.' },
+];
+
+const chains = [
+  { name: 'Algorand', logo: '/images/algorand-algo-logo-2.svg', href: 'https://www.algorand.com/', tag: "DropChain's first supported L1", stats: ['4 second transaction finality', '100% uptime', '+29 million wallets'] },
+  { name: 'Ethereum', logo: '/images/fa-brands_ethereum.svg', href: 'https://ethereum.org/en/', tag: 'First Layer-1 Blockchain', stats: ['Most popular Layer-1 blockchain', 'Supports +4,000 apps', '+200 million wallets'] },
+  { name: 'Polygon', logo: '/images/polygon-matic-logo-1.svg', href: 'https://polygon.technology/', tag: 'ETH sidechain compatible with EVM', stats: ['335% growth in dev teams YTD', '804% growth in dev teams Y/Y', '53,000 dApps on Polygon'] },
+  { name: 'Optimism', logo: '/images/optimism-ethereum-op-logo-1.svg', href: 'https://www.optimism.io/', tag: 'Layer 2 scaling solution for ETH', stats: ['>1000% growth in dev teams Y/Y', '460% growth in API consumption YTD', '+100 dApps on Optimism'] },
+  { name: 'Arbitrum', logo: '/images/Group-418.svg', href: 'https://arbitrum.io/', tag: 'Ethereum layer two scaling solution', stats: ['516% growth in dev teams YTD', '795% growth in dev teams Y/Y', '+100 dApps supported on Arbitrum'] },
+  { name: 'Solana', logo: '/images/solana-sol-logo-1.avif', href: 'https://solana.com/', tag: 'Layer 1 smart contract dev platform', stats: ['>1000% growth in dev teams YTD', '>1000% growth in API consumption YTD', '9 million Solana wallets'] },
+];
+
+const stories = [
+  { kind: 'Gaming Studio', title: 'Super Algo', blurb: 'Super is a gaming studio that specializes in play-to-earn games on the Algorand blockchain. With DropChain, the team saved countless hours to integrate transactions.', href: 'https://www.dropchain.network/post/super-algorand-chooses-dropchain', cta: 'Read More' },
+  { kind: 'Video Sharing', title: 'NiftGen', blurb: 'NiftGen is a video sharing platform that allows creators to better monetize their content. The SSO will soon open the platform to the masses.', href: 'https://www.dropchain.network/post/niftgen-x-dropchain', cta: 'Read More' },
+  { kind: 'Photo Sharing Demo', title: 'No-Code IG Clone', blurb: 'DropPhoto was created using the no-code app builder Bubble. With the API and SSO, you can create an entire no-code web3 app.', href: 'https://dropphoto-30.bubbleapps.io/version-test/login', cta: 'View Demo' },
+];
+
+const trusted = [
+  { src: '/images/Odea.svg', alt: 'Odea' },
+  { src: '/images/lambda.svg', alt: 'Lambda' },
+  { src: '/images/Group_1.avif', alt: 'DropChain partner' },
+  { src: '/images/Group-366.svg', alt: 'DropChain partner' },
+];
+---
+
+<BaseLayout
+  title="Web3 API - DropChain API"
+  description="The DropChain API seamlessly integrates with your traditional Web 2.0 application to enhance it with all the Web 3.0 functionality you'll ever need."
+>
+  <PageHero
+    eyebrow="Web3 API"
+    title="Build your Web 3.0 App in Days. Not Months."
+    sub="The DropChain API seamlessly integrates with your traditional Web 2.0 application to enhance it with all the Web 3.0 functionality you'll ever need."
+  >
+    <div class="actions">
+      <Button href={CONSOLE_URL}>Start Building</Button>
+      <Button href={DOCS_URL} variant="ghost" icon="arrow">Read the Docs</Button>
+    </div>
+  </PageHero>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <h2 class="strip__title">Trusted by Companies Building the Future of the Blockchain Industry</h2>
+      <ul class="strip">
+        {trusted.map((logo) => <li><img src={logo.src} alt={logo.alt} loading="lazy" /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <LinkCards items={pillars} columns={4} />
+
+  <Split
+    tight
+    heading="Start Building in Minutes"
+    sub="The DropChain API seamlessly integrates into Bubble, the no-code app builder. You're one step closer to building something amazing."
+    image="/images/iPhone-14-Pro---1-1_1.avif"
+  >
+    <div class="actions">
+      <Button href="https://dropchain.gitbook.io/dropchain-api-beta/dropchain-examples/integrating-dropchain-api-into-no-code-bubble.io-app" icon="arrow">
+        Start building your own
+      </Button>
+    </div>
+  </Split>
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>A robust and growing library of audited smart contracts</h2>
+        <p class="dc-lead">
+          Access the library of audited smart contracts via POST requests and JSON
+          payloads to enhance your app with web3 functionality.
+        </p>
+      </header>
+      <ul class="endpoints">
+        {endpoints.map((item) => (
+          <li>
+            <img src={item.icon} alt="" loading="lazy" />
+            <code>{item.name}</code>
+            <p>{item.blurb}</p>
+          </li>
+        ))}
+      </ul>
+      <Button href={CONSOLE_URL} class="endpoints__cta">Start Building</Button>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Supported Blockchains</h2>
+        <p class="dc-lead">
+          DropChain is chain agnostic. The API and Single Sign On support the top 10 most
+          popular blockchains and dozens more.
+        </p>
+      </header>
+      <ul class="chains">
+        {chains.map((chain) => (
+          <li class="chain">
+            <img src={chain.logo} alt="" loading="lazy" />
+            <h3><a href={chain.href} target="_blank" rel="noopener noreferrer">{chain.name}</a></h3>
+            <p class="chain__tag">{chain.tag}</p>
+            <ul class="chain__stats">
+              {chain.stats.map((stat) => <li>{stat}</li>)}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head section-head--with-art">
+        <h2>DropChain in Action</h2>
+        <img src="/images/Frame-1-3_1.avif" alt="" loading="lazy" />
+      </header>
+      <ul class="stories">
+        {stories.map((story) => (
+          <li class="story">
+            <p class="story__kind">{story.kind}</p>
+            <h3>{story.title}</h3>
+            <p class="story__blurb">{story.blurb}</p>
+            <Button href={story.href} variant="ghost" icon="arrow">{story.cta}</Button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Build your web3 app with the DropChain API"
+    sub="Free to start. No credit card required."
+    cta="Start Building"
+    href={CONSOLE_URL}
+  />
+
+  <Pricing />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-lg); }
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+  .section-head--with-art { display: flex; align-items: center; justify-content: space-between; gap: var(--dc-space-lg); max-width: none; }
+  .section-head--with-art img { width: 200px; height: auto; }
+
+  .strip__title { font-size: var(--dc-h6); color: var(--dc-text-muted); text-align: center; margin-bottom: var(--dc-space-lg); }
+  .strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--dc-space-xl); list-style: none; margin: 0; padding: 0; }
+  .strip img { height: 32px; width: auto; opacity: 0.7; filter: grayscale(1); }
+  .strip li:hover img { opacity: 1; filter: grayscale(0); }
+
+  .endpoints, .chains, .stories { list-style: none; margin: 0; padding: 0; }
+  .endpoints { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .endpoints li {
+    display: grid;
+    gap: 0.45rem;
+    align-content: start;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .endpoints img { width: 30px; height: 30px; margin-bottom: var(--dc-space-xs); }
+  .endpoints code { color: var(--dc-green); font-family: var(--dc-font-mono); font-size: var(--dc-text-sm); font-weight: 500; }
+  .endpoints p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; }
+  .endpoints__cta { margin-top: var(--dc-space-xl); }
+
+  .chains { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .chain {
+    display: grid;
+    gap: 0.4rem;
+    align-content: start;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .chain img { height: 34px; width: auto; margin-bottom: var(--dc-space-xs); }
+  .chain h3 { font-size: var(--dc-h5); }
+  .chain h3 a { color: var(--dc-text); }
+  .chain h3 a:hover { color: var(--dc-green); }
+  .chain__tag { color: var(--dc-green); font-size: var(--dc-text-xs); font-weight: 500; }
+  .chain__stats { list-style: none; margin: 0.4rem 0 0; padding: 0; display: grid; gap: 0.3rem; }
+  .chain__stats li { color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+
+  .stories { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .story {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .story__kind { color: var(--dc-green); font-size: var(--dc-text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  .story h3 { font-size: var(--dc-h5); }
+  .story__blurb { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; flex: 1; }
+  .story :global(.btn) { margin-top: var(--dc-space-sm); }
+
+  @media (max-width: 1000px) { .endpoints, .chains, .stories { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 680px) { .endpoints, .chains, .stories { grid-template-columns: 1fr; } }
+</style>
