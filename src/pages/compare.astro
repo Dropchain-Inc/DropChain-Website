@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Pricing from '../components/Pricing.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL } from '../data/navigation.js';
+
+// The export marks each row with a DropChain tick and a cross against the three
+// competitor logos, which it never names in text. Rows are reproduced as-is.
+const rows = [
+  {
+    title: 'Writing data to the Blockchain',
+    blurb: 'DropChain stands alone in its ability to allow end users to sign transactions automatically. As a non-custodial layer-1 blockchain, the DropChain Network can be utilized to write onto a blockchain easily using end user Temporary Keys, with no manual wallet transactions necessary.',
+    others: false,
+  },
+  {
+    title: 'Reading on-chain data',
+    blurb: 'Fetching and displaying on-chain data into your application is a fairly simple undertaking, but not particularly useful if you want to create an interactive blockchain application.',
+    others: true,
+  },
+  {
+    title: 'Layer 1 Blockchain Network',
+    blurb: 'The DropChain Network is a non-custodial layer 1 blockchain. This makes DropChain the perfect first-touch of web3. Your users retain all the benefits of web3 without the responsibility of securing their keys or signing transactions.',
+    others: false,
+  },
+  {
+    title: 'No-Code / Low Code Integrations',
+    blurb: 'DropChain can be integrated into any language or platform that accepts RESTful APIs. This includes programmed apps created in JS, React, Flutter, Python and more. DropChain can also be integrated into any no-code platform that accepts APIs, including Bubble, FlutterFlow, Appy Pie and Wix.',
+    others: false,
+    link: { label: 'See how to integrate DropChain with no-code', href: '/no-code' },
+  },
+  {
+    title: 'Native Fiat onramp',
+    blurb: 'Other platforms require integration of third party fiat onramp tools. DropChain includes fiat onramps within any of our paid plans, and DropChain allows your users to buy your NFTs and tokens with no upfront KYC required.',
+    others: false,
+    link: { label: 'About the fiat onramp', href: '/nft-fiat-onramp' },
+  },
+  {
+    title: 'Web2 Single Sign On',
+    blurb: 'Allow your users to sign in using traditional web2 credentials. However, our competitors still require users to manage their keys and sign smart contracts.',
+    others: false,
+    link: { label: 'About Single Sign On', href: '/sso' },
+  },
+];
+
+const others = [
+  { src: '/images/svgexport-9-1.svg', alt: 'Competing web3 developer tool' },
+  { src: '/images/Group-363.svg', alt: 'Competing web3 developer tool' },
+  { src: '/images/Utility-Logo.svg', alt: 'Competing web3 developer tool' },
+];
+---
+
+<BaseLayout
+  title="Compare | DropChain"
+  description="DropChain is the most complete web3 development toolkit on the market, allowing anyone to create fully functional web3 products."
+>
+  <PageHero
+    eyebrow="Compare"
+    title="Compare DropChain to other web3 dev tools"
+    sub="DropChain is the most complete web3 development toolkit on the market, allowing anyone to create fully functional web3 products."
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+    <img class="hero-image" src="/images/venti-views-8ehR0Bc2_t4-unsplash-1_1.avif" alt="" loading="lazy" />
+  </PageHero>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <figure class="pull">
+        <img src="/images/Stars-2.svg" alt="" loading="lazy" />
+        <blockquote>DropChain makes it possible for web3 newbies like me to create a web3 app.</blockquote>
+        <figcaption>Niles Drekker, software developer</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <div class="matrix" role="table" aria-label="DropChain compared with other web3 developer tools">
+        <div class="matrix__head" role="row">
+          <span role="columnheader">Capability</span>
+          <span role="columnheader">
+            <img src="/images/DropChain-Green_1.svg" alt="DropChain" class="matrix__brand" />
+          </span>
+          <span role="columnheader" class="matrix__others">
+            {others.map((logo) => <img src={logo.src} alt={logo.alt} loading="lazy" />)}
+          </span>
+        </div>
+
+        {rows.map((row) => (
+          <div class="matrix__row" role="row">
+            <div role="cell">
+              <h2>{row.title}</h2>
+              <p>{row.blurb}</p>
+              {row.link && <a href={row.link.href}>{row.link.label}</a>}
+            </div>
+            <div role="cell" class="matrix__mark matrix__mark--yes">
+              <Icon name="check" size={22} />
+              <span class="visually-hidden">DropChain: yes</span>
+            </div>
+            <div role="cell" class:list={['matrix__mark', row.others ? 'matrix__mark--yes' : 'matrix__mark--no']}>
+              {row.others ? <Icon name="check" size={22} /> : <img src="/images/ph_x-circle-fill.svg" alt="" width="22" height="22" />}
+              <span class="visually-hidden">{`Other tools: ${row.others ? 'yes' : 'no'}`}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Free until you grow"
+    sub="Experiment for as long as you like. DropChain is free until you grow past 300 API calls per month. Then choose a paid plan that works for you, starting at $29.99 monthly."
+    cta="Build for free"
+    href={CONSOLE_URL}
+  />
+
+  <Pricing />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-lg); }
+  .hero-image { margin-top: var(--dc-space-xl); width: 100%; border-radius: var(--dc-radius-lg); }
+
+  .pull {
+    display: grid;
+    justify-items: center;
+    gap: 0.6rem;
+    text-align: center;
+    margin: 0;
+    padding: var(--dc-space-xl);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+    background: var(--dc-surface);
+  }
+  .pull img { height: 22px; width: auto; }
+  .pull blockquote { margin: 0; font-size: var(--dc-h4); font-weight: 500; max-width: 30ch; }
+  .pull figcaption { color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+
+  .matrix { border: 1px solid var(--dc-border); border-radius: var(--dc-radius-lg); overflow: hidden; }
+  .matrix__head, .matrix__row {
+    display: grid;
+    grid-template-columns: 1fr 140px 200px;
+    gap: var(--dc-space-md);
+    align-items: center;
+    padding: var(--dc-space-lg);
+  }
+  .matrix__head {
+    background: var(--dc-surface-accent);
+    color: var(--dc-text-muted);
+    font-size: var(--dc-text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .matrix__head > span { display: flex; justify-content: center; }
+  .matrix__head > span:first-child { justify-content: flex-start; }
+  .matrix__brand { height: 22px; width: auto; }
+  .matrix__others { gap: 0.75rem; }
+  .matrix__others img { height: 20px; width: auto; opacity: 0.6; }
+
+  .matrix__row { border-top: 1px solid var(--dc-border); background: var(--dc-surface); }
+  .matrix__row h2 { font-size: var(--dc-h5); margin-bottom: 0.35rem; }
+  .matrix__row p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; }
+  .matrix__row a { display: inline-block; margin-top: 0.5rem; font-size: var(--dc-text-sm); }
+
+  .matrix__mark { display: flex; justify-content: center; }
+  .matrix__mark--yes { color: var(--dc-green); }
+  .matrix__mark--no img { opacity: 0.8; }
+
+  @media (max-width: 800px) {
+    .matrix__head { display: none; }
+    .matrix__row { grid-template-columns: 1fr auto auto; }
+  }
+</style>
