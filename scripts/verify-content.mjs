@@ -34,10 +34,13 @@ const RICHTEXT_BOILERPLATE = /Static and dynamic content editing[\s\S]*?(?=<\/di
 const REPLACED_BY_INLINE_SVG = new Set([
   'line-rounded-chevron-dark-elements-brix-templates.svg',
   'blob-brix-templates.svg',
+  'arrow-right.svg',
   'Frame-397-1_1.avif',
   'Frame-454.avif',
   'Dropchain-Logo---Green.webp',
   'Group-366.svg',
+  'Dropchain-Logo---Green.svg',
+  'image-70_1.avif',
   'placeholder.60f9b1840c.svg',
   'Algorand.avif',
   'gradient-blue.png',
@@ -58,6 +61,7 @@ const FORM_STATE_COPY = [
   'thank', 'thanks', 'joining', 'submission', 'been', 'received', 'oops',
   'something', 'went', 'wrong', 'while', 'submitting', 'form', 'congratulations',
   "you're", 'functional', 'into', 'rest', 'items', 'found',
+  'reaching', 'shortly', 'appreciate', 'patience', 'continue', 'build',
 ];
 
 // Typos in the source copy, corrected on purpose. Keep this list and the
@@ -66,6 +70,8 @@ const CORRECTED_TYPOS = [
   'agreeding', 'privacacy', 'tesnet', 'singe', 'lable', 'convienence',
   "dopchain's", 'effortlesly', 'odevelopers', 'solidiy', 'javasscript',
   'whay', 'focused', 'sent', 'products', 'signup', 'read', 'make',
+  'businessdays', 'manually', 'include', 'appypie', 'call', 'starting',
+  'transactionfinality', 'opprotunities', 'odevelopers', "crm's",
 ];
 
 // The export carries an older three-plan pricing block ("Choose your DropChain

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Button from '../../components/Button.astro';
+import Icon from '../../components/Icon.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import Split from '../../components/Split.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { CONSOLE_URL } from '../../data/navigation.js';
+
+const howItWorks = [
+  { title: 'Tap to get TANG', blurb: 'Earn $TANG by tapping on your screen.' },
+  { title: 'HODL', blurb: "Or don't. $TANG probably won't ever have any value. But it might? I guess just do what you want." },
+  { title: 'Open your Wallet', blurb: "By default, your $TANG will be in your DropChain wallet. Connect an Algorand wallet and get $TANG on Algorand when it's minted." },
+];
+
+const walletSteps = [
+  'Open DropChain wallet',
+  'Open "Your Wallets" page',
+  'Connect your Pera Algo wallet',
+  'Opt into $TANG (Asset ID: coming soon!)',
+  "Your $TANG will be transferred to your Algorand wallet when it's minted",
+];
+
+const buildTools = [
+  { title: 'Single Sign On', blurb: 'Allow users to sign in using Apple, Google, or Facebook.', href: '/sso' },
+  { title: 'Build with Code', blurb: 'Build Algorand apps using the DropChain JavaScript or Python SDK, with no smart contract knowledge required.', href: '/sdk/javascript' },
+  { title: 'Build No-Code', blurb: "Build Algorand apps using DropChain's no-code tools, with no smart contract knowledge required.", href: '/no-code' },
+  { title: 'One-Click Apps', blurb: "Launch blockchain apps in minutes with DropChain's one-click solutions.", href: '/solutions/enterprise' },
+];
+---
+
+<BaseLayout
+  title="Tangerine | An Algorand app built with DropChain"
+  description="Tap to earn $TANG. A low-code Algorand app built with DropChain, with no smart contract knowledge required."
+>
+  <PageHero
+    eyebrow="Tangerine, an Algorand app"
+    title="Tap to Earn $TANG. That's about it..."
+    sub="So you want to earn $TANG. You know it probably won't ever be worth anything, right? Play to see the power of low-code blockchain apps on Algorand, with no smart contract knowledge required."
+  >
+    <div class="actions">
+      <Button href="https://tangerine.dropchain.network/play">Play to Earn</Button>
+      <Button href="/" variant="ghost" icon="arrow">Learn About DropChain</Button>
+    </div>
+    <img class="hero-image" src="/images/Coin-Image.svg" alt="" loading="lazy" />
+  </PageHero>
+
+  <LinkCards items={howItWorks} />
+
+  <Split
+    tight
+    eyebrow="DropChain is Cross Chain"
+    heading="This Algorand App was built low-code with DropChain"
+    sub="DropChain allows anyone to build an app on Algorand. Support for other chains is coming soon."
+    image="/images/Features_5.svg"
+  />
+
+  <Split
+    reverse
+    tight
+    eyebrow="Connect Algorand wallet"
+    heading="Want your $TANG in an Algorand Wallet?"
+    image="/images/Frame-1-4_1.avif"
+  >
+    <ol class="steps">
+      {walletSteps.map((step) => (
+        <li><img src="/images/Сheck.svg" alt="" width="18" height="18" loading="lazy" />{step}</li>
+      ))}
+    </ol>
+    <div class="actions">
+      <Button href="https://wallet.dropchain.network/" icon="arrow">Open DropChain Wallet</Button>
+    </div>
+  </Split>
+
+  <LinkCards
+    eyebrow="Build Web3 Apps"
+    heading="This Algorand App Was Built Low-Code with DropChain"
+    sub="DropChain enables anyone to build Algorand apps with or without code, and no smart contract knowledge is required."
+    items={buildTools}
+    columns={4}
+  />
+
+  <CtaBand heading="Browse tools" sub="Free to start. No credit card required." cta="Explore DropChain" href={CONSOLE_URL} />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .hero-image { margin-top: var(--dc-space-xl); max-width: 260px; }
+  .steps { display: grid; gap: 0.6rem; margin: var(--dc-space-sm) 0 0; padding: 0; list-style: none; }
+  .steps li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+  .steps img { flex: none; margin-top: 0.15rem; }
+</style>

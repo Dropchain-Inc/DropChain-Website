@@ -1,0 +1,89 @@
+---
+/**
+ * Shared layout for the asset bridge pages. Both run the same notice and the
+ * same field set; only the direction and the asset-ID label differ.
+ *
+ * The Webflow forms posted to Webflow's own endpoint, so they are not wired up
+ * here. The page routes people to the Discord channel that actually handles
+ * bridging, which is what the copy already tells them to do.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from './PageHero.astro';
+import Button from './Button.astro';
+import { DISCORD_URL } from '../data/navigation.js';
+
+interface Props { direction: 'Import' | 'Export'; title: string; description: string; assetLabel: string; }
+const { direction, title, description, assetLabel } = Astro.props;
+
+const preposition = direction === 'Import' ? 'to' : 'from';
+---
+<BaseLayout title={title} description={description}>
+  <PageHero
+    eyebrow={direction}
+    title={`${direction} Assets ${preposition} DropChain Network`}
+  />
+
+  <section class="dc-section--tight">
+    <div class="dc-container dc-container--narrow">
+      <div class="notice">
+        <h2>Please Read</h2>
+        <p>
+          The DropChain team is working to automate the process of bridging assets to and
+          from the DropChain Network. We understand that our current system is not ideal
+          and we're working hard to improve your experience. Please join the DropChain
+          Discord to keep up to date.
+        </p>
+        <p>
+          The process for {direction.toLowerCase()}ing assets {preposition} DropChain may take
+          between 1 and 10 business days. We will reach out on Discord or email to
+          facilitate the asset transfer.
+        </p>
+      </div>
+
+      <div class="route">
+        <h2>How to start a transfer</h2>
+        <p class="dc-muted">
+          Please join the DropChain Discord here and create a message in
+          <code>#bridging-assets</code>. We will facilitate the transfer into DropChain.
+          We know, not ideal, but this process is temporary.
+        </p>
+        <ul class="route__fields">
+          <li>Your wallet address</li>
+          <li>{assetLabel}</li>
+          <li>Your Discord username</li>
+          <li>Your email: please provide the email address you used when signing up for this app through DropChain</li>
+        </ul>
+        <Button href={DISCORD_URL} icon="arrow">Join the DropChain Discord</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notice {
+    padding: var(--dc-space-lg);
+    border: 1px solid var(--dc-green);
+    border-radius: var(--dc-radius);
+    background: #01f0891a;
+    margin-bottom: var(--dc-space-lg);
+  }
+  .notice h2 { font-size: var(--dc-h5); margin-bottom: 0.5rem; }
+  .notice p { font-size: var(--dc-text-sm); line-height: 1.7; }
+  .notice p + p { margin-top: 0.75rem; }
+
+  .route {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--dc-space-sm);
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .route h2 { font-size: var(--dc-h5); }
+  .route p { font-size: var(--dc-text-sm); line-height: 1.7; }
+  .route code { font-family: var(--dc-font-mono); color: var(--dc-green); }
+  .route__fields { display: grid; gap: 0.4rem; margin: 0.4rem 0 var(--dc-space-sm); padding-left: 1.2rem; }
+  .route__fields li { color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+</style>

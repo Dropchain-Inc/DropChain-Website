@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Button from '../../components/Button.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import Split from '../../components/Split.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { CONSOLE_URL } from '../../data/navigation.js';
+
+const howItWorks = [
+  { title: 'Tap to Earn $BLU', blurb: "Simply tap your screen to earn $BLU. You'll earn the crypto before it's minted while we are in the Mining Phase." },
+  { title: 'Upgrade Your Earnings', blurb: 'Turn up your earning potential with boosts, upgrades, and invite rewards. Start playing now!' },
+  { title: 'Claim Your Airdrop', blurb: "Connect an XRP wallet and get $BLU on Ripple when it's minted." },
+];
+---
+
+<BaseLayout
+  title="Blueberry | Built for Ripple on DropChain"
+  description="Earn $BLU by tapping your screen, unlocking boosts and upgrading your tapping powers. Built for Ripple on DropChain."
+>
+  <PageHero
+    eyebrow="Built for Ripple on DropChain"
+    title="Play the Blueberry Tapper Game to Earn Crypto"
+    sub="Earn $BLU by tapping your screen, unlocking boosts and upgrading your tapping powers. It's the easiest way to earn crypto. Start tapping now to mine $BLU before the airdrop."
+  >
+    <div class="actions">
+      <Button href={CONSOLE_URL}>Start Mining</Button>
+    </div>
+    <img class="hero-image" src="/images/mine.webp" alt="" loading="lazy" />
+  </PageHero>
+
+  <LinkCards
+    eyebrow="Built using DropChain"
+    heading="Start Earning $BLU Now!"
+    sub="The bull market is coming. Get prepared by earning crypto by tapping your screen to earn $BLU on Ripple."
+    items={howItWorks}
+  />
+
+  <Split
+    tight
+    eyebrow="Powered by DropChain"
+    heading="Built with the DropChain SDK"
+    sub="The DropChain API and SDK enables creators to build and launch blockchain apps fast, with no coding knowledge needed. Or, use the DropChain Console to grow, engage, and monetize your community. Activate your NFT holders with email campaigns as your all-in-one web3 marketing tool."
+    image="/images/DALL·E-2024-10-06-17.28.19.webp"
+  >
+    <div class="actions">
+      <Button href="/api">Explore DropChain</Button>
+    </div>
+  </Split>
+
+  <CtaBand heading="Build your own web3 app" sub="Free to start. No credit card required." href={CONSOLE_URL} />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .hero-image { margin-top: var(--dc-space-xl); border-radius: var(--dc-radius-lg); }
+</style>

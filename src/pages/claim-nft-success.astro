@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+<BaseLayout
+  title="Claim NFT Success | DropChain"
+  description="Your NFT claim was successful."
+  noindex
+>
+  <section class="success">
+    <div class="dc-container dc-container--narrow">
+      <p class="dc-eyebrow">Success</p>
+      <h1>You will receive an email when your NFT is delivered to your wallet</h1>
+      <Button href="/" icon="arrow">Go to DropChain Website</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .success { padding-block: clamp(4rem, 12vw, 8rem); text-align: center; }
+  .success h1 { margin-block: 0.6rem var(--dc-space-lg); margin-inline: auto; max-width: 20ch; }
+</style>
