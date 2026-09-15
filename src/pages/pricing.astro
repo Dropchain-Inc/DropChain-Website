@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pricing from '../components/Pricing.astro';
+import CtaBand from '../components/CtaBand.astro';
+import DiscordBand from '../components/DiscordBand.astro';
+import { CONSOLE_URL } from '../data/navigation.js';
+import { creatorQuotes } from '../data/site.js';
+
+const builders = [
+  { src: '/images/lambda.svg', alt: 'Lambda' },
+  { src: '/images/Odea.svg', alt: 'Odea' },
+  { src: '/images/MATTY-Platform_1.avif', alt: 'Matty Platform' },
+  { src: '/images/Algopatties-logo_1.avif', alt: 'AlgoPatties' },
+  { src: '/images/Group_1.avif', alt: 'DropChain builder' },
+];
+---
+
+<BaseLayout
+  title="Pricing | DropChain Official Site"
+  description="Start building your web3 app with DropChain for free and only pay when you grow. Choose the plan that's right for your web3 app's needs."
+>
+  <Pricing
+    heading="Launch a Web3 App for $1"
+    sub="Upgrade and enjoy your first month for just $1."
+  />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>What creators say about DropChain</h2>
+      </header>
+      <ul class="quotes">
+        {creatorQuotes.map((item) => (
+          <li class="quote">
+            <blockquote>{item.quote}</blockquote>
+            <footer>
+              <img src={item.avatar} alt="" loading="lazy" />
+              <span>
+                <span class="quote__name">{item.name}</span>
+                <span class="quote__role">{item.role}</span>
+              </span>
+            </footer>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Empowering Builders Everywhere</h2>
+        <p class="dc-lead">
+          Don't just take our word for it. DropChain is powering some of the most
+          innovative builders in web3. Join a growing community of those shaping the
+          future in our Discord channel.
+        </p>
+      </header>
+      <ul class="builders">
+        {builders.map((logo) => <li><img src={logo.src} alt={logo.alt} loading="lazy" /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <DiscordBand />
+
+  <CtaBand
+    heading="Grow Lean. Only Pay When You Grow."
+    sub="Use DropChain for free for as long as you want. Pay only when your project grows."
+    cta="Sign Up for free"
+    href={CONSOLE_URL}
+  />
+</BaseLayout>
+
+<style>
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .quotes, .builders { list-style: none; margin: 0; padding: 0; }
+  .quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .quote {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dc-space-md);
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .quote blockquote { margin: 0; font-size: var(--dc-text-sm); line-height: 1.7; flex: 1; }
+  .quote footer { display: flex; align-items: center; gap: 0.75rem; }
+  .quote footer > span { display: grid; gap: 0.15rem; }
+  .quote footer img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; }
+  .quote__name { font-weight: 600; font-size: var(--dc-text-sm); }
+  .quote__role { color: var(--dc-text-muted); font-size: var(--dc-text-xs); }
+
+  .builders { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dc-space-xl); }
+  .builders img { height: 34px; width: auto; opacity: 0.7; filter: grayscale(1); }
+  .builders li:hover img { opacity: 1; filter: grayscale(0); }
+
+  @media (max-width: 900px) { .quotes { grid-template-columns: 1fr; } }
+</style>
