@@ -26,6 +26,29 @@ const TARGETS = [
   { file: 'developer-agreement', title: 'Developer Agreement', description: 'The terms covering use of the DropChain API, SDKs and developer tools.' },
 ];
 
+/** The page's own <h1>, which is more specific than the nav/footer label. */
+const headingOf = (html) => {
+  const m = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/);
+  return m ? decode(m[1].replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim() : null;
+};
+
+/** Copy sitting between the <h1> and the rich-text block. */
+const introOf = (html) => {
+  const h1 = html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/);
+  if (!h1) return '';
+  const rich = html.indexOf('w-richtext', h1.index);
+  if (rich < 0) return '';
+  const between = html.slice(h1.index + h1[0].length, rich);
+  return decode(between.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
+};
+
+/** A "read the full document" PDF button placed after the rich-text block. */
+const documentLinkOf = (html) => {
+  const m = html.match(/<a\b[^>]*href="([^"]+\.pdf)"[^>]*>([\s\S]*?)<\/a>/i);
+  if (!m) return null;
+  return { href: `/${m[1].replace(/^\/?documents\//, 'documents/')}`, label: decode(m[2].replace(/<[^>]+>/g, '')).trim() };
+};
+
 // Webflow appends this demo copy to every empty rich-text field.
 const BOILERPLATE = /<h4[^>]*>\s*Static and dynamic content editing[\s\S]*$/i;
 
@@ -110,9 +133,13 @@ for (const target of TARGETS) {
     shape = 'br-soup';
   }
 
+  const heading = headingOf(html) ?? target.title;
+  const intro = introOf(html);
+  const doc = documentLinkOf(html);
+
   const page = `---
 import BaseLayout from '../layouts/BaseLayout.astro';
----
+${doc ? "import Button from '../components/Button.astro';\n" : ''}---
 
 <BaseLayout
   title="${target.title} | DropChain"
@@ -120,16 +147,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <section class="legal dc-section">
     <div class="dc-container dc-container--narrow">
-      <h1>${target.title}</h1>
-      <div class="dc-prose">
+      <h1>${escape(heading)}</h1>
+${intro ? `      <p class="dc-lead legal__intro">${escape(intro)}</p>\n` : ''}      <div class="dc-prose">
 ${content}
       </div>
-    </div>
+${doc ? `      <p class="legal__doc">\n        <Button href="${doc.href}" variant="secondary" icon="arrow">${escape(doc.label)}</Button>\n      </p>\n` : ''}    </div>
   </section>
 </BaseLayout>
 
 <style>
-  .legal h1 { margin-bottom: var(--dc-space-lg); }
+  .legal h1 { margin-bottom: var(--dc-space-md); }
+  .legal__intro { margin-bottom: var(--dc-space-lg); }
+  .legal__doc { margin-top: var(--dc-space-xl); }
 </style>
 `;
 

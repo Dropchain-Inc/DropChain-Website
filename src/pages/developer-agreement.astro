@@ -8,7 +8,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <section class="legal dc-section">
     <div class="dc-container dc-container--narrow">
-      <h1>Developer Agreement</h1>
+      <h1>Developer Agreement for DropChain Inc</h1>
+      <p class="dc-lead legal__intro">&lt;div class="rich-text-block-6</p>
       <div class="dc-prose">
       <h4>Introduction</h4>
       <p>This Developer Agreement (&quot;Agreement&quot;) establishes a legally binding contract between you, the Developer, and DropChain Inc (&quot;Company&quot;). This Agreement governs your use of the Company&#x27;s Software Development Kits (SDKs), Application Programming Interfaces (APIs), and related services (&quot;Services&quot;) for the purpose of developing, deploying, and managing applications within the DropChain Network. By accessing, utilizing, or contributing to the DropChain Network, you affirm your agreement to be bound by and comply with the terms outlined in this Agreement.</p>
@@ -73,5 +74,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-  .legal h1 { margin-bottom: var(--dc-space-lg); }
+  .legal h1 { margin-bottom: var(--dc-space-md); }
+  .legal__intro { margin-bottom: var(--dc-space-lg); }
+  .legal__doc { margin-top: var(--dc-space-xl); }
 </style>

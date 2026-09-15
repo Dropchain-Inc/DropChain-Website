@@ -2,11 +2,18 @@
  * Content-completeness check for the Webflow -> Astro rebuild.
  *
  * A from-scratch rebuild is not meant to match the original pixel for pixel, so
- * a visual diff is the wrong gate. The failure mode that actually matters is
- * quietly dropping copy, links or images. This compares the built output against
- * the Webflow export and reports what is missing.
+ * a visual diff is the wrong gate: it flags hundreds of intended differences and
+ * buries the one that matters. The real failure mode is quietly dropping copy,
+ * links or images, so this compares content instead.
+ *
+ * Site chrome is excluded by removing the nav and footer REGIONS from the source
+ * page, not by guessing from word frequency. Webflow left two unused nav-template
+ * variants in the export ("See our studio in action", "world's most popular
+ * framework"), and pads empty rich-text fields with demo copy; both live inside
+ * those regions or are cut explicitly below.
  *
  * Usage: node scripts/verify-content.mjs [slug ...]
+ *        VERBOSE=1 node scripts/verify-content.mjs index
  */
 import { readFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -15,6 +22,49 @@ import { existsSync } from 'node:fs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const EXPORT = `${root}dropchain-6028cb.webflow/`;
 const DIST = `${root}dist/`;
+
+// Containers holding site chrome in the export, matched on their class names.
+const CHROME_CLASSES = /\b(?:navigation-wrap[\w-]*|navigation-2|footer-dark|footer-03-div|w-nav)\b/;
+
+// Webflow appends this demo copy to every rich-text field.
+const RICHTEXT_BOILERPLATE = /Static and dynamic content editing[\s\S]*?(?=<\/div>)/gi;
+
+// Raster icons from the export that the rebuild renders as inline SVG instead.
+const REPLACED_BY_INLINE_SVG = new Set([
+  'Frame-15-2.svg', 'Frame-16-1.svg', 'Frame-5.svg', 'Group-385.svg',
+  'PlatformYouTube-ColorNegative.svg', 'akar-icons_discord-fill-1.svg',
+  'akar-icons_circle-check-fill.svg', 'material-symbols_electric-bolt-rounded.svg',
+  'left-quote-1_1left-quote-1.avif', 'Vector-1_1.svg', 'Vector_1.svg',
+]);
+
+/** Removes every element whose opening tag matches `test`, honouring nesting. */
+function removeElements(html, test) {
+  const opener = /<(div|nav|header|footer|section)\b[^>]*>/gi;
+  let out = html;
+
+  for (let guard = 0; guard < 200; guard++) {
+    opener.lastIndex = 0;
+    let match = null;
+    while ((match = opener.exec(out))) {
+      if (test(match[0])) break;
+    }
+    if (!match) return out;
+
+    // Walk forward counting opens and closes of the same tag name to find the end.
+    const tag = match[1];
+    const scanner = new RegExp(`<${tag}\\b[^>]*>|</${tag}>`, 'gi');
+    scanner.lastIndex = match.index;
+    let depth = 0;
+    let end = out.length;
+    let token = null;
+    while ((token = scanner.exec(out))) {
+      depth += token[0].startsWith('</') ? -1 : 1;
+      if (depth === 0) { end = token.index + token[0].length; break; }
+    }
+    out = out.slice(0, match.index) + ' ' + out.slice(end);
+  }
+  return out;
+}
 
 const strip = (html) =>
   html
@@ -31,52 +81,24 @@ const decode = (s) =>
     .replace(/&#x27;|&#39;|&rsquo;|&lsquo;/g, "'")
     .replace(/&ldquo;|&rdquo;/g, '"')
     .replace(/&amp;/g, '&')
-    .replace(/&mdash;/g, ' ')
-    .replace(/&ndash;/g, ' ');
+    .replace(/&mdash;|&ndash;/g, ' ');
 
 // Compare on meaningful words only: lowercase, letters and digits, 4+ chars.
-const words = (html) => {
-  const set = new Set();
-  for (const w of decode(strip(html)).toLowerCase().match(/[a-z0-9']{4,}/g) ?? []) set.add(w);
-  return set;
-};
-
-// Raster icons from the export that the rebuild renders as inline SVG instead.
-const REPLACED_BY_INLINE_SVG = new Set([
-  'Frame-15-2.svg', 'Frame-16-1.svg', 'Frame-5.svg', 'Group-385.svg',
-  'PlatformYouTube-ColorNegative.svg', 'akar-icons_discord-fill-1.svg',
-  'akar-icons_circle-check-fill.svg', 'material-symbols_electric-bolt-rounded.svg',
-  'left-quote-1_1left-quote-1.avif', 'Vector-1_1.svg', 'Vector_1.svg',
-]);
+const words = (html) =>
+  new Set(decode(strip(html)).toLowerCase().match(/[a-z0-9']{4,}/g) ?? []);
 
 const images = (html) => {
   const set = new Set();
-  for (const m of html.matchAll(/<img[^>]+src="([^"]+)"/g)) {
+  for (const m of html.matchAll(/<img\b[^>]+src="([^"]+)"/g)) {
     const file = decodeURIComponent(m[1].split('/').pop() ?? '');
     if (file && !REPLACED_BY_INLINE_SVG.has(file)) set.add(file);
   }
   return set;
 };
 
-// Nav and footer were rebuilt deliberately (inline SVG instead of raster icons,
-// Webflow template leftovers dropped), so site chrome must not count as content
-// loss. Anything appearing on nearly every exported page is chrome.
-const exportPages = (await readdir(EXPORT, { recursive: true })).filter((f) => f.endsWith('.html'));
-const wordPageCount = new Map();
-const imagePageCount = new Map();
-for (const file of exportPages) {
-  const html = await readFile(`${EXPORT}${file}`, 'utf8');
-  for (const w of words(html)) wordPageCount.set(w, (wordPageCount.get(w) ?? 0) + 1);
-  for (const i of images(html)) imagePageCount.set(i, (imagePageCount.get(i) ?? 0) + 1);
-}
-// Webflow left two unused nav-template variants in the export, on roughly 70%
-// and 50% of pages ("Webflow Development", "See our studio in action",
-// "world's most popular framework"...). Both were dropped on purpose, so the
-// cut-off sits just below the smaller of the two.
-const CHROME_THRESHOLD = exportPages.length * 0.45;
-const chromeWords = new Set([...wordPageCount].filter(([, n]) => n >= CHROME_THRESHOLD).map(([w]) => w));
-const chromeImages = new Set([...imagePageCount].filter(([, n]) => n >= CHROME_THRESHOLD).map(([i]) => i));
-console.log(`Excluding ${chromeWords.size} chrome words and ${chromeImages.size} chrome images (present on 45%+ of ${exportPages.length} exported pages).\n`);
+/** Strips chrome and Webflow boilerplate, leaving the page's own content. */
+const contentOf = (html) =>
+  removeElements(html, (tag) => CHROME_CLASSES.test(tag)).replace(RICHTEXT_BOILERPLATE, ' ');
 
 const slugs = process.argv.slice(2);
 const targets = slugs.length
@@ -87,35 +109,36 @@ const targets = slugs.length
 
 let failures = 0;
 
-for (const slug of targets) {
+for (const slug of targets.sort()) {
   const source = `${EXPORT}${slug}.html`;
-  const built = `${DIST}${slug === 'index' ? 'index' : slug}.html`;
+  const built = `${DIST}${slug}.html`;
 
-  if (!existsSync(source)) { console.log(`- ${slug.padEnd(48)} no Webflow source, skipped`); continue; }
-  if (!existsSync(built)) { console.log(`! ${slug.padEnd(48)} NOT BUILT`); failures++; continue; }
+  if (!existsSync(source)) { console.log(`- ${slug.padEnd(46)} no Webflow source, skipped`); continue; }
+  if (!existsSync(built)) { console.log(`! ${slug.padEnd(46)} NOT BUILT`); failures++; continue; }
 
   const [srcHtml, outHtml] = await Promise.all([readFile(source, 'utf8'), readFile(built, 'utf8')]);
+  const srcContent = contentOf(srcHtml);
 
-  const srcWords = new Set([...words(srcHtml)].filter((w) => !chromeWords.has(w)));
+  const srcWords = words(srcContent);
   const outWords = words(outHtml);
   const missingWords = [...srcWords].filter((w) => !outWords.has(w));
 
-  const srcImages = new Set([...images(srcHtml)].filter((i) => !chromeImages.has(i)));
+  const srcImages = images(srcContent);
   const outImages = images(outHtml);
   const missingImages = [...srcImages].filter((i) => !outImages.has(i));
 
   const coverage = srcWords.size ? 1 - missingWords.length / srcWords.size : 1;
-  const flag = coverage < 0.9 || missingImages.length ? '!' : ' ';
+  const flag = coverage < 0.95 || missingImages.length ? '!' : ' ';
   if (flag === '!') failures++;
 
   console.log(
-    `${flag} ${slug.padEnd(48)} words ${(coverage * 100).toFixed(1).padStart(5)}%  ` +
+    `${flag} ${slug.padEnd(46)} words ${(coverage * 100).toFixed(1).padStart(5)}%  ` +
       `missing ${String(missingWords.length).padStart(4)}/${String(srcWords.size).padStart(4)}  ` +
       `images ${outImages.size}/${srcImages.size}`
   );
 
   if (process.env.VERBOSE && missingWords.length) {
-    console.log(`    words:  ${missingWords.slice(0, 40).join(' ')}`);
+    console.log(`    words:  ${missingWords.slice(0, 60).join(' ')}`);
   }
   if (missingImages.length) {
     console.log(`    images: ${missingImages.slice(0, 10).join(', ')}`);

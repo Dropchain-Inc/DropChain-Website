@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
 ---
 
 <BaseLayout
@@ -8,7 +9,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <section class="legal dc-section">
     <div class="dc-container dc-container--narrow">
-      <h1>Marketplace Agreement</h1>
+      <h1>DropChain Marketplace Merchant Agreement - Summary</h1>
+      <p class="dc-lead legal__intro">This summary outlines the key aspects of the updated DropChain Marketplace Merchant Agreement. By signing the complete legal document, you commit to adhere to these terms and conditions as a Merchant on the DropChain Marketplace. &lt;div class="rich-text-block-6</p>
       <div class="dc-prose">
       <h2>Representations and Warranties:</h2>
       <p>You have the legal authority to enter the Agreement and sell your digital assets.</p>
@@ -41,10 +43,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div>
       <a href="documents/dropchain_marketplace_agreement_6-6-23-compressed.pdf" target="_blank">Read Full Marketplace Agreement</a>
       </div>
+      <p class="legal__doc">
+        <Button href="/documents/dropchain_marketplace_agreement_6-6-23-compressed.pdf" variant="secondary" icon="arrow">Read Full Marketplace Agreement</Button>
+      </p>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .legal h1 { margin-bottom: var(--dc-space-lg); }
+  .legal h1 { margin-bottom: var(--dc-space-md); }
+  .legal__intro { margin-bottom: var(--dc-space-lg); }
+  .legal__doc { margin-top: var(--dc-space-xl); }
 </style>
