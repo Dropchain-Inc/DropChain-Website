@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { DISCORD_URL, CONSOLE_URL } from '../data/navigation.js';
+---
+<BaseLayout title="Waitlist | DropChain" description="Join the DropChain CRM waitlist">
+  <section class="waitlist">
+    <div class="dc-container dc-container--narrow">
+      <p class="dc-eyebrow">Launching Q4 2025</p>
+      <h1>Join the DropChain Waitlist</h1>
+      <p class="dc-lead">
+        The DropChain CRM will launch in Q4 2025. We're so excited to share our hard
+        work with you. If you want to keep up with our progress, join the DropChain
+        Discord server.
+      </p>
+      <div class="waitlist__actions">
+        <Button href={DISCORD_URL}>Join the Discord</Button>
+        <Button href={CONSOLE_URL} variant="ghost" icon="arrow">Create an account</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .waitlist { padding-block: clamp(3.5rem, 10vw, 7rem); text-align: center; }
+  .waitlist h1 { margin-block: 0.6rem var(--dc-space-md); margin-inline: auto; }
+  .waitlist .dc-lead { margin-inline: auto; }
+  .waitlist__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: var(--dc-space-lg); }
+</style>

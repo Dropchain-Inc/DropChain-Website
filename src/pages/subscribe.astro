@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { DISCORD_URL, CONSOLE_URL } from '../data/navigation.js';
+
+const quotes = [
+  {
+    quote: "DropChain is now our go-to solution for building web3 apps. Every client we work with wants the assurance that we can undo mistakes made by us or our users. DropChain's flexibility makes it a perfect solution.",
+    name: 'Ryan Radomski',
+    role: 'CTO, Lambda Labs',
+    avatar: '/images/Group-361.avif',
+  },
+  {
+    quote: 'Dropchain saved us hundreds of developer hours when we built out the Odea creator token product. It gave us the time and the resources to focus on what we do best, helping artists!',
+    name: 'Will Preble',
+    role: 'CEO, Odea',
+    avatar: '/images/Group-362.avif',
+  },
+  {
+    quote: "DropChain as a web2 to web3 API bridge is very powerful because you don't need to worry about setting up a wallet, running or connecting to a node and/or indexer, and learning the intricacies of each blockchain.",
+    name: 'LogioTek',
+    role: 'Senior Developer',
+    avatar: '/images/algo.svg',
+  },
+];
+
+const tiers = [
+  { name: 'Basic', price: '$0', cadence: '/ mo', calls: '300 API Calls / month', blurb: "The most powerful web3 development suite, and it's all free.", cta: 'Get Started For Free' },
+  { name: 'Pro', price: '$29.99', cadence: '/ mo', calls: '40,000 API Calls / month', blurb: 'Best for developers looking to grow their app.', cta: 'Start Building', featured: true },
+  { name: 'Ultra', price: '$99.99', cadence: '/ mo', calls: '200,000 API Calls / month', blurb: 'The ultimate development suite for established apps ready to build the future.', cta: 'Build the Future' },
+];
+---
+
+<BaseLayout
+  title="Subscribe | DropChain"
+  description="Be the first to hear about every DropChain update, partnership and promo."
+>
+  <PageHero
+    center
+    eyebrow="Subscribe"
+    title="Stay up to date"
+    sub="Be the first to hear about every update, partnerships, and promos. Follow the journey."
+  >
+    <div class="signup">
+      <p class="signup__notice" role="status">
+        Newsletter signup is not connected yet. Join the Discord below and we will
+        keep you posted there in the meantime.
+      </p>
+      <div class="signup__actions">
+        <Button href={DISCORD_URL}>Join Discord</Button>
+      </div>
+      <p class="signup__small">
+        By subscribing you agree to our <a href="/privacy-policy">privacy policy</a>.
+      </p>
+    </div>
+  </PageHero>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>What creators say about DropChain</h2>
+      </header>
+      <ul class="quotes">
+        {quotes.map((item) => (
+          <li class="quote">
+            <blockquote>{item.quote}</blockquote>
+            <footer>
+              <img class="quote__avatar" src={item.avatar} alt="" loading="lazy" />
+              <span>
+                <span class="quote__name">{item.name}</span>
+                <span class="quote__role">{item.role}</span>
+              </span>
+            </footer>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Empowering Builders Everywhere</h2>
+        <p class="dc-lead">
+          Don't just take our word for it. DropChain is powering some of the most
+          innovative builders in web3. Join a growing community of those shaping the
+          future in our Discord channel.
+        </p>
+      </header>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Join the web3 revolution</h2>
+      </header>
+      <ul class="tiers">
+        {tiers.map((tier) => (
+          <li class:list={['tier', tier.featured && 'tier--featured']}>
+            {tier.featured && <span class="tier__badge">Recommended</span>}
+            <h3>{tier.name}</h3>
+            <p class="tier__price"><span>{tier.price}</span><small>{tier.cadence}</small></p>
+            <p class="tier__calls"><Icon name="check" size={16} />{tier.calls}</p>
+            <p class="tier__blurb">{tier.blurb}</p>
+            <Button href={CONSOLE_URL} variant={tier.featured ? 'primary' : 'ghost'} icon={false}>
+              {tier.cta}
+            </Button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand heading="Start Building" sub="Free to start. No credit card required." href={CONSOLE_URL} />
+</BaseLayout>
+
+<style>
+  .signup { max-width: 44rem; margin-inline: auto; margin-top: var(--dc-space-lg); }
+  .signup__notice {
+    padding: var(--dc-space-md);
+    border: 1px solid var(--dc-green);
+    border-radius: var(--dc-radius-sm);
+    background: #01f0891a;
+    font-size: var(--dc-text-sm);
+    line-height: 1.6;
+  }
+  .signup__actions { display: flex; justify-content: center; margin-top: var(--dc-space-md); }
+  .signup__small { color: var(--dc-text-dim); font-size: var(--dc-text-xs); margin-top: var(--dc-space-sm); }
+
+  .section-head { max-width: 62ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .quotes, .tiers { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--dc-space-md); }
+  .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .quote {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dc-space-md);
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .quote blockquote { margin: 0; font-size: var(--dc-text-sm); line-height: 1.7; flex: 1; }
+  .quote footer { display: flex; align-items: center; gap: 0.75rem; }
+  .quote footer > span { display: grid; gap: 0.15rem; }
+  .quote__avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; }
+  .quote__name { font-weight: 600; font-size: var(--dc-text-sm); }
+  .quote__role { color: var(--dc-text-muted); font-size: var(--dc-text-xs); }
+
+  .tiers { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+  .tier {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+  }
+  .tier--featured { border-color: var(--dc-green); box-shadow: 0 0 0 1px var(--dc-green-fade); }
+  .tier__badge {
+    position: absolute;
+    top: -0.75rem;
+    left: var(--dc-space-lg);
+    background-image: var(--dc-gradient);
+    color: var(--dc-text-inverse);
+    font-size: var(--dc-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.7rem;
+    border-radius: var(--dc-radius-pill);
+  }
+  .tier h3 { font-size: var(--dc-h4); }
+  .tier__price { display: flex; align-items: baseline; gap: 0.3rem; }
+  .tier__price span { font-size: 2rem; font-weight: 600; }
+  .tier__price small { color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+  .tier__calls { display: flex; align-items: center; gap: 0.5rem; font-size: var(--dc-text-sm); }
+  .tier__calls :global(svg) { color: var(--dc-green); flex: none; }
+  .tier__blurb { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; flex: 1; }
+  .tier :global(.btn) { margin-top: var(--dc-space-xs); }
+
+  @media (max-width: 900px) { .quotes, .tiers { grid-template-columns: 1fr; } }
+</style>

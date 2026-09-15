@@ -35,6 +35,8 @@ const REPLACED_BY_INLINE_SVG = new Set([
   'line-rounded-chevron-dark-elements-brix-templates.svg',
   'blob-brix-templates.svg',
   'Frame-397-1_1.avif',
+  'Frame-454.avif',
+  'Dropchain-Logo---Green.webp',
   'gradient-blue.png',
   'Frame-15-2.svg', 'Frame-16-1.svg', 'Frame-5.svg', 'Group-385.svg',
   'PlatformYouTube-ColorNegative.svg', 'akar-icons_discord-fill-1.svg',

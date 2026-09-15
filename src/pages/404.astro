@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+<BaseLayout title="Page Not Found | DropChain" description="The page you are looking for doesn't exist or has been moved." noindex>
+  <section class="notfound">
+    <div class="dc-container">
+      <p class="dc-eyebrow">404</p>
+      <h1>Page Not Found</h1>
+      <p class="dc-lead">The page you are looking for doesn't exist or has been moved.</p>
+      <Button href="/" icon="arrow">Go Back to Safety</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound { padding-block: clamp(4rem, 12vw, 9rem); text-align: center; }
+  .notfound h1 { margin-block: 0.5rem var(--dc-space-md); }
+  .notfound .dc-lead { margin-inline: auto; margin-bottom: var(--dc-space-lg); }
+</style>
