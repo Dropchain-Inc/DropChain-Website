@@ -3,24 +3,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 
+// The Webflow export linked raster versions of the logos and the first three
+// marks that it never actually exported, so those downloads 404 on the live
+// site too. Only formats that exist are offered here.
 const logos = [
-  { name: 'DropChain Green', file: '/images/DropChain-Green_1.svg', background: 'dark', formats: [['SVG', '/images/DropChain-Green_1.svg'], ['PNG', '/images/DropChain-Green.avif']] },
-  { name: 'DropChain Black', file: '/images/DropChain-Black.svg', background: 'light', formats: [['SVG', '/images/DropChain-Black.svg'], ['PNG', '/images/DropChain-Black.avif']] },
-  { name: 'DropChain White', file: '/images/DropChain-White.svg', background: 'dark', formats: [['SVG', '/images/DropChain-White.svg'], ['PNG', '/images/DropChain-White.avif']] },
+  { name: 'DropChain Green', file: '/images/DropChain-Green_1.svg', background: 'dark', formats: [['SVG', '/images/DropChain-Green_1.svg']] },
+  { name: 'DropChain Black', file: '/images/DropChain-Black.svg', background: 'light', formats: [['SVG', '/images/DropChain-Black.svg']] },
+  { name: 'DropChain White', file: '/images/DropChain-White.svg', background: 'dark', formats: [['SVG', '/images/DropChain-White.svg']] },
 ];
 
 const marks = [
-  { name: 'Icon 01', file: '/images/Frame-5.svg', formats: [['SVG', '/images/Frame-5.svg'], ['PNG', '/images/Frame-5.avif'], ['JPG', '/images/Frame-5_2.avif']] },
-  { name: 'Icon 02', file: '/images/Frame-4.svg', formats: [['SVG', '/images/Frame-4.svg'], ['PNG', '/images/Frame-4.avif'], ['JPG', '/images/Frame-4_1.avif']] },
-  { name: 'Icon 03', file: '/images/Frame-6.svg', formats: [['SVG', '/images/Frame-6.svg'], ['PNG', '/images/Frame-6.avif'], ['JPG', '/images/Frame-6_1.avif']] },
+  { name: 'Icon 01', file: '/images/Frame-5.svg', formats: [['SVG', '/images/Frame-5.svg'], ['JPG', '/images/Frame-5_2.avif']] },
+  { name: 'Icon 02', file: '/images/Frame-4.svg', formats: [['SVG', '/images/Frame-4.svg'], ['JPG', '/images/Frame-4_1.avif']] },
+  { name: 'Icon 03', file: '/images/Frame-6.svg', formats: [['SVG', '/images/Frame-6.svg'], ['JPG', '/images/Frame-6_1.avif']] },
   { name: 'Icon 04', file: '/images/Frame-7.svg', formats: [['SVG', '/images/Frame-7.svg'], ['PNG', '/images/Frame-5_1.avif'], ['JPG', '/images/Frame-7_1.avif']] },
   { name: 'Icon 05', file: '/images/Frame-8.svg', formats: [['SVG', '/images/Frame-8.svg'], ['PNG', '/images/Frame-8_1.avif'], ['JPG', '/images/Frame-8_2.avif']] },
   { name: 'Icon 06', file: '/images/Frame-9.svg', formats: [['SVG', '/images/Frame-9.svg'], ['PNG', '/images/Frame-9_1.avif'], ['JPG', '/images/Frame-9_2.avif']] },
 ];
 
 const headshots = [
-  { name: 'Carter Razink', file: '/images/Carter-1_1.avif', formats: [['PNG', '/images/Carter-1_1.avif'], ['JPG', '/images/Carter-1_2.avif']] },
-  { name: 'Nathaniel Thoreson', file: '/images/Nate-1_1.avif', formats: [['PNG', '/images/Nate-1_1.avif'], ['JPG', '/images/Nate-1_2.avif']] },
+  { name: 'Carter Razink', file: '/images/Carter-1_1.avif', formats: [['Portrait', '/images/Carter-1_1.avif'], ['Alternate', '/images/Carter-1_2.avif']] },
+  { name: 'Nathaniel Thoreson', file: '/images/Nate-1_1.avif', formats: [['Portrait', '/images/Nate-1_1.avif'], ['Alternate', '/images/Nate-1_2.avif']] },
 ];
 
 const palette = [

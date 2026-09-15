@@ -12,6 +12,7 @@
  * Usage: node scripts/build-legal-pages.mjs
  */
 import { readFile, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -42,11 +43,17 @@ const introOf = (html) => {
   return decode(between.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 };
 
-/** A "read the full document" PDF button placed after the rich-text block. */
+/**
+ * A "read the full document" PDF button placed after the rich-text block.
+ * Returns null when the target was never actually exported: the terms page
+ * links ../pdf/sample-3pp.pdf, which 404s on the live site too.
+ */
 const documentLinkOf = (html) => {
   const m = html.match(/<a\b[^>]*href="([^"]+\.pdf)"[^>]*>([\s\S]*?)<\/a>/i);
   if (!m) return null;
-  return { href: `/${m[1].replace(/^\/?documents\//, 'documents/')}`, label: decode(m[2].replace(/<[^>]+>/g, '')).trim() };
+  const file = m[1].replace(/^\.\.\//, '');
+  if (!existsSync(`${PAGES.replace('src/pages/', 'public/')}${file}`)) return null;
+  return { href: `/${file}`, label: decode(m[2].replace(/<[^>]+>/g, '')).trim() };
 };
 
 // Webflow appends this demo copy to every empty rich-text field.
@@ -65,7 +72,12 @@ const decode = (s) =>
 const escape = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 // "(#section)" markers point at anchors Webflow never generated.
-const clean = (s) => s.replace(/\s*\(#[a-zA-Z0-9_-]+\)/g, '').trim();
+const clean = (s) =>
+  s
+    .replace(/\s*\(#[a-zA-Z0-9_-]+\)/g, '')
+    // A relative PDF link Webflow never exported; it 404s on the live site too.
+    .replace(/\s*\.\.\/pdf\/[\w.-]+/g, '')
+    .trim();
 
 const isHeading = (line) => {
   const text = line.replace(/^\d+\.\s*/, '');
@@ -106,6 +118,8 @@ function fromRichText(html) {
     .replace(/<figure[\s\S]*?<\/figure>/gi, '');
   // A lone <strong> paragraph is a section heading in this content.
   out = out.replace(/<p>\s*<strong>([\s\S]*?)<\/strong>\s*<\/p>/gi, (_, t) => `<h2>${t.trim()}</h2>`);
+  // The document link is rendered separately as a button, so drop the inline copy.
+  out = out.replace(/<a\b[^>]*href="[^"]+\.pdf"[^>]*>[\s\S]*?<\/a>/gi, '');
   return out
     .split('\n')
     .map((l) => l.trim())

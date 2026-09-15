@@ -1,0 +1,50 @@
+---
+/**
+ * Placeholder for the five pages whose content lived in Webflow CMS
+ * collections. Every one of those collections exported with zero items and a
+ * `w-dyn-empty` state, so there is no content to rebuild. These pages keep
+ * their URLs (they are linked from the nav and carry whatever SEO they had)
+ * and say plainly that there is nothing here yet, rather than 404ing or
+ * showing an empty grid.
+ *
+ * Replace the body with real content, or a content collection, once the posts
+ * are recovered from Webflow.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from './PageHero.astro';
+import Button from './Button.astro';
+import { DISCORD_URL, DOCS_URL } from '../data/navigation.js';
+
+interface Props { title: string; description: string; eyebrow: string; heading: string; sub: string; empty: string; }
+const { title, description, eyebrow, heading, sub, empty } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <PageHero eyebrow={eyebrow} title={heading} sub={sub} />
+
+  <section class="dc-section--tight">
+    <div class="dc-container dc-container--narrow">
+      <div class="empty">
+        <p>{empty}</p>
+        <div class="empty__actions">
+          <Button href={DOCS_URL} variant="secondary" icon="arrow">Read the documentation</Button>
+          <Button href={DISCORD_URL} variant="ghost" icon={false}>Ask in the Discord</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .empty {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--dc-space-md);
+    padding: var(--dc-space-xl);
+    background: var(--dc-surface);
+    border: 1px dashed var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+  }
+  .empty p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.7; }
+  .empty__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+</style>
