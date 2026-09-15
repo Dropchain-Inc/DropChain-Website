@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Split from '../components/Split.astro';
+import LinkCards from '../components/LinkCards.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Pricing from '../components/Pricing.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL } from '../data/navigation.js';
+
+const steps = [
+  { n: '1', title: 'Capture Your Audience', blurb: 'Collect wallet and contact data from NFT or token claims, purchases, forms, uploads, or smart contract IDs.' },
+  { n: '2', title: 'View the Full Picture', blurb: "See every member of your community in a single dashboard. Track what they own, how they've engaged, and what they're doing across chains." },
+  { n: '3', title: 'Take Action', blurb: 'Send emails based on user behavior, NFT ownership, wallet activity, and more, with full segmentation and automation.' },
+];
+
+const gaps = [
+  { icon: '/images/Database.svg', problem: 'Fragmented Data', blurb: "Your audience lives across Discord, Twitter, OpenSea, and spreadsheets, but you can't see the whole picture.", answer: 'Unified Profiles' },
+  { icon: '/images/Wallet.svg', problem: 'Anonymous Wallets', blurb: "Without a way to connect emails and wallet addresses, you can't reach your holders.", answer: 'Wallet + Contact Matching' },
+  { icon: '/images/Chart_Mixed.svg', problem: 'No Real Growth Tools', blurb: "You can't track who's joining, who's leaving, or what drives engagement.", answer: 'Web3 Growth Analytics' },
+];
+
+const capabilities = [
+  { title: 'Unified Wallet + Contact Profiles', blurb: 'DropChain automatically links wallet addresses with email, social logins, and form data.' },
+  { title: 'Smart Segmentation', blurb: 'Filter and group users based on NFTs owned, token activity, form submissions, blockchain used, or any custom tags you assign.' },
+  { title: 'Real-Time On-Chain Tracking', blurb: 'See what your community is doing as it happens: mints, claims, trades, and staking activity across multiple blockchains, all in one view.' },
+  { title: 'Built-In Email Marketing', blurb: 'Send personalized, automated emails right from the CRM. Trigger campaigns by wallet behavior or launch one-time broadcasts in minutes.' },
+  { title: 'Custom Analytics Dashboards', blurb: 'Track growth, engagement, and campaign performance with visual dashboards you can customize for your team. No spreadsheets needed.' },
+  { title: 'Easy Lead Capture Tools', blurb: 'Capture wallet and email data from token claims, purchase pages, forms, and even existing contract IDs. Every interaction becomes a lead you can grow.' },
+];
+
+const sources = [
+  { title: 'NFT or Token Activity', blurb: 'Track who buys or transfers your NFTs or tokens. Turn every transaction into a contact you can reach.' },
+  { title: 'Forms and Lead Capture', blurb: "Use DropChain forms to capture emails, social logins, and more, even from users who don't have wallets yet." },
+  { title: 'Upload Existing Data', blurb: 'Drop in a CSV or paste a contract ID. Instantly turn your existing token holders or leads into fully segmented contacts.' },
+];
+
+const analytics = [
+  'Track new signups, NFT claims, or form completions',
+  'Monitor on-chain activity across wallets and chains',
+  "Measure who's opening emails, clicking links, and staying active",
+  'Segment by token held, last activity, blockchain used, and more',
+  'Spot drop-off points before your community goes quiet',
+];
+---
+
+<BaseLayout
+  title="CRM For Web3 Communities"
+  description="DropChain helps you capture, organize, and activate your entire community with powerful data. Import wallet and contact info, track on-chain behavior, and grow your audience."
+>
+  <PageHero
+    eyebrow="For Web3 Community Managers"
+    title="Your Web3 CRM, Built for Growth"
+    sub="DropChain helps you capture, organize, and activate your entire community with powerful data. Import wallet and contact info, track on-chain behavior, and use that insight to grow and engage your audience in ways no Web2 CRM can."
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+    <img class="hero-image" src="/images/Screenshot-2025-03-01-at-5.30.04-PM.png" alt="" loading="lazy" />
+  </PageHero>
+
+  <Testimonials />
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <h2 class="section-head">How to Start Managing Your Web3 Community</h2>
+      <ol class="steps">
+        {steps.map((step) => (
+          <li class="step">
+            <span class="step__n">{step.n}</span>
+            <h3>{step.title}</h3>
+            <p>{step.blurb}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Other CRMs Don't Work for Web3 Communities</h2>
+        <p class="dc-lead">
+          Web2 tools aren't built for tokens, wallets, or NFTs. It's holding your
+          community back.
+        </p>
+      </header>
+      <ul class="gaps">
+        {gaps.map((item) => (
+          <li>
+            <img src={item.icon} alt="" loading="lazy" />
+            <h3>{item.problem}</h3>
+            <p>{item.blurb}</p>
+            <p class="gaps__answer"><Icon name="check" size={16} />{item.answer}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Split
+    heading="Create and Automate Emails That Convert"
+    sub="Drag, drop, and customize campaigns that speak directly to each group. Want to welcome new NFT holders? Reward long-time token owners? Win back inactive wallets? You can do all of that in minutes without code."
+    image="/images/Screenshot-2025-03-30-at-3.39.52-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <Split
+    reverse
+    tight
+    heading="Know Your Community. Then Grow It."
+    sub="Web3 gives you data that Web2 marketers could only dream of: wallet connections, token ownership, real-time behavior across multiple blockchains. But most projects don't know how to use it. With one platform, you can collect that data, understand it, and act on it with personalized messaging and automated engagement. This isn't a contact list. It's your growth engine."
+    image="/images/Screenshot-2025-04-04-at-2.19.18-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <LinkCards heading="The Only CRM Built for Web3 Communities" items={capabilities} />
+
+  <Split
+    tight
+    heading="Capture Contacts From Anywhere"
+    image="/images/ChatGPT-Image-Apr-4-2025-02_32_11-PM.png"
+  >
+    <ul class="sources">
+      {sources.map((item) => (
+        <li>
+          <h3>{item.title}</h3>
+          <p>{item.blurb}</p>
+        </li>
+      ))}
+    </ul>
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <Split
+    reverse
+    tight
+    heading="Make Data-Backed Moves with Confidence"
+    sub="You shouldn't have to guess what's working. DropChain's analytics help you understand your community's growth, engagement, and trends at a glance."
+    image="/images/ChatGPT-Image-Mar-30-2025-07_51_43-PM.png"
+  >
+    <ul class="analytics">
+      {analytics.map((item) => <li><Icon name="check" size={16} />{item}</li>)}
+    </ul>
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <Split
+    tight
+    heading="Stop Manually Managing Your Community &amp; Start Growing"
+    sub="Most tools make community management reactive. DropChain gives you the data and automation to be proactive. You'll know who's new, who's engaged, who's slipping. Plus you'll have the power to act on it. Whether you're tracking DAO members, NFT holders, or event signups, this is the all-in-one system built for web3 relationships."
+    image="/images/ChatGPT-Image-Apr-6-2025-04_06_10-PM.png"
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
+  </Split>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <img class="closing" src="/images/ChatGPT-Image-Apr-6-2025-05_15_09-PM.png" alt="" loading="lazy" />
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Manage and Grow Your Web3 Community"
+    sub="DropChain shows you who your community is and helps you keep them active. Start for free and grow smarter. No credit card required."
+    cta="Get Started"
+    href={CONSOLE_URL}
+  />
+
+  <Pricing />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .hero-image { margin-top: var(--dc-space-xl); border-radius: var(--dc-radius-lg); }
+  .closing { width: 100%; border-radius: var(--dc-radius-lg); }
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .steps, .gaps, .sources, .analytics { list-style: none; margin: 0; padding: 0; }
+  .steps, .gaps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .step, .gaps li {
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .step__n {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-image: var(--dc-gradient);
+    color: var(--dc-text-inverse);
+    font-size: var(--dc-text-sm);
+    font-weight: 600;
+  }
+  .step h3, .gaps h3 { font-size: var(--dc-h5); }
+  .step p, .gaps p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; }
+  .gaps img { width: 30px; height: 30px; }
+  .gaps__answer { display: flex; align-items: center; gap: 0.5rem; color: var(--dc-green) !important; font-weight: 500; }
+
+  .sources { display: grid; gap: var(--dc-space-md); margin-top: var(--dc-space-sm); }
+  .sources h3 { font-size: var(--dc-text-base); font-weight: 600; margin-bottom: 0.2rem; }
+  .sources p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; }
+
+  .analytics { display: grid; gap: 0.6rem; margin-top: var(--dc-space-sm); }
+  .analytics li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+  .analytics :global(svg) { color: var(--dc-green); flex: none; margin-top: 0.2rem; }
+
+  @media (max-width: 900px) { .steps, .gaps { grid-template-columns: 1fr; } }
+</style>
