@@ -1,0 +1,179 @@
+---
+/**
+ * Shared layout for the DropChain solution pages (event NFTs, NFT loyalty),
+ * which run the same sequence of sections with different copy and imagery.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from './PageHero.astro';
+import Button from './Button.astro';
+import Split from './Split.astro';
+import LordIcon from './LordIcon.astro';
+import LogoStrip from './LogoStrip.astro';
+import CtaBand from './CtaBand.astro';
+import { CONSOLE_URL } from '../data/navigation.js';
+
+interface Step { icon: string; title: string; blurb: string; note: string; }
+interface UseCase { title: string; blurb: string; image: string; }
+interface Section { eyebrow: string; heading: string; body: string; image: string; }
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  hero: string;
+  heroSub: string;
+  stepsHeading: string;
+  steps: Step[];
+  useCasesHeading: string;
+  useCasesSub: string;
+  useCases: UseCase[];
+  build: Section;
+  onboarding: Section;
+}
+
+const {
+  title, description, eyebrow, hero, heroSub,
+  stepsHeading, steps, useCasesHeading, useCasesSub, useCases, build, onboarding,
+} = Astro.props;
+
+const trust = [
+  { title: 'One-Click Sign In', blurb: 'Simple user sign in with Google, Facebook, and Apple.' },
+  { title: 'No Gas Fees', blurb: 'Your users will never have to sign transactions or pay gas.' },
+  { title: 'Iron Clad Security', blurb: "Secured with DropChain's proprietary semi-private layer-1 tech." },
+  { title: '100% Compliant', blurb: 'Meets and exceeds all user protection regulations.' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHero eyebrow={eyebrow} title={hero} sub={heroSub}>
+    <div class="actions">
+      <Button href="/waitlist">Join the Waitlist</Button>
+      <Button href={CONSOLE_URL} variant="ghost" icon="arrow">Create Account</Button>
+    </div>
+  </PageHero>
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <h2 class="section-head">{stepsHeading}</h2>
+      <ol class="steps">
+        {steps.map((step) => (
+          <li class="step">
+            <LordIcon id={step.icon} size={42} />
+            <h3>{step.title}</h3>
+            <p>{step.blurb}</p>
+            <p class="step__note">{step.note}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>{useCasesHeading}</h2>
+        <p class="dc-lead">{useCasesSub}</p>
+      </header>
+      <ul class="cases">
+        {useCases.map((item) => (
+          <li class="case">
+            <img src={item.image} alt="" loading="lazy" />
+            <div class="case__body">
+              <h3>{item.title}</h3>
+              <p>{item.blurb}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Split eyebrow={build.eyebrow} heading={build.heading} sub={build.body} image={build.image}>
+    <div class="actions">
+      <Button href="/waitlist">Join the Waitlist</Button>
+      <Button href={CONSOLE_URL} variant="ghost" icon="arrow">Create Account</Button>
+    </div>
+  </Split>
+
+  <Split
+    reverse
+    tight
+    eyebrow={onboarding.eyebrow}
+    heading={onboarding.heading}
+    sub={onboarding.body}
+    image={onboarding.image}
+  >
+    <div class="actions">
+      <Button href="/waitlist">Join the Waitlist</Button>
+      <Button href="/sso" variant="ghost" icon="arrow">About Single Sign On</Button>
+    </div>
+  </Split>
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>The Most User Friendly Web3 Tools</h2>
+        <p class="dc-lead">DropChain has the best accessibility of any web3 tool on the market.</p>
+      </header>
+      <ul class="trust">
+        {trust.map((item) => (
+          <li>
+            <h3>{item.title}</h3>
+            <p>{item.blurb}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand heading="Get on the Waitlist" sub="Free to start. No credit card required." cta="Join the Waitlist" href="/waitlist" />
+
+  <LogoStrip title="Used by builders at the most innovative companies" />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .section-head { max-width: 62ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .steps, .cases, .trust { list-style: none; margin: 0; padding: 0; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .step h3 { font-size: var(--dc-h4); margin-top: 0.3rem; }
+  .step p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; }
+  .step__note { color: var(--dc-green); font-weight: 500; }
+
+  .cases { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .case {
+    display: flex;
+    flex-direction: column;
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    overflow: hidden;
+  }
+  .case img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .case__body { display: grid; gap: 0.35rem; padding: var(--dc-space-md); }
+  .case h3 { font-size: var(--dc-h5); }
+  .case p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.55; }
+
+  .trust { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--dc-space-lg); }
+  .trust h3 { font-size: var(--dc-h5); margin-bottom: 0.3rem; }
+  .trust p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; }
+
+  @media (max-width: 1000px) {
+    .cases, .trust { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 700px) {
+    .steps, .cases, .trust { grid-template-columns: 1fr; }
+  }
+</style>

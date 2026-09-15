@@ -34,6 +34,7 @@ const RICHTEXT_BOILERPLATE = /Static and dynamic content editing[\s\S]*?(?=<\/di
 const REPLACED_BY_INLINE_SVG = new Set([
   'line-rounded-chevron-dark-elements-brix-templates.svg',
   'blob-brix-templates.svg',
+  'Frame-397-1_1.avif',
   'gradient-blue.png',
   'Frame-15-2.svg', 'Frame-16-1.svg', 'Frame-5.svg', 'Group-385.svg',
   'PlatformYouTube-ColorNegative.svg', 'akar-icons_discord-fill-1.svg',

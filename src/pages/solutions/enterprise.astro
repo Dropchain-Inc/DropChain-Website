@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Button from '../../components/Button.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import Split from '../../components/Split.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { CONSOLE_URL } from '../../data/navigation.js';
+
+const BOOK_CALL = 'https://meet.brevo.com/dropchain/30-minute-meeting';
+
+const useCases = [
+  { lordicon: 'uqpazftn', title: 'Loyalty Program', blurb: 'Create custom loyalty programs for NFT holders.', href: '/solutions/nft-loyalty-program' },
+  { lordicon: 'zbdlroww', title: 'Events', blurb: 'Make unique POAP experiences or on-chain event tickets.', href: '/solutions/event-nfts' },
+  { lordicon: 'mecwbjnp', title: 'Blockchain-as-a-Service', blurb: 'Launch your own private or public blockchain.', href: '/network' },
+  { lordicon: 'gqdnbnwt', title: 'Exclusive Access', blurb: 'Create token-gated content for your subscribers or customers.' },
+];
+
+const sso = [
+  { title: 'Auto Generated User Wallets', blurb: 'DropChain automatically makes a wallet for the users who sign up for your web3 application.' },
+  { title: 'Easy Onboarding', blurb: 'Allow anyone to sign in or sign up to your web3 app using web2 credentials like Google & Apple.' },
+  { title: 'Axe Txns', blurb: 'Signing transactions is confusing. With DropChain, your users will never have to sign smart contracts.' },
+  { title: 'Simple Integration', blurb: 'Seamlessly integrate with no-code tools like Bubble and Wix. Add 5 lines of code to your programmed app.' },
+  { title: 'Grow your user base', blurb: "Make your app accessible to anyone. Skyrocket your web3 product's growth with DropChain SSO." },
+];
+---
+
+<BaseLayout
+  title="Enterprise"
+  description="DropChain is the best way to build blockchain apps to boost customer engagement and loyalty. Explore how DropChain can take your business to the next level."
+>
+  <PageHero
+    eyebrow="Enterprise"
+    title="DropChain Enterprise Solutions"
+    sub="Want to launch a custom blockchain app? Or launch your own blockchain? Not sure where to start? DropChain builds full-service blockchain apps for small and medium sized businesses. Book a call with our team to explore your options."
+  >
+    <div class="actions">
+      <Button href={BOOK_CALL}>Book a Call</Button>
+    </div>
+  </PageHero>
+
+  <LinkCards
+    heading="Most Popular Use Cases"
+    sub="From blockchain integrations with the most popular web3 ecosystems, to custom private blockchain support, DropChain has you covered."
+    items={useCases}
+    columns={4}
+  />
+
+  <Split
+    tight
+    eyebrow="1-Click Solutions"
+    heading="Start with one of our 1-Click Solutions"
+    sub="In a single click, you can create unique NFTs for your event attendees, customers, and fans to claim. Get started by creating an account."
+    image="/images/Screenshot-2024-03-08-at-12.09.26-PM_1.avif"
+  >
+    <div class="actions">
+      <Button href={CONSOLE_URL}>Get Started</Button>
+      <Button
+        href="https://claim.dropchain.network/claim/a0bdc73f-6175-4940-8ed7-abc5904bd8bc"
+        variant="ghost"
+        icon="arrow"
+      >See Example</Button>
+    </div>
+  </Split>
+
+  <Split
+    reverse
+    eyebrow="Single Sign On"
+    heading="Onboard Users in a Click"
+    image="/images/SSO-page.avif"
+  >
+    <ul class="sso">
+      {sso.map((item) => (
+        <li>
+          <h3>{item.title}</h3>
+          <p>{item.blurb}</p>
+        </li>
+      ))}
+    </ul>
+    <div class="actions">
+      <Button href="/sso" variant="ghost" icon="arrow">Read More</Button>
+    </div>
+  </Split>
+
+  <CtaBand
+    heading="Talk to our team"
+    sub="Book thirty minutes and we will map out what DropChain can do for your business."
+    cta="Book a Call"
+    href={BOOK_CALL}
+  />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .sso { display: grid; gap: var(--dc-space-md); list-style: none; margin: var(--dc-space-sm) 0 0; padding: 0; }
+  .sso h3 { font-size: var(--dc-text-base); font-weight: 600; margin-bottom: 0.2rem; }
+  .sso p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; }
+</style>
