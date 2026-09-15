@@ -177,10 +177,11 @@ let failures = 0;
 
 for (const slug of targets.sort()) {
   const source = `${EXPORT}${slug}.html`;
-  const built = `${DIST}${slug}.html`;
+  // The build emits directories (pricing/index.html), with 404 as a bare file.
+  const built = [`${DIST}${slug}/index.html`, `${DIST}${slug}.html`].find((p) => existsSync(p));
 
   if (!existsSync(source)) { console.log(`- ${slug.padEnd(46)} no Webflow source, skipped`); continue; }
-  if (!existsSync(built)) { console.log(`! ${slug.padEnd(46)} NOT BUILT`); failures++; continue; }
+  if (!built) { console.log(`! ${slug.padEnd(46)} NOT BUILT`); failures++; continue; }
 
   const [srcHtml, outHtml] = await Promise.all([readFile(source, 'utf8'), readFile(built, 'utf8')]);
   const srcContent = contentOf(srcHtml);

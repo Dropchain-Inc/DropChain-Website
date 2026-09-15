@@ -1,11 +1,98 @@
 ---
-import CollectionPage from '../components/CollectionPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { DISCORD_URL, DOCS_URL } from '../data/navigation.js';
+import faq from '../data/faq.json';
 ---
-<CollectionPage
+
+<BaseLayout
   title="FAQ | DropChain Official"
   description="DropChain enables builders to easily create user-friendly web3 apps. Learn about the DropChain API, SSO, Marketplace, and more."
-  eyebrow="FAQ"
-  heading="Frequently Asked Questions"
-  sub="Answers about the DropChain API, Single Sign On, the Marketplace and more."
-  empty="There are no questions published here yet. The documentation answers most of what comes up, and the Discord covers the rest."
-/>
+>
+  <PageHero
+    eyebrow="FAQ"
+    title="Frequently Asked Questions"
+    sub="Answers about the DropChain API, Single Sign On, the Marketplace and the DropChain Network."
+  />
+
+  <section class="dc-section--tight">
+    <div class="dc-container dc-container--narrow">
+      <ul class="faq">
+        {faq.map((item, i) => (
+          <li>
+            <details open={i === 0}>
+              <summary>
+                <span>{item.question}</span>
+                <span class="faq__marker" aria-hidden="true"></span>
+              </summary>
+              <div class="faq__answer">
+                <p>{item.answer}</p>
+                {item.link && (
+                  <a href={item.link.href} target="_blank" rel="noopener noreferrer">{item.link.label}</a>
+                )}
+              </div>
+            </details>
+          </li>
+        ))}
+      </ul>
+
+      <div class="faq__more">
+        <p class="dc-muted">Still stuck? The documentation goes deeper, and the Discord is the fastest way to reach a person.</p>
+        <div class="faq__actions">
+          <Button href={DOCS_URL} variant="secondary" icon="arrow">Read the documentation</Button>
+          <Button href={DISCORD_URL} variant="ghost" icon={false}>Ask in the Discord</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  .faq { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+  .faq details {
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    overflow: hidden;
+  }
+  .faq details[open] { border-color: var(--dc-green); }
+  .faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--dc-space-md);
+    padding: var(--dc-space-md) var(--dc-space-lg);
+    cursor: pointer;
+    list-style: none;
+    font-size: var(--dc-text-base);
+    font-weight: 500;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary:hover { color: var(--dc-green); }
+
+  .faq__marker { position: relative; width: 14px; height: 14px; flex: none; }
+  .faq__marker::before,
+  .faq__marker::after {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto 0;
+    height: 2px;
+    background: var(--dc-green);
+    border-radius: 2px;
+    transition: rotate var(--dc-transition);
+  }
+  .faq__marker::after { rotate: 90deg; }
+  .faq details[open] .faq__marker::after { rotate: 0deg; }
+
+  .faq__answer { padding: 0 var(--dc-space-lg) var(--dc-space-lg); }
+  .faq__answer p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.75; }
+  .faq__answer a { display: inline-block; margin-top: 0.75rem; font-size: var(--dc-text-sm); font-weight: 500; }
+
+  .faq__more { margin-top: var(--dc-space-2xl); }
+  .faq__more p { font-size: var(--dc-text-sm); }
+  .faq__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+</style>

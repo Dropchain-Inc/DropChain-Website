@@ -26,7 +26,7 @@ export const testimonials = [
     role: 'Business Owner, Restaurateur',
   },
   {
-    quote: 'DropChain fundamentally changed our user-adoption strategy... We cannot fulfill our mission without making the platform easy to use and DropChain will help us with that.',
+    quote: 'DropChain fundamentally changed our user-adoption strategy. Our ultimate goal is to make content creation collaborative and profitable for creators and their audience. We cannot fulfill our mission without making the platform easy to use and DropChain will help us with that.',
     name: 'Christain Casini',
     role: 'CEO at NiftGen',
   },

@@ -1,0 +1,58 @@
+[
+  {
+    "question": "How does DropChain handle private keys?",
+    "answer": "The DropChain SSO handles all aspects of wallet management for the end user. This includes generating private/public key pairs, subsidizing transaction fees, and managing private keys for the end user. It aims to be the start of an end user's journey to full self-custody. Users may choose to send their assets to a sel-custody wallet on the Algorand at any time. Self-custody to other blockchains coming soon.",
+    "link": {
+      "href": "#",
+      "label": "Docs"
+    }
+  },
+  {
+    "question": "What is the DropChain SSO?",
+    "answer": "The DropChain SSO is a tool that simplifies the web3 adoption experience for end users. It enables anyone to create a web3 wallet in once click by signing into google. It handles all aspects of wallet management for the end user. Integrating the DropChain SSO into your product allows users without a wallet or any technical knowledge to sign up to your app.",
+    "link": {
+      "href": "#",
+      "label": "Docs"
+    }
+  },
+  {
+    "question": "What is the DropChain Marketplace?",
+    "answer": "The DropChain Marketplace is an NFT Marketplace that allows your customers to purchase NFTs with a credit card or crypto. When purchased, NFTs become available in the DropChain wallet and in any related DropChain-Powered apps. Open DropChain Marketplace.",
+    "link": {
+      "href": "#",
+      "label": "Docs"
+    }
+  },
+  {
+    "question": "What is the DropChain API?",
+    "answer": "The DropChain API is a development tool that allows developers to easily add web3 functionality to their traditional web2 applications. It enables developers to tap into prebuilt smart contracts using JSON payloads, reducing their time to market by 90%.",
+    "link": {
+      "href": "#",
+      "label": "Docs"
+    }
+  },
+  {
+    "question": "What is the DropChain Network?",
+    "answer": "The DropChain Network is a semi-private layer 1 blockchain network, similar to Ethereum and Algorand Networks. It's designed to simplify the web3 experience for end users and developers, functioning similarly to a layer 2 blockchain, enabling the import and export of assets to other public chains.",
+    "link": {
+      "href": "#",
+      "label": "Docs"
+    }
+  },
+  {
+    "question": "As a private blockchain, can DropChain admins change or fork the chain?",
+    "answer": "DropChain Inc. technically has control over the blockchain. If a major hack or scam negatively impacts the ecosystem. The DropChain team can intervene through asset recovery or a chain rollback. However, intervention will always be a last resort. The DropChain team is committed to minimizing interferences.",
+    "link": {
+      "href": "#",
+      "label": "Docs"
+    }
+  },
+  {
+    "question": "Will there be a DropChain Token?",
+    "answer": "No. The DropChain team has no plans or interest in launching a cryptocurrency. We are focused on building tools that allow app creators to delight customers.",
+    "link": {
+      "href": "#",
+      "label": "Docs"
+    }
+  }
+]

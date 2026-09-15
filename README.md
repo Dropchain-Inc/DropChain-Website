@@ -14,6 +14,20 @@ npm run preview  # serve the build
 
 Node 22 or newer.
 
+## Where the content came from
+
+Most pages were rebuilt from the static Webflow export, kept at
+`dropchain-6028cb.webflow/` (gitignored). That export came out with its CMS
+collections **empty**, so the blog posts and FAQ entries are not in it. Those
+were scraped from the hosted site instead and now live in `src/data/`:
+
+- `src/data/posts/` : 44 blog posts, images in `public/images/posts/`
+- `src/data/faq.json` : 7 FAQ entries
+
+`academy`, `guides` and `case-studies` are views over the same post collection.
+Guides and Case Studies are filtered by category, which is why their counts (15
+and 3) match the old site exactly.
+
 ## How it is put together
 
 ```
@@ -64,6 +78,9 @@ Everything the site needs is in this repo:
 | `node scripts/verify-content.mjs` | Diffs every built page against its Webflow source and reports missing copy or images |
 | `node scripts/outline.mjs --text <slug>` | Dumps a source page's copy, images, links and icon ids |
 | `node scripts/check-slugs.mjs` | Confirms every URL the old Webflow site served still resolves |
+| `node scripts/scrape-posts.mjs` | Re-pulls the blog posts and their images from the live Webflow site |
+| `node scripts/scrape-faq.mjs` | Re-pulls the FAQ entries from the live Webflow site |
+| `node scripts/check-drift.mjs` | Diffs the live Webflow site against the static export |
 | `node scripts/audit.mjs` | Reports how much real content each exported page has |
 | `node scripts/build-legal-pages.mjs` | Regenerates the five legal pages from the export |
 | `node scripts/recolor-icons.mjs` | Recolours the vendored Lottie icons to the brand palette |
@@ -91,16 +108,8 @@ nav drawer.
   Webflow's own endpoint. Rather than fail silently, each page now shows a
   visible notice and routes people to email or Discord. Wiring these to a
   serverless function is outstanding work.
-- **Blog posts at `/post/<slug>` are not in the rebuild and will 404.** The CMS
-  collections exported empty, so those URLs cannot be recovered from the export.
-  Two are linked from the API page
-  (`/post/super-algorand-chooses-dropchain`, `/post/niftgen-x-dropchain`); there
-  are likely more. Export the full list from Webflow before the account closes.
-- **Five pages have no content.** `academy`, `guides`, `changelog`,
-  `case-studies` and `frequently-asked-questions-faq` were Webflow CMS
-  collections that exported with zero items. They exist as placeholders that
-  keep their URLs. The posts need to be recovered from Webflow before it is
-  switched off.
+- **`changelog` has no content.** Its CMS collection is genuinely empty on the
+  live site, so the page stays a placeholder that keeps its URL.
 - **Source typos were corrected**, for example "Singe Sign On", "White Lable",
   "Tesnet", "Effortlesly". They are listed in `scripts/verify-content.mjs`.
 - **The Termly cookie consent banner was not carried over.** The old site loaded
