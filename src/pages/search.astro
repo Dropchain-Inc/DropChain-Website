@@ -1,0 +1,60 @@
+---
+/**
+ * Webflow provided hosted site search, which has no equivalent on a static
+ * build. The URL is kept so existing links do not 404, and it points at the
+ * places that can actually answer a query.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { DOCS_URL, DISCORD_URL } from '../data/navigation.js';
+
+const destinations = [
+  { label: 'Capabilities', href: '/automation' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'API reference', href: '/api' },
+  { label: 'SDKs', href: '/sdk/python' },
+  { label: 'Single Sign On', href: '/sso' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+<BaseLayout
+  title="Search | DropChain"
+  description="Find your way around DropChain."
+  noindex
+>
+  <section class="search">
+    <div class="dc-container dc-container--narrow">
+      <h1>Search</h1>
+      <p class="dc-lead">
+        Site search is not available right now. The documentation covers the API, SDKs
+        and guides in full, and the Discord is the fastest way to reach a person.
+      </p>
+      <div class="search__actions">
+        <Button href={DOCS_URL}>Search the documentation</Button>
+        <Button href={DISCORD_URL} variant="ghost" icon={false}>Ask in the Discord</Button>
+      </div>
+
+      <h2>Popular destinations</h2>
+      <ul class="search__links">
+        {destinations.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .search { padding-block: clamp(3rem, 8vw, 5rem); }
+  .search h1 { margin-bottom: var(--dc-space-md); }
+  .search h2 { font-size: var(--dc-h5); margin-block: var(--dc-space-2xl) var(--dc-space-md); }
+  .search__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-lg); }
+  .search__links { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+  .search__links a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-pill);
+    color: var(--dc-text);
+    font-size: var(--dc-text-sm);
+  }
+  .search__links a:hover { border-color: var(--dc-green); color: var(--dc-green); }
+</style>

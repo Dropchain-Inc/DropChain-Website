@@ -168,8 +168,8 @@ const trusted = [
   .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-lg); }
   .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
   .section-head .dc-lead { margin-top: var(--dc-space-sm); }
-  .section-head--with-art { display: flex; align-items: center; justify-content: space-between; gap: var(--dc-space-lg); max-width: none; }
-  .section-head--with-art img { width: 200px; height: auto; }
+  .section-head--with-art { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--dc-space-lg); max-width: none; }
+  .section-head--with-art img { width: min(200px, 45vw); height: auto; }
 
   .strip__title { font-size: var(--dc-h6); color: var(--dc-text-muted); text-align: center; margin-bottom: var(--dc-space-lg); }
   .strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--dc-space-xl); list-style: none; margin: 0; padding: 0; }

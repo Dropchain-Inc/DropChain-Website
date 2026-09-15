@@ -1,0 +1,30 @@
+---
+/**
+ * The landing step of the NFT claim flow. In the export this page is a single
+ * heading: the claim widget itself lives on claim.dropchain.network.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+<BaseLayout
+  title="Claim Your Free NFT From DropChain"
+  description="Claim your free NFT from DropChain."
+  noindex
+>
+  <section class="claim">
+    <div class="dc-container dc-container--narrow">
+      <h1>Claim Your Free NFT From DropChain!</h1>
+      <p class="dc-lead">
+        Claims are handled on the DropChain claim site. Open it to sign in with Google,
+        Apple, or Facebook and collect your NFT. No wallet needed.
+      </p>
+      <Button href="https://claim.dropchain.network/" icon="arrow">Open the claim page</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .claim { padding-block: clamp(4rem, 12vw, 8rem); text-align: center; }
+  .claim h1 { margin-inline: auto; margin-bottom: var(--dc-space-md); }
+  .claim .dc-lead { margin-inline: auto; margin-bottom: var(--dc-space-lg); }
+</style>

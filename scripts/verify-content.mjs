@@ -24,7 +24,8 @@ const EXPORT = `${root}dropchain-6028cb.webflow/`;
 const DIST = `${root}dist/`;
 
 // Containers holding site chrome in the export, matched on their class names.
-const CHROME_CLASSES = /\b(?:navigation-wrap[\w-]*|navigation-2|footer-dark|footer-03-div|w-nav)\b/;
+const CHROME_CLASSES =
+  /\b(?:navigation-wrap[\w-]*|navigation-2|navbar-logo-left[\w-]*|navbar-wrapper[\w-]*|nav-menu-wrapper[\w-]*|navbar-product[\w-]*|fn-navbar[\w-]*|fn-dorpdown[\w-]*|footer-dark|footer-03-div|w-nav)\b/;
 
 // Webflow appends this demo copy to every rich-text field.
 const RICHTEXT_BOILERPLATE = /Static and dynamic content editing[\s\S]*?(?=<\/div>)/gi;
@@ -35,6 +36,8 @@ const REPLACED_BY_INLINE_SVG = new Set([
   'line-rounded-chevron-dark-elements-brix-templates.svg',
   'blob-brix-templates.svg',
   'arrow-right.svg',
+  'material-symbols_cookie-outline.svg',
+  'Frame-32-3_1.webp',
   'Frame-397-1_1.avif',
   'Frame-454.avif',
   'Dropchain-Logo---Green.webp',
@@ -53,42 +56,52 @@ const REPLACED_BY_INLINE_SVG = new Set([
 
 // Copy that is deliberately absent from the rebuild.
 //
-// Webflow rendered a form's success and error states as hidden markup on every
-// page carrying a form. The rebuilt forms are not wired to a mailbox yet and say
-// so plainly, so those states have nothing to describe. "No items found" is the
-// empty-state text of CMS collections that exported with zero items.
+// These are scoped, not global. An earlier version excluded common words like
+// "build", "read" and "contract" on every page, which meant a page that dropped
+// a whole section about smart contracts would still have scored clean.
+
+// Real misspellings in the source copy, corrected on purpose. Safe to exclude
+// everywhere because none of them are words that could appear legitimately.
+const CORRECTED_TYPOS = new Set([
+  'agreeding', 'privacacy', 'tesnet', 'singe', 'lable', 'convienence',
+  "dopchain's", 'effortlesly', 'odevelopers', 'solidiy', 'javasscript',
+  'whay', 'opprotunities', 'businessdays', 'transactionfinality', 'asingle',
+  "crm's", "cater's", 'dropcain', 'stated',
+]);
+
+// Webflow rendered a form's success and error states as hidden markup. The
+// rebuilt forms are not wired to a mailbox and say so, so those states have
+// nothing to describe. Only excluded on pages whose source actually had a form.
 const FORM_STATE_COPY = [
   'thank', 'thanks', 'joining', 'submission', 'been', 'received', 'oops',
   'something', 'went', 'wrong', 'while', 'submitting', 'form', 'congratulations',
-  "you're", 'functional', 'into', 'rest', 'items', 'found',
-  'reaching', 'shortly', 'appreciate', 'patience', 'continue', 'build',
+  "you're", 'functional', 'reaching', 'shortly', 'appreciate', 'patience',
 ];
 
-// Typos in the source copy, corrected on purpose. Keep this list and the
-// correction in the page content in step.
-const CORRECTED_TYPOS = [
-  'agreeding', 'privacacy', 'tesnet', 'singe', 'lable', 'convienence',
-  "dopchain's", 'effortlesly', 'odevelopers', 'solidiy', 'javasscript',
-  'whay', 'focused', 'sent', 'products', 'signup', 'read', 'make',
-  'businessdays', 'manually', 'include', 'appypie', 'call', 'starting',
-  'transactionfinality', 'opprotunities', 'odevelopers', "crm's",
-];
+// The empty-state text of CMS collections that exported with zero items.
+// Only excluded on pages whose source actually had such a collection.
+const EMPTY_COLLECTION_COPY = ['items', 'found'];
 
-// The export carries an older three-plan pricing block ("Choose your DropChain
-// plan", "Smart Contract Library Early Access", "Joint Marketing Support") that
-// the live site hides behind the current four-plan block. Verified in the
-// browser on both the homepage and the pricing page; not carried over.
+// The export carries an older three-plan pricing block the live site hides
+// behind the current four-plan block (verified in the browser on the homepage
+// and the pricing page). Only excluded on pages that actually carry it.
 const HIDDEN_PRICING_BLOCK = [
   'choose', 'year', 'cancel', 'paid', 'tiers', 'have', 'trial', 'popular',
   'smart', 'contract', 'library', 'early', 'joint', 'become', 'full',
   'card', 'required',
 ];
 
-const INTENTIONALLY_OMITTED = new Set([
-  ...FORM_STATE_COPY,
-  ...CORRECTED_TYPOS,
-  ...HIDDEN_PRICING_BLOCK,
-]);
+/** Builds the exclusion set for one page from what its source actually contains. */
+function omissionsFor(sourceHtml) {
+  const omitted = new Set(CORRECTED_TYPOS);
+  // Webflow splits headings across tags, so match on the stripped text.
+  const flat = decode(strip(sourceHtml)).replace(/\s+/g, ' ');
+
+  if (/<form\b/i.test(sourceHtml)) for (const w of FORM_STATE_COPY) omitted.add(w);
+  if (/w-dyn-empty/.test(sourceHtml)) for (const w of EMPTY_COLLECTION_COPY) omitted.add(w);
+  if (/Choose your DropChain plan/i.test(flat)) for (const w of HIDDEN_PRICING_BLOCK) omitted.add(w);
+  return omitted;
+}
 
 /** Removes every element whose opening tag matches `test`, honouring nesting. */
 function removeElements(html, test) {
@@ -174,9 +187,8 @@ for (const slug of targets.sort()) {
 
   const srcWords = words(srcContent);
   const outWords = words(outHtml);
-  const missingWords = [...srcWords].filter(
-    (w) => !outWords.has(w) && !INTENTIONALLY_OMITTED.has(w)
-  );
+  const omitted = omissionsFor(srcHtml);
+  const missingWords = [...srcWords].filter((w) => !outWords.has(w) && !omitted.has(w));
 
   const srcImages = images(srcContent);
   const outImages = images(outHtml);

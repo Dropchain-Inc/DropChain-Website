@@ -1,0 +1,106 @@
+---
+/**
+ * A Webflow staging page. Its only real content is the Basic/Pro/Ultra tier
+ * table (also on /subscribe), a builder logo row, and two leftover "Heading"
+ * placeholders that are not reproduced. Kept because it holds a live URL.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Pricing from '../components/Pricing.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL } from '../data/navigation.js';
+
+const tiers = [
+  { name: 'Basic', price: '$0', cadence: '/ mo', calls: '300 API Calls / month', blurb: "The most powerful web3 development suite, and it's all free.", cta: 'Get Started For Free' },
+  { name: 'Pro', price: '$29.99', cadence: '/ mo', calls: '40,000 API Calls / month', blurb: 'Best for developers looking to grow their app.', cta: 'Start Building', featured: true },
+  { name: 'Ultra', price: '$99.99', cadence: '/ mo', calls: '200,000 API Calls / month', blurb: 'The ultimate development suite for established apps ready to build the future.', cta: 'Build the Future' },
+];
+
+const builders = [
+  { src: '/images/lambda.svg', alt: 'Lambda' },
+  { src: '/images/Odea.svg', alt: 'Odea' },
+  { src: '/images/MATTY-Platform_1.avif', alt: 'Matty Platform' },
+  { src: '/images/Algopatties-logo_1.avif', alt: 'AlgoPatties' },
+  { src: '/images/Group_1.avif', alt: 'DropChain builder' },
+];
+---
+
+<BaseLayout title="Sandbox | DropChain" description="Join the web3 revolution with DropChain." noindex>
+  <PageHero eyebrow="Sandbox" title="Join the web3 revolution" sub="Start building on DropChain.">
+    <div class="actions"><Button href={CONSOLE_URL}>Start Building</Button></div>
+  </PageHero>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <ul class="tiers">
+        {tiers.map((tier) => (
+          <li class:list={['tier', tier.featured && 'tier--featured']}>
+            {tier.featured && <span class="tier__badge">Recommended</span>}
+            <h2>{tier.name}</h2>
+            <p class="tier__price"><span>{tier.price}</span><small>{tier.cadence}</small></p>
+            <p class="tier__calls"><Icon name="check" size={16} />{tier.calls}</p>
+            <p class="tier__blurb">{tier.blurb}</p>
+            <Button href={CONSOLE_URL} variant={tier.featured ? 'primary' : 'ghost'} icon={false}>{tier.cta}</Button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <ul class="builders">
+        {builders.map((logo) => <li><img src={logo.src} alt={logo.alt} loading="lazy" /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <Pricing />
+
+  <CtaBand heading="Start Building" sub="Free to start. No credit card required." href={CONSOLE_URL} />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; gap: 0.75rem; margin-top: var(--dc-space-lg); }
+  .tiers, .builders { list-style: none; margin: 0; padding: 0; }
+  .tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); align-items: start; }
+  .tier {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+  }
+  .tier--featured { border-color: var(--dc-green); box-shadow: 0 0 0 1px var(--dc-green-fade); }
+  .tier__badge {
+    position: absolute;
+    top: -0.75rem;
+    left: var(--dc-space-lg);
+    background-image: var(--dc-gradient);
+    color: var(--dc-text-inverse);
+    font-size: var(--dc-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.7rem;
+    border-radius: var(--dc-radius-pill);
+  }
+  .tier h2 { font-size: var(--dc-h4); }
+  .tier__price { display: flex; align-items: baseline; gap: 0.3rem; }
+  .tier__price span { font-size: 2rem; font-weight: 600; }
+  .tier__price small { color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
+  .tier__calls { display: flex; align-items: center; gap: 0.5rem; font-size: var(--dc-text-sm); }
+  .tier__calls :global(svg) { color: var(--dc-green); flex: none; }
+  .tier__blurb { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; flex: 1; }
+
+  .builders { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--dc-space-xl); }
+  .builders img { height: 32px; width: auto; opacity: 0.7; filter: grayscale(1); }
+  .builders li:hover img { opacity: 1; filter: grayscale(0); }
+
+  @media (max-width: 900px) { .tiers { grid-template-columns: 1fr; } }
+</style>

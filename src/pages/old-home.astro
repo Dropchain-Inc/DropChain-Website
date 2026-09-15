@@ -1,0 +1,269 @@
+---
+/**
+ * The previous DropChain homepage, positioned around NFT distribution rather
+ * than the CRM. It is superseded by `/` but kept because it still holds its
+ * own URL and copy. Do not rename the file: that changes a live URL.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import LinkCards from '../components/LinkCards.astro';
+import LogoStrip from '../components/LogoStrip.astro';
+import DiscordBand from '../components/DiscordBand.astro';
+import Pricing from '../components/Pricing.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL, DOCS_URL } from '../data/navigation.js';
+
+const promises = [
+  { title: 'Do it Yourself', blurb: 'Coding is really hard. Build on blockchain and distribute NFTs with 0 code.' },
+  { title: 'Anyone Can Join In', blurb: 'Anyone can claim your NFTs with a conventional web2 login, with no wallet required.' },
+  { title: 'No Gas Fees', blurb: 'Gas fees are complicated and expensive. With DropChain, gas fees are free forever.' },
+];
+
+const products = [
+  {
+    badge: 'New',
+    title: 'DropChain Connect',
+    blurb: 'Integrate public blockchain functionality with just a link. Send email campaigns to your community.',
+    time: 'Takes 5 Minutes',
+    tags: ['Donations', 'Gated Communities', 'Payments', 'Claiming NFTs'],
+    image: '/images/Frame-73-2_1.avif',
+    href: CONSOLE_URL,
+  },
+  {
+    title: 'NFT Claim Pages',
+    blurb: 'Mint NFTs in seconds with a simple form submission. Literally anyone can claim your NFT with 0 gas fees using Google, Facebook, or Apple sign in.',
+    time: 'Takes 2 Minutes',
+    tags: ['Donations', 'Ticketing', 'Loyalty Programs', 'Gated Content'],
+    href: CONSOLE_URL,
+  },
+  {
+    title: 'NFT Experiences',
+    blurb: 'Mint NFTs by submitting a form. Distribute your NFTs as tickets, club memberships, or exclusive content access.',
+    time: 'Takes 5 Minutes',
+    href: CONSOLE_URL,
+  },
+  {
+    title: 'Single Sign On',
+    blurb: 'Onboard users in seconds with Apple, Google, Facebook authentication. No wallet required.',
+    time: 'Takes 5 Minutes',
+    href: '/sso',
+  },
+  {
+    title: 'JavaScript & Python SDK',
+    blurb: 'Any developer can build web3 apps without any specialized skills.',
+    tags: ['Getting Started', 'Python SDK', 'JavaScript SDK'],
+    href: DOCS_URL,
+  },
+  {
+    title: 'No-Code Plugin',
+    blurb: 'Build full web3 apps, games, and tools no-code. DropChain works with Bubble, FlutterFlow, Webflow, and other no-code platforms.',
+    time: 'Takes 20 Minutes',
+    image: '/images/SSO-page_1.avif',
+    href: '/no-code',
+  },
+];
+
+const benefits = [
+  { lordicon: 'kzrjvkoe', title: 'Auto Generated User Wallets for Easy Onboarding', blurb: 'DropChain automatically creates a wallet for users using Google, Apple, or Facebook credentials.', image: '/images/SSO-page.avif', href: '/sso' },
+  { lordicon: 'xzalkbkz', title: 'Cutting Edge Security', blurb: 'The blockchain can be risky for new users. Our custom Layer-1 blockchain protects you and your customers.' },
+  { lordicon: 'wyqtxzeh', title: 'No Gas Fees, Ever', blurb: 'With DropChain, your users will never have to pay gas fees or sign complex transactions.' },
+  { lordicon: 'xpmpzxpk', title: 'One-Click Solutions', blurb: 'Seamlessly integrate web3 into your business in under 90 seconds with one-click solutions.' },
+  { lordicon: 'zrkkrrpl', title: 'Pre-Made Smart Contracts', blurb: 'Building smart contracts is hard and risky. We have a full library of pre-made contracts for you.' },
+];
+
+const chains = ['Algorand', 'ADA', 'POLYGON', 'base-1', 'VECHAIN', 'eTH', 'ripple-1'];
+const frameworks = ['BUBBLE', 'NODE-JS', 'PYTHON', 'CSHARP', 'JS', 'FLUTTER-FLOW'];
+---
+
+<BaseLayout
+  title="DropChain | Grow Your NFT Community"
+  description="Distribute NFTs with real utility to your customers or community, with no wallet or blockchain experience required. Then activate your community through custom email campaigns."
+>
+  <PageHero
+    eyebrow="Creators | Entrepreneurs | Developers"
+    title="Distribute the world's most user friendly NFTs"
+    sub="Distribute NFTs with real utility to your customers or community, with no wallet or blockchain experience required. Then, activate your community through custom email campaigns."
+  >
+    <div class="actions">
+      <Button href={CONSOLE_URL}>Get Started For Free</Button>
+      <Button
+        href="https://claim.dropchain.network/claim/ad511153-407e-444c-b89d-e6621e10c084"
+        variant="ghost"
+        icon="arrow"
+      >Try The NFT Demo Now</Button>
+    </div>
+  </PageHero>
+
+  <LogoStrip />
+
+  <LinkCards items={promises} />
+
+  <CtaBand
+    heading="Start for free, then enjoy your first month for $1"
+    sub="Try DropChain free, no credit card required."
+    cta="Start Free Trial"
+    href={CONSOLE_URL}
+  />
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Blockchain Can't Get Any Easier</h2>
+        <p class="dc-lead">
+          DropChain enables creators and entrepreneurs to engage their audience with
+          blockchain-powered experiences, with no blockchain knowledge required.
+        </p>
+      </header>
+
+      <header class="section-head">
+        <h3>Solutions for Everyone</h3>
+        <p class="dc-lead">
+          DropChain's suite of products caters to entrepreneurs, content creators, and
+          business owners at all stages. Create breathtaking web3 experiences to elevate
+          your community's engagement.
+        </p>
+      </header>
+
+      <ul class="products">
+        {products.map((product) => (
+          <li class="product">
+            <a href={product.href}>
+              {product.image && <img class="product__image" src={product.image} alt="" loading="lazy" />}
+              {product.badge && <span class="product__badge">{product.badge}</span>}
+              <h4>{product.title}</h4>
+              <p>{product.blurb}</p>
+              {product.tags && (
+                <ul class="product__tags">
+                  {product.tags.map((tag) => <li>{tag}</li>)}
+                </ul>
+              )}
+              {product.time && <p class="product__time">{product.time}</p>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <LinkCards
+    eyebrow="Benefits"
+    heading="Why use <span class='dc-gradient-text'>DropChain</span> over the competition?"
+    items={benefits}
+  />
+
+  <DiscordBand />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <p class="dc-eyebrow">DropChain is cross chain</p>
+        <h2>DropChain Works with the Most Popular Blockchains and Frameworks</h2>
+        <p class="dc-lead">
+          The DropChain API connects your app to 30+ premade web3 functions. Create apps
+          almost instantly for the most popular chains.
+        </p>
+      </header>
+
+      <h3 class="strip__title">Blockchains</h3>
+      <ul class="strip">
+        {chains.map((name) => <li><img src={`/images/${name}.svg`} alt={name} loading="lazy" /></li>)}
+      </ul>
+
+      <h3 class="strip__title">Frameworks</h3>
+      <ul class="strip">
+        {frameworks.map((name) => <li><img src={`/images/${name}.svg`} alt={name} loading="lazy" /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <div class="academy">
+        <div>
+          <h2>DropChain Academy</h2>
+          <p class="dc-lead">Dive deep into news, guides, developer stories and much more.</p>
+          <Button href="/academy" variant="ghost" icon="arrow">Visit the Academy</Button>
+        </div>
+        <img src="/images/green-planet-in-dark-space_1.avif" alt="" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Start for Only $1"
+    sub="Launch a blockchain experience in 1 click, $1 for your first month. Create your own NFT loyalty program, distribute blockchain tickets, or create an exclusive NFT club for your community. All for $1 to start."
+    cta="Start Unlimited Free Trial"
+    href={CONSOLE_URL}
+  />
+
+  <Pricing />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-lg); }
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-eyebrow { margin-bottom: 0.6rem; }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .products, .strip { list-style: none; margin: 0; padding: 0; }
+  .products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .product a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+    color: var(--dc-text);
+    transition: border-color var(--dc-transition), transform var(--dc-transition);
+  }
+  .product a:hover { border-color: var(--dc-green); transform: translateY(-2px); color: var(--dc-text); }
+  .product__badge {
+    align-self: flex-start;
+    background-image: var(--dc-gradient);
+    color: var(--dc-text-inverse);
+    font-size: var(--dc-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--dc-radius-pill);
+  }
+  .product__image { width: 100%; border-radius: var(--dc-radius-sm); margin-bottom: 0.3rem; }
+  .product h4 { font-size: var(--dc-h5); }
+  .product p { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; }
+  .product__tags { display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; margin: 0.2rem 0 0; padding: 0; }
+  .product__tags li {
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-pill);
+    color: var(--dc-text-muted);
+    font-size: var(--dc-text-xs);
+  }
+  .product__time { color: var(--dc-green) !important; font-size: var(--dc-text-xs); font-weight: 500; margin-top: auto; padding-top: 0.5rem; }
+
+  .strip__title { font-size: var(--dc-h6); color: var(--dc-text-muted); margin-block: var(--dc-space-lg) var(--dc-space-md); }
+  .strip { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dc-space-lg); }
+  .strip img { height: 30px; width: auto; opacity: 0.75; }
+  .strip li:hover img { opacity: 1; }
+
+  .academy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--dc-space-2xl);
+    padding: var(--dc-space-xl);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+    background: var(--dc-surface);
+  }
+  .academy .dc-lead { margin-block: var(--dc-space-sm) var(--dc-space-lg); }
+  .academy img { width: 100%; border-radius: var(--dc-radius); }
+
+  @media (max-width: 1000px) { .products { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .products { grid-template-columns: 1fr; } .academy { grid-template-columns: 1fr; } }
+</style>

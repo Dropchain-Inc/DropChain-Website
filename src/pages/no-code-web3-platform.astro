@@ -1,0 +1,218 @@
+---
+/**
+ * An earlier homepage variant. Its own <h1> in the export reads "Old Home Page",
+ * and it is superseded by `/` and `/no-code`. Kept because it holds a live URL.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import LinkCards from '../components/LinkCards.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CONSOLE_URL, DOCS_URL } from '../data/navigation.js';
+import { fiatFeatures } from '../data/features.js';
+import { creatorQuotes, ssoFeatures } from '../data/site.js';
+
+const SDK_DOCS = 'https://dropchain.gitbook.io/dropchain-api-beta/dropchain-overview/dropchain-sdk';
+
+const pillars = [
+  { lordicon: 'sbiheqdr', title: 'Build Web3 Apps', blurb: 'Build web3 apps with a powerful API, SDK, and no-code solutions.', href: '/api' },
+  { lordicon: 'gqdnbnwt', title: 'Sell NFTs & Tokens', blurb: 'Accept cards and any crypto on the DropChain Marketplace.', href: '/nft-marketplace' },
+  { lordicon: 'uqpazftn', title: 'Grow Your Product', blurb: 'Onboard users with a single click with DropChain Single Sign On.', href: '/sso' },
+];
+
+const steps = [
+  { lordicon: 'sbiheqdr', title: 'Build your web2 app', step: '1. Build', blurb: 'Create your app in any programming language or a no-code app builder. Anything that accepts APIs will do.', cta: { label: 'Learn More', href: DOCS_URL } },
+  { lordicon: 'etwtznjn', title: 'Add the DropChain API', step: '2. Enhance', blurb: 'Add the DropChain API to enhance your web 2.0 app with pre-made smart contracts. No web3 experience needed to build.', cta: { label: 'See All Functions', href: '/api' } },
+  { lordicon: 'uqpazftn', title: 'Connect SSO to grow', step: '3. Onboard', blurb: 'Ease of use is critical for mass adoption. With DropChain, anyone with web2 credentials can use your app.', cta: { label: 'Learn More', href: '/sso' } },
+];
+
+const sample = `from dropchain_sdk import DropChainSDK
+
+dropchain_sdk = DropChainSDK(
+    "<Your API Key>",
+    "<Your App ID>"
+)
+
+response = dropchain_sdk.asset_mint_testnet(
+    created_asset_amount_int,
+    created_asset_decimals,
+    created_asset_name,
+    created_asset_unit_name,
+    created_asset_url,
+    session1_token,
+    user1_uid
+)`;
+
+// This page swaps the first fiat feature card for a minting-specific one.
+const nftFeatures = [
+  {
+    title: 'Mint NFTs No-Code and Accept Credit Card Checkout',
+    blurb: 'Easily create in-app NFTs and digital assets without writing a single line of code.',
+    href: '/mint-nfts',
+    image: '/images/Frame-22_1.avif',
+  },
+  ...fiatFeatures.slice(1),
+];
+---
+
+<BaseLayout
+  title="Build A Web3 App With No Code | DropChain"
+  description="Build a low-code or no-code web3 app, with no blockchain knowledge required."
+>
+  <PageHero
+    eyebrow="Build Web3 Apps"
+    title="Build Web3 Apps Faster and Easier Than Ever"
+    sub="Build a low-code or no-code web3 app, with no blockchain knowledge required."
+  >
+    <div class="actions"><Button href={CONSOLE_URL}>Start Free Trial</Button></div>
+  </PageHero>
+
+  <LinkCards items={pillars} />
+
+  <CtaBand
+    heading="Special Offer: start for free, then enjoy your first month for $1 / mo"
+    sub="Try DropChain free, no credit card required."
+    cta="Start Free Trial"
+    href={CONSOLE_URL}
+  />
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <header class="section-head">
+        <p class="dc-eyebrow">Build Web3 Products</p>
+        <h2>Blockchain App Development Made Easy</h2>
+        <p class="dc-lead">
+          DropChain enhances an app with web 3.0 functionality. There's no need to learn
+          entirely new frameworks: no-code, the DropChain API, or the Python SDK. The
+          DropChain API enhances no-code apps built on any platform. Get started in minutes.
+        </p>
+      </header>
+
+      <ol class="steps">
+        {steps.map((item) => (
+          <li class="step">
+            <p class="step__label">{item.step}</p>
+            <h3>{item.title}</h3>
+            <p class="step__blurb">{item.blurb}</p>
+            <Button href={item.cta.href} variant="ghost" icon="arrow">{item.cta.label}</Button>
+          </li>
+        ))}
+      </ol>
+
+      <div class="actions actions--center">
+        <Button href={CONSOLE_URL}>Quick Start</Button>
+        <Button href={DOCS_URL} variant="ghost" icon="arrow">Read Docs</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head">
+        <h2>Build Web3 Apps Fast With Powerful SDKs</h2>
+        <p class="dc-lead">
+          DropChain's SDKs offer easy access to our APIs, allowing you to access pre-built
+          web3 functions easily. You don't need to be a Solidity expert, so you can focus
+          on developing your project while we handle the rest.
+        </p>
+      </header>
+      <img class="sdk-art" src="/images/Group-416-1.svg" alt="" loading="lazy" />
+      <figure class="snippet">
+        <figcaption>Mint an asset on testnet with the Python SDK</figcaption>
+        <pre><code>{sample}</code></pre>
+      </figure>
+      <div class="actions">
+        <Button href={CONSOLE_URL}>Get Started</Button>
+        <Button href={SDK_DOCS} variant="ghost" icon="arrow">Read the Docs</Button>
+      </div>
+    </div>
+  </section>
+
+  <LinkCards
+    eyebrow="Sell NFTs & Tokens"
+    heading="Create and Sell NFTs the easy way"
+    sub="Explore our suite of features that makes DropChain the easiest platform for your users to buy your NFTs."
+    items={nftFeatures}
+  />
+
+  <LinkCards
+    eyebrow="Single Sign On"
+    heading="Onboard Users in a Click"
+    items={ssoFeatures}
+  />
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <img class="sso-art" src="/images/SSO-page.avif" alt="The DropChain single sign-on screen" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="dc-section--tight">
+    <div class="dc-container">
+      <header class="section-head"><h2>What creators say about DropChain</h2></header>
+      <ul class="quotes">
+        {creatorQuotes.map((item) => (
+          <li class="quote">
+            <blockquote>{item.quote}</blockquote>
+            <footer>
+              <img src={item.avatar} alt="" loading="lazy" />
+              <span>
+                <span class="quote__name">{item.name}</span>
+                <span class="quote__role">{item.role}</span>
+              </span>
+            </footer>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Empowering Builders Everywhere"
+    sub="Don't just take our word for it. DropChain is powering some of the most innovative builders in web3. Join a growing community of those shaping the future in our Discord channel."
+    cta="Start Free Trial"
+    href={CONSOLE_URL}
+  />
+</BaseLayout>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
+  .actions--center { justify-content: flex-start; margin-top: var(--dc-space-xl); }
+  .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
+  .section-head .dc-eyebrow { margin-bottom: 0.6rem; }
+  .section-head .dc-lead { margin-top: var(--dc-space-sm); }
+
+  .steps, .quotes { list-style: none; margin: 0; padding: 0; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: var(--dc-space-lg);
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius);
+  }
+  .step__label { color: var(--dc-green); font-size: var(--dc-text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  .step h3 { font-size: var(--dc-h5); }
+  .step__blurb { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.65; flex: 1; }
+
+  .sdk-art { max-width: 320px; margin-bottom: var(--dc-space-lg); }
+  .sso-art { width: 100%; border-radius: var(--dc-radius-lg); }
+  .snippet { margin: 0; background: var(--dc-surface); border: 1px solid var(--dc-border); border-radius: var(--dc-radius); overflow: hidden; }
+  .snippet figcaption { padding: 0.7rem var(--dc-space-lg); border-bottom: 1px solid var(--dc-border); color: var(--dc-text-muted); font-size: var(--dc-text-xs); }
+  .snippet pre { margin: 0; padding: var(--dc-space-lg); overflow-x: auto; }
+  .snippet code { font-family: var(--dc-font-mono); font-size: var(--dc-text-sm); line-height: 1.7; color: var(--dc-green-soft); }
+
+  .quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--dc-space-md); }
+  .quote { display: flex; flex-direction: column; gap: var(--dc-space-md); padding: var(--dc-space-lg); background: var(--dc-surface); border: 1px solid var(--dc-border); border-radius: var(--dc-radius); }
+  .quote blockquote { margin: 0; font-size: var(--dc-text-sm); line-height: 1.7; flex: 1; }
+  .quote footer { display: flex; align-items: center; gap: 0.75rem; }
+  .quote footer > span { display: grid; gap: 0.15rem; }
+  .quote footer img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; }
+  .quote__name { font-weight: 600; font-size: var(--dc-text-sm); }
+  .quote__role { color: var(--dc-text-muted); font-size: var(--dc-text-xs); }
+
+  @media (max-width: 900px) { .steps, .quotes { grid-template-columns: 1fr; } }
+</style>

@@ -69,6 +69,14 @@ in that file so the flag keeps meaning something.
 The Webflow export is kept at `dropchain-6028cb.webflow/` as a local content
 reference and is gitignored.
 
+## Not yet verified
+
+The responsive layouts were checked statically (no fixed width above 260px, every
+multi-column grid has a single-column fallback, the nav collapses to a drawer
+below 1050px) but were **not** eyeballed at phone width. Worth a pass on a real
+device, particularly the `compare` matrix, the four-column `pricing` grid and the
+nav drawer.
+
 ## Known gaps
 
 - **Forms are not wired up.** Contact, newsletter and bridge forms posted to
@@ -82,3 +90,12 @@ reference and is gitignored.
   switched off.
 - **Source typos were corrected**, for example "Singe Sign On", "White Lable",
   "Tesnet", "Effortlesly". They are listed in `scripts/verify-content.mjs`.
+- **The Termly cookie consent banner was not carried over.** The old site loaded
+  it from termly.io. If it is needed for GDPR or CCPA, it has to be re-added.
+- **Facebook Pixel and Segment were not carried over.** GA4 and GTM are. If those
+  two are still in use, GTM can inject them, or they can be added to
+  `src/layouts/BaseLayout.astro`.
+- **Four pages are superseded but kept** because they still hold live URLs:
+  `old-home` and `no-code-web3-platform` are earlier homepages, `sandbox` is a
+  Webflow staging page, and `search` replaced Webflow's hosted site search, which
+  has no static equivalent.
