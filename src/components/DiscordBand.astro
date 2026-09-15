@@ -1,0 +1,37 @@
+---
+import Icon from './Icon.astro';
+import Button from './Button.astro';
+import { DISCORD_URL } from '../data/navigation.js';
+---
+<section class="discord dc-section--tight">
+  <div class="dc-container">
+    <div class="discord__inner">
+      <span class="discord__icon"><Icon name="discord" size={30} /></span>
+      <div class="discord__copy">
+        <h2>Get Access to the Discord</h2>
+        <p class="dc-muted">
+          Join the DropChain community and keep up to date with the DropChain team.
+        </p>
+      </div>
+      <Button href={DISCORD_URL} variant="ghost" icon="arrow">Join the Discussion</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .discord__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--dc-space-md);
+    padding: var(--dc-space-lg) var(--dc-space-xl);
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-lg);
+    background: var(--dc-surface);
+  }
+  .discord__icon { color: var(--dc-green); flex: none; }
+  .discord__copy { flex: 1; min-width: 220px; }
+  .discord__copy h2 { font-size: var(--dc-h5); }
+  .discord__copy p { font-size: var(--dc-text-sm); margin-top: 0.2rem; }
+  @media (max-width: 640px) { .discord__inner { padding: var(--dc-space-lg); } }
+</style>

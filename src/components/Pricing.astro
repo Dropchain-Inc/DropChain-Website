@@ -1,10 +1,11 @@
 ---
 import Icon from './Icon.astro';
-import { plans, planFeatures } from '../data/site.js';
+import { plans } from '../data/site.js';
+
 interface Props { heading?: string; sub?: string; }
 const {
-  heading = 'Choose your DropChain plan',
-  sub = 'Pay by the month or year, and cancel at any time. All paid tiers have a 7 day free trial.',
+  heading = 'Start Building your Community',
+  sub = 'Upgrade and enjoy your first month for just $1.',
 } = Astro.props;
 ---
 <section class="pricing dc-section" id="pricing">
@@ -12,28 +13,43 @@ const {
     <header class="pricing__head">
       <h2>{heading}</h2>
       <p class="dc-lead">{sub}</p>
+
+      <div class="toggle" role="group" aria-label="Billing period">
+        <button type="button" class="toggle__btn is-active" data-period="monthly" aria-pressed="true">Monthly</button>
+        <button type="button" class="toggle__btn" data-period="annual" aria-pressed="false">Annual</button>
+      </div>
     </header>
 
     <ul class="pricing__grid">
       {plans.map((plan) => (
         <li class:list={['plan', plan.featured && 'plan--featured']}>
-          {plan.featured && <span class="plan__badge">Most Popular</span>}
           <h3 class="plan__name">{plan.name}</h3>
-          <p class="plan__price">
-            <span>{plan.price}</span>
-            <small>{plan.cadence}</small>
-          </p>
-          {plan.note && <p class="plan__note">{plan.note}</p>}
-          <a class:list={['plan__cta', plan.featured && 'plan__cta--solid']} href={plan.cta.href}>
-            {plan.cta.label}
-          </a>
-          <ul class="plan__features">
-            <li><Icon name="check" size={16} />{plan.calls}</li>
-            <li><Icon name="check" size={16} />{plan.access}</li>
-            {planFeatures.slice(1).map((feature) => (
-              <li><Icon name="check" size={16} />{feature}</li>
-            ))}
-          </ul>
+
+          {plan.features && (
+            <ul class="plan__features">
+              {plan.features.map((feature) => (
+                <li><Icon name="check" size={16} />{feature}</li>
+              ))}
+            </ul>
+          )}
+          {plan.blurb && <p class="plan__blurb">{plan.blurb}</p>}
+
+          <div class="plan__foot">
+            {plan.priceLabel ? (
+              <p class="plan__contact">{plan.priceLabel}</p>
+            ) : (
+              <p class="plan__price">
+                <span data-monthly={plan.monthly} data-annual={plan.annual}>{plan.monthly}</span>
+                <small>/ Month</small>
+              </p>
+            )}
+            <a
+              class:list={['plan__cta', plan.featured && 'plan__cta--solid']}
+              href={plan.cta.href}
+              data-monthly={plan.cta.monthly}
+              data-annual={plan.cta.annual}
+            >{plan.cta.monthly}</a>
+          </div>
         </li>
       ))}
     </ul>
@@ -44,50 +60,77 @@ const {
   .pricing__head { text-align: center; max-width: 62ch; margin-inline: auto; margin-bottom: var(--dc-space-xl); }
   .pricing__head .dc-lead { margin-top: var(--dc-space-sm); }
 
+  .toggle {
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-top: var(--dc-space-lg);
+    padding: 0.3rem;
+    border: 1px solid var(--dc-border);
+    border-radius: var(--dc-radius-pill);
+  }
+  .toggle__btn {
+    padding: 0.5rem 1.6rem;
+    background: none;
+    border: 0;
+    border-radius: var(--dc-radius-pill);
+    color: var(--dc-text);
+    font-size: var(--dc-text-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--dc-transition), color var(--dc-transition);
+  }
+  .toggle__btn.is-active {
+    background-image: var(--dc-gradient);
+    color: var(--dc-text-inverse);
+  }
+
   .pricing__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--dc-space-md);
     list-style: none;
     margin: 0;
     padding: 0;
-    align-items: start;
   }
   .plan {
-    position: relative;
     display: flex;
     flex-direction: column;
-    gap: var(--dc-space-sm);
+    gap: var(--dc-space-md);
     padding: var(--dc-space-lg);
     background: var(--dc-surface);
     border: 1px solid var(--dc-border);
     border-radius: var(--dc-radius-lg);
   }
   .plan--featured { border-color: var(--dc-green); box-shadow: 0 0 0 1px var(--dc-green-fade), var(--dc-shadow); }
-  .plan__badge {
-    position: absolute;
-    top: -0.75rem;
-    left: var(--dc-space-lg);
-    background-image: var(--dc-gradient);
-    color: var(--dc-text-inverse);
-    font-size: var(--dc-text-xs);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.2rem 0.7rem;
-    border-radius: var(--dc-radius-pill);
+
+  .plan__name {
+    font-size: var(--dc-h4);
+    padding-bottom: var(--dc-space-sm);
+    border-bottom: 1px solid var(--dc-border);
   }
-  .plan__name { font-size: var(--dc-h4); }
+
+  .plan__features { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; flex: 1; }
+  .plan__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    color: var(--dc-text-muted);
+    font-size: var(--dc-text-sm);
+    line-height: 1.5;
+  }
+  .plan__features :global(svg) { color: var(--dc-green); flex: none; margin-top: 0.2rem; }
+  .plan__blurb { color: var(--dc-text-muted); font-size: var(--dc-text-sm); line-height: 1.6; flex: 1; }
+
+  .plan__foot { display: grid; gap: var(--dc-space-md); }
   .plan__price { display: flex; align-items: baseline; gap: 0.4rem; }
   .plan__price span { font-size: 2.25rem; font-weight: 600; color: var(--dc-text); }
   .plan__price small { color: var(--dc-text-muted); font-size: var(--dc-text-sm); }
-  .plan__note { color: var(--dc-text-muted); font-size: var(--dc-text-xs); }
+  .plan__contact { font-size: 1.6rem; font-weight: 600; color: var(--dc-text); }
 
   .plan__cta {
     display: block;
     text-align: center;
     padding: 0.7rem 1.25rem;
-    margin-block: var(--dc-space-xs);
     border: 1px solid var(--dc-border);
     border-radius: var(--dc-radius-sm);
     color: var(--dc-text);
@@ -104,14 +147,30 @@ const {
   }
   .plan__cta--solid:hover { color: var(--dc-text-inverse); }
 
-  .plan__features { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
-  .plan__features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    color: var(--dc-text-muted);
-    font-size: var(--dc-text-sm);
-    line-height: 1.5;
-  }
-  .plan__features :global(svg) { color: var(--dc-green); flex: none; margin-top: 0.2rem; }
+  @media (max-width: 1100px) { .pricing__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .pricing__grid { grid-template-columns: 1fr; } }
 </style>
+
+<script>
+  const section = document.querySelector('.pricing');
+  const buttons = section?.querySelectorAll<HTMLButtonElement>('.toggle__btn') ?? [];
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const period = button.dataset.period === 'annual' ? 'annual' : 'monthly';
+
+      buttons.forEach((other) => {
+        const active = other === button;
+        other.classList.toggle('is-active', active);
+        other.setAttribute('aria-pressed', String(active));
+      });
+
+      section
+        ?.querySelectorAll<HTMLElement>('[data-monthly][data-annual]')
+        .forEach((el) => {
+          const value = el.dataset[period];
+          if (value) el.textContent = value;
+        });
+    });
+  });
+</script>

@@ -59,6 +59,7 @@ export const primaryNav = [
   { label: 'Capabilities', items: capabilities, kind: 'cards' },
   { label: 'Resources', items: resources, kind: 'list' },
   { label: 'Pricing', href: '/pricing' },
+  { label: 'Docs', href: DOCS_URL, external: true },
 ];
 
 export const footerColumns = [
