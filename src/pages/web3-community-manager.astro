@@ -121,7 +121,7 @@ const analytics = [
   <Split
     tight
     heading="Capture Contacts From Anywhere"
-    image="/images/ChatGPT-Image-Apr-4-2025-02_32_11-PM.png"
+    image="/images/ChatGPT-Image-Apr-6-2025-04_06_10-PM.png"
   >
     <ul class="sources">
       {sources.map((item) => (
@@ -151,14 +151,17 @@ const analytics = [
     tight
     heading="Stop Manually Managing Your Community &amp; Start Growing"
     sub="Most tools make community management reactive. DropChain gives you the data and automation to be proactive. You'll know who's new, who's engaged, who's slipping. Plus you'll have the power to act on it. Whether you're tracking DAO members, NFT holders, or event signups, this is the all-in-one system built for web3 relationships."
-    image="/images/ChatGPT-Image-Apr-6-2025-04_06_10-PM.png"
+    image="/images/ChatGPT-Image-Apr-6-2025-05_15_09-PM.png"
   >
     <div class="actions"><Button href={CONSOLE_URL}>Get Started</Button></div>
   </Split>
 
   <section class="dc-section--tight">
     <div class="dc-container">
-      <img class="closing" src="/images/ChatGPT-Image-Apr-6-2025-05_15_09-PM.png" alt="" loading="lazy" />
+      <div class="closing">
+        <img src="/images/ChatGPT-Image-Apr-4-2025-04_16_08-PM.png" alt="" loading="lazy" />
+        <img src="/images/ChatGPT-Image-Apr-4-2025-02_32_11-PM.png" alt="" loading="lazy" />
+      </div>
     </div>
   </section>
 
@@ -175,7 +178,9 @@ const analytics = [
 <style>
   .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--dc-space-md); }
   .hero-image { margin-top: var(--dc-space-xl); border-radius: var(--dc-radius-lg); }
-  .closing { width: 100%; border-radius: var(--dc-radius-lg); }
+  .closing { display: grid; grid-template-columns: 1fr 1fr; gap: var(--dc-space-md); }
+  .closing img { width: 100%; border-radius: var(--dc-radius-lg); }
+  @media (max-width: 760px) { .closing { grid-template-columns: 1fr; } }
   .section-head { max-width: 64ch; margin-bottom: var(--dc-space-xl); }
   .section-head .dc-lead { margin-top: var(--dc-space-sm); }
 
