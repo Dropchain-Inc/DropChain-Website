@@ -20,3 +20,6 @@ dropchain-6028cb.webflow/
 # Editor
 .vscode/
 .idea/
+
+# Local screenshot output from the responsive audit
+.screenshots/
