@@ -113,4 +113,16 @@ console.log(`${pages.length} pages audited at ${width}px\n`);
 if (!problems.length) {
   console.log('No horizontal overflow and no text under 11px.');
 } else {
-  for (con
+  for (const p of problems) {
+    if (p.error) { console.log(`! ${p.path}  ${p.error}`); continue; }
+    console.log(`! ${p.path}`);
+    if (p.overflow > 1) {
+      console.log(`    overflows by ${p.overflow}px (content ${p.scrollWidth}px wide)`);
+      for (const c of p.culprits) {
+        console.log(`      <${c.tag}${c.cls ? '.' + c.cls : ''}>  width ${c.width}px, right edge ${c.right}px`);
+      }
+    }
+    if (p.tiny) console.log(`    ${p.tiny} elements with text under 11px`);
+  }
+  process.exitCode = 1;
+}
